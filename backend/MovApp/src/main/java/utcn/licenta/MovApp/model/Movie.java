@@ -9,8 +9,8 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private Integer movie_id;
+    @Column(name="id", updatable = false)
+    private Integer id;
 
     @Column(name = "subtitle_id", nullable = false)
     private Integer subtitle_id;
@@ -45,12 +45,12 @@ public class Movie {
     @Column(name = "content", nullable = false, length = 255)
     private String content;
 
-    public Integer getMovie_id() {
-        return movie_id;
+    public Integer getId() {
+        return id;
     }
 
-    public void setMovie_id(Integer movie_id) {
-        this.movie_id = movie_id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getSubtitle_id() {

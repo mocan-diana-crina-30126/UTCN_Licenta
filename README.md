@@ -1,1 +1,0 @@
-# UTCN_Licenta

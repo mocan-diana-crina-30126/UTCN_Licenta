@@ -11,7 +11,7 @@ public class MovieDTO {
    private String imagePath;
    private String overview;
    private Integer tmdbRating;
-   private String content;
+   private String contentName;
 
     public String getTitle() {
         return title;
@@ -69,11 +69,11 @@ public class MovieDTO {
         this.tmdbRating = tmdbRating;
     }
 
-    public String getContent() {
-        return content;
+    public String getContentName() {
+        return contentName;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setContentName(String contentName) {
+        this.contentName = contentName;
     }
 }

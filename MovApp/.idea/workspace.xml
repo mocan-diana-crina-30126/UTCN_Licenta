@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5097f61a-400c-4471-978d-89dcb61f0d39" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../MovApp-frontend" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/MovAppApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/controller/MovieController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/controller/advice/MovieControllerExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/dto/MovieDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/exception/MovieDuplicatedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/exception/MovieNotFoundException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/model/Movie.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/repository/MovieRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/service/MovieServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utcn/licenta/MovApp/service/MovieServiceInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/utcn/licenta/MovApp/MovAppApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Inspector" value="true" />
+        <entry key="JPA Palette" value="true" />
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Inspector" value="false" />
+        <entry key="JPA Palette" value="false" />
+        <entry key="JPA Structure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="20luYWXuiFMKjln6eQ4axOAQAwK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="postgresql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../backend/MovApp" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.MovAppApplication">
+    <configuration name="generated-requests#4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests#5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="5" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests#6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="6" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests#7" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" index="7" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="MovAppApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="MovApp" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="utcn.licenta.MovApp.MovAppApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="HTTP Request.generated-requests#7" />
+        <item itemvalue="HTTP Request.generated-requests#6" />
+        <item itemvalue="HTTP Request.generated-requests#5" />
+        <item itemvalue="HTTP Request.generated-requests#4" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5097f61a-400c-4471-978d-89dcb61f0d39" name="Changes" comment="" />
+      <created>1636631544437</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636631544437</updated>
+      <workItem from="1636631545686" duration="41000" />
+      <workItem from="1636709646907" duration="7781000" />
+      <workItem from="1636723818022" duration="796000" />
+      <workItem from="1636791958911" duration="752000" />
+      <workItem from="1636792737817" duration="7424000" />
+      <workItem from="1636830565451" duration="558000" />
+      <workItem from="1636831198227" duration="39000" />
+      <workItem from="1636885270300" duration="591000" />
+      <workItem from="1636887488054" duration="5378000" />
+      <workItem from="1636909351030" duration="1133000" />
+      <workItem from="1636987011645" duration="922000" />
+      <workItem from="1637056981846" duration="2273000" />
+      <workItem from="1637156581858" duration="1204000" />
+      <workItem from="1637169128389" duration="1690000" />
+      <workItem from="1637237382129" duration="1018000" />
+      <workItem from="1637240967029" duration="182000" />
+      <workItem from="1637254592417" duration="960000" />
+      <workItem from="1637509135573" duration="6161000" />
+      <workItem from="1637591306353" duration="182000" />
+      <workItem from="1637591915039" duration="1295000" />
+      <workItem from="1637599581972" duration="3716000" />
+      <workItem from="1637606274379" duration="1190000" />
+      <workItem from="1637657024981" duration="6331000" />
+      <workItem from="1637734933869" duration="1326000" />
+      <workItem from="1637759971280" duration="6710000" />
+      <workItem from="1637774302708" duration="2157000" />
+      <workItem from="1637778447286" duration="1200000" />
+      <workItem from="1637781476877" duration="665000" />
+      <workItem from="1637782519626" duration="24000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
