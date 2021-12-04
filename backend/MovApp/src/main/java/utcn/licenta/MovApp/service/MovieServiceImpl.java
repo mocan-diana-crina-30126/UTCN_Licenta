@@ -26,7 +26,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
     @Autowired
     private MovieRepository movieRepository;
-    private static final String BASE_MOVIE_NAME = "D:\\LICENTA\\UTCN_Licenta\\frontedn\\MovApp-frontend\\src\\assets\\videos\\";
+    private static final String BASE_MOVIE_NAME = "D:\\LICENTA\\UTCN_Licenta\\frontend\\MovApp-frontend\\src\\assets\\videos\\";
     private String BASE_IMAGE_NAME = "D:\\LICENTA\\UTCN_Licenta\\frontend\\MovApp-frontend\\src\\assets\\images\\";
     private static final MimeTypes ALL_TYPES = MimeTypes.getDefaultMimeTypes();
 
