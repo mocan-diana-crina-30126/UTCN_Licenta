@@ -12,14 +12,8 @@ public class Movie {
     @Column(name="id", updatable = false)
     private Integer id;
 
-    @Column(name = "subtitle_id", nullable = false)
-    private Integer subtitle_id;
-
     @Column(name = "title", nullable = false, length = 100)
     private String title;
-
-    @Column(name = "year", nullable = false)
-    private Integer year;
 
     @Column(name = "duration", nullable = false)
     private Integer duration;
@@ -36,14 +30,33 @@ public class Movie {
     @Column(name = "imdb_rating", nullable = false)
     private Integer imdb_rating;
 
-    @Column(name = "language_id", nullable = false)
-    private Integer language_id;
+    @Column(name = "language", nullable = false)
+    private String language;
 
     @Column(name = "director_id", nullable = false)
     private Integer director_id;
 
     @Column(name = "content", nullable = false, length = 255)
     private String content;
+
+    @Column(name = "popularity", nullable = false)
+    private Integer popularity;
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Integer popularity) {
+        this.popularity = popularity;
+    }
 
     public Integer getId() {
         return id;
@@ -53,28 +66,12 @@ public class Movie {
         this.id = id;
     }
 
-    public Integer getSubtitle_id() {
-        return subtitle_id;
-    }
-
-    public void setSubtitle_id(Integer subtitle_id) {
-        this.subtitle_id = subtitle_id;
-    }
-
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
     }
 
     public Integer getDuration() {
@@ -117,12 +114,12 @@ public class Movie {
         this.imdb_rating = imdb_rating;
     }
 
-    public Integer getLanguage_id() {
-        return language_id;
+    public String getLanguage_id() {
+        return language;
     }
 
     public void setLanguage_id(Integer language_id) {
-        this.language_id = language_id;
+        this.language = language;
     }
 
     public Integer getDirector_id() {
@@ -140,4 +137,5 @@ public class Movie {
     public void setContent(String content) {
         this.content = content;
     }
+
 }

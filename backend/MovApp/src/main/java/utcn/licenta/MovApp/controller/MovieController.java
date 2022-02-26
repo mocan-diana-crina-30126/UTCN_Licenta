@@ -26,12 +26,28 @@ public class MovieController {
 
     @GetMapping("/all")
     public List<Movie> getAllMovies() {
+
         return movieService.getAllMovies();
     }
 
     @GetMapping("/{id}")
     public List<Movie> getMovieInfo(@PathVariable("id") Integer id) {
+
         return movieService.getMovieInfo(id);
+    }
+
+    @GetMapping("/top_rated")
+    public List<Movie> getTopRatedMovies(){
+        return movieService.getTopRatedMovies();
+    }
+
+    @GetMapping("/popular")
+    public List<Movie> getPopularMovies(){
+        return movieService.getPopularMovies();
+    }
+    @GetMapping("/latest")
+    public List<Movie> getLatestMovies(){
+        return movieService.getLatestMovies();
     }
 
 
