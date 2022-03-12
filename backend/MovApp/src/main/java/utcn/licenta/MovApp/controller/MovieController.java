@@ -13,7 +13,6 @@ import utcn.licenta.MovApp.exception.MovieNotFoundException;
 import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.service.MovieServiceImpl;
 
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
@@ -37,17 +36,27 @@ public class MovieController {
     }
 
     @GetMapping("/top_rated")
-    public List<Movie> getTopRatedMovies(){
+    public List<Movie> getTopRatedMovies() {
         return movieService.getTopRatedMovies();
     }
 
     @GetMapping("/popular")
-    public List<Movie> getPopularMovies(){
+    public List<Movie> getPopularMovies() {
         return movieService.getPopularMovies();
     }
+
     @GetMapping("/latest")
-    public List<Movie> getLatestMovies(){
+    public List<Movie> getLatestMovies() {
         return movieService.getLatestMovies();
+    }
+
+    @GetMapping("/search")
+    public List<Movie> getMovieByTitle(@RequestParam(required = false) String title, @RequestParam(required = false) String genre) {
+        if (genre != null) {
+            return movieService.getMovieByGenre(genre);
+        } else {
+            return movieService.getMovieByTitle(title);
+        }
     }
 
 
@@ -62,7 +71,7 @@ public class MovieController {
         if (movie == null) {  //daca filmul dat de utilizator este null
             return ResponseEntity.badRequest().body("The provided movie is not valid");
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(movieService.save(movie,title,year,duration, releaseDate,image));
+        return ResponseEntity.status(HttpStatus.CREATED).body(movieService.save(movie, title, year, duration, releaseDate, image));
     }
 
     @PutMapping("/")

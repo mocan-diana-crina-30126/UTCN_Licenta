@@ -1,7 +1,10 @@
 package utcn.licenta.MovApp.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -9,7 +12,7 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", updatable = false)
+    @Column(name = "id", updatable = false)
     private Integer id;
 
     @Column(name = "title", nullable = false, length = 100)
@@ -19,7 +22,7 @@ public class Movie {
     private Integer duration;
 
     @Column(name = "release_date", nullable = false)
-    private Date release_date;
+    private LocalDate release_date;
 
     @Column(name = "image_path", nullable = false, length = 255)
     private String image_path;
@@ -41,6 +44,10 @@ public class Movie {
 
     @Column(name = "popularity", nullable = false)
     private Integer popularity;
+
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+    private List<Genre> genres = new ArrayList<>();
 
     public String getLanguage() {
         return language;
@@ -82,11 +89,11 @@ public class Movie {
         this.duration = duration;
     }
 
-    public Date getRelease_date() {
+    public LocalDate getRelease_date() {
         return release_date;
     }
 
-    public void setRelease_date(Date release_date) {
+    public void setRelease_date(LocalDate release_date) {
         this.release_date = release_date;
     }
 
@@ -138,4 +145,11 @@ public class Movie {
         this.content = content;
     }
 
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
 }

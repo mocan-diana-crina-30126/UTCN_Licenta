@@ -19,11 +19,12 @@ public interface MovieServiceInterface {
     List<Movie> getUpcomingMovies();
     List<Movie> getTrendingMovies();
     List<Movie> getOriginalMovies();
-
+    List<Movie> getMovieByTitle(String title);
 
     Movie save(MultipartFile movie, String title, Integer year, Integer duration, String releaseDate, MultipartFile image) throws MovieDuplicatedException, MimeTypeException;
 
     Movie update(Movie movie) throws MovieNotFoundException;
     Integer delete(Integer id) throws MovieNotFoundException;
 
+    List<Movie> getMovieByGenre(String genre);
 }

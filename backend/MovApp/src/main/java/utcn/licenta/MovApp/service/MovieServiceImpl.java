@@ -1,6 +1,5 @@
 package utcn.licenta.MovApp.service;
 
-import org.apache.tika.mime.MimeType;
 import org.apache.tika.mime.MimeTypeException;
 import org.apache.tika.mime.MimeTypes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -45,14 +44,14 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
 
     @Override
-    public List<Movie> getLatestMovies(){
-        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC,"release_date"));
+    public List<Movie> getLatestMovies() {
+        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC, "release_date"));
         return movies;
     }
 
     @Override
     public List<Movie> getNowPlayingMovies() {
-       return null;
+        return null;
     }
 
     @Override
@@ -61,13 +60,13 @@ public class MovieServiceImpl implements MovieServiceInterface {
         ///in functie de popularitate (popularitate intre 0-10)
         ///ordonare descrescatoare
 
-        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC,"popularity"));
+        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC, "popularity"));
         return movies;
     }
 
 
     @Override
-    public List<Movie> getTopRatedMovies(){
+    public List<Movie> getTopRatedMovies() {
 //        List<Movie> list = movieRepository.getAllMovies();
 //        for(Movie movie : list){
 //            if(movie.getImdb_rating() < 5){
@@ -76,7 +75,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
 //        }
 //        return list;
 
-        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC,"imdb_rating"));
+        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC, "imdb_rating"));
         return movies;
     }
 
@@ -94,7 +93,16 @@ public class MovieServiceImpl implements MovieServiceInterface {
     }
 
     @Override
-    public List<Movie> getOriginalMovies() {return null;}
+    public List<Movie> getOriginalMovies() {
+        return null;
+    }
+
+    @Override
+    public List<Movie> getMovieByTitle(String title) {
+        title = "%" + title + "%";
+        return movieRepository.getAllMoviesByTitle(title);
+
+    }
 
 
     @Override
@@ -113,7 +121,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
         movieEntity.setTitle(title);
         movieEntity.setDuration(duration);
         movieEntity.setImage_path(image.getName() + ".jpeg");
-        movieEntity.setRelease_date(Date.from(Instant.now()));
+        movieEntity.setRelease_date(LocalDate.now());
         movieEntity.setContent("some content");
         movieEntity.setLanguage_id(1);
         movieEntity.setDirector_id(1);
@@ -141,6 +149,11 @@ public class MovieServiceImpl implements MovieServiceInterface {
         }
         movieRepository.delete(movieFromDb);
         return id;
+    }
+
+    @Override
+    public List<Movie> getMovieByGenre(String genre) {
+        return movieRepository.getAllMoviesByGenre(genre);
     }
 
 }
