@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Movie } from "../models/movie";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 
 const enum endpoint{
@@ -16,18 +16,18 @@ const enum endpoint{
   originals = '/discover/tv'
 }
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
     private apiServerUrl = environment.apiBaseUrl;
+    private movies: Movie[] = [];
 
     constructor(private http: HttpClient){}
 
     public getMovies(): Observable<Movie[]>{
         return this.http.get<Movie[]>(`${this.apiServerUrl}${endpoint.all}`);
-   
+
     }
 
     public getLatestMovies(): Observable<Movie[]>{
@@ -62,5 +62,25 @@ export class MovieService {
      public getMovieInfo(): Observable<Movie[]>{
       return this.http.get<Movie[]>(`${this.apiServerUrl}/movies/{id}`);
     }
+
+    public getMovieByTitle(searchText: any): Observable<Movie[]>{
+      let url = `${this.apiServerUrl}/movies/search`
+
+      let queryParams = new HttpParams();
+      queryParams = queryParams.append("title",searchText);
+
+      return this.http.get<Movie[]>(url, {params:queryParams});
+    }
+
+
+  public getMovieByGenre(searchText: any): Observable<Movie[]>{
+    let url = `${this.apiServerUrl}/movies/search`
+
+    let queryParams = new HttpParams();
+    queryParams = queryParams.append("genre",searchText);
+
+    return this.http.get<Movie[]>(url, {params:queryParams});
+  }
+
 
 }

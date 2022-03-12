@@ -1,17 +1,18 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnDestroy, OnInit, ElementRef, ViewChild, HostListener, } from '@angular/core';
-import { Movie } from './models/movie';
-import { MovieService } from './services/movie.service';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit,ElementRef,HostListener } from '@angular/core';
+import {Movie} from './models/movie';
+import {MovieService} from './services/movie.service';
+import {DomSanitizer} from '@angular/platform-browser';
+import {Subscription} from 'rxjs';
+import {HttpErrorResponse} from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  sticky = false;
+export class AppComponent implements OnInit, OnDestroy{
+
   subs: Subscription[] = [];
   trending: Movie[] = [];
   popular: Movie[] = [];
@@ -20,7 +21,6 @@ export class AppComponent implements OnInit{
   nowPlaying: Movie[] = [];
   latest: Movie[] = [];
 
-
   sliderConfig = {
     slidesToShow: 9,
     slidesToScroll: 2,
@@ -28,20 +28,24 @@ export class AppComponent implements OnInit{
     autoplay: false
   };
 
-  @ViewChild('stickHeader') header!: ElementRef;
-  headerBGUrl!: string;
+  sliderConfigSearch = {
+    slidesToShow: 0,
+    slidesToScroll: 2,
+    arrows: true,
+    autoplay: false
+  };
+ 
+  public movies: Movie[] = [];
 
-   public movies: Movie[] = [];
 
-
-  constructor(private movieService: MovieService, private sanitizer: DomSanitizer){}
+  constructor(private movieService: MovieService, private sanitizer: DomSanitizer) {
+  }
 
   ngOnInit(): void {
-
-
+    
     this.subs.push(this.movieService.getTrendingMovies().subscribe(data => {
       this.trending = data;
-      //this.headerBGUrl = 'https://image.tmdb.org/t/p/original' + this.trending.results[0].backdrop_path;  //poza de fundal
+      // this.headerBGUrl = this.trending[0].image_path;  //poza de fundal
     }));
     this.subs.push(this.movieService.getPopularMovies().subscribe(data => this.popular = data));
     this.subs.push(this.movieService.getTopRatedMovies().subscribe(data => this.topRated = data));
@@ -49,10 +53,10 @@ export class AppComponent implements OnInit{
     this.subs.push(this.movieService.getNowPlayingMovies().subscribe(data => this.nowPlaying = data));
     this.subs.push(this.movieService.getLatestMovies().subscribe(data => this.latest = data));
 
-     this.getMovies();
+    this.getMovies();
+    
   }
-
-  public getMovies(): void{
+  public getMovies(): void {
     this.movieService.getMovies().subscribe(
       (response: Movie[]) => {
         this.movies = response;
@@ -62,7 +66,37 @@ export class AppComponent implements OnInit{
         alert(error.message);
       }
     );
+
   }
+  ngOnDestroy(): void {
+    this.subs.map(s => s.unsubscribe());
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  // tslint:disable-next-line:typedef
+
+
+  public getVideoFromPath(path: string) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(path);
+
+  }
+
+  
+
+  // public getMovieByTitle(): void {
+  //   console.log(this.searchText);
+  //   this.movieService.getMovieByGenre(this.searchText).subscribe(data => {
+  //     console.log(data)
+  //     this.trending = data
+  //     this.sliderConfigSearch.slidesToShow = data.length;
+  //   })
+  // }
+
+  
+
+
+
+
 
 /// FUNCTIONEAZA SI FARA METODELE DE MAI JOS
 
@@ -102,25 +136,5 @@ export class AppComponent implements OnInit{
   //   );
   // }
 
-  ngOnDestroy(): void {
-    this.subs.map(s => s.unsubscribe());
-  }
 
-  @HostListener('window:scroll', ['$event'])
-  // tslint:disable-next-line:typedef
-  handleScroll() {
-    const windowScroll = window.pageYOffset;
-
-    if (windowScroll >= this.header.nativeElement.offsetHeight) {
-      this.sticky = true;
-    } else {
-      this.sticky = false;
-    }
-
-  }
-  
-  public getVideoFromPath(path: string){
-    return this.sanitizer.bypassSecurityTrustResourceUrl(path);
-
-}
 }
