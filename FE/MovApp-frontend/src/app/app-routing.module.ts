@@ -8,6 +8,7 @@ import { FavoritesListComponent } from './movies/favorites-list/favorites-list.c
 import { WatchedEditComponent } from './movies/watched-list/watched-edit/watched-edit.component';
 import { WatchedListComponent } from './movies/watched-list/watched-list.component';
 import { ChildrenComponent } from './children/children.component';
+import { GenresListComponent } from './genres-list/genres-list.component';
 
 const routes: Routes = [
 {
@@ -16,8 +17,12 @@ const routes: Routes = [
 path: 'home',
 component: HomeComponent
 },
-{ path: 'genres',
+{
+  path: 'genres/:id/:name',
   component: GenresComponent
+},
+{ path: 'genres',
+  component: GenresListComponent
 },
 {
   path: 'favorites',

@@ -10,6 +10,7 @@ export interface Movie {
     director_id: number;
     content: string;
     popularity: number;
+    genres: [];
 }
 
 // export interface Movies extends Array<Movie>{}

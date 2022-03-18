@@ -1,19 +1,2 @@
-.container {
-  display: flex;
-  flex-direction: column;
-
-  
-
-  .body {
-    overflow-y: hidden;
-    overflow-x: scroll;
-    padding: 20px;
-    position: relative;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-}
 
 

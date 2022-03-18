@@ -4,82 +4,51 @@ import {MovieService} from './services/movie.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Subscription} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 
+// enum AppTab {
+//   HOME = 0,
+//   GENRES = 1,
+//   FAVORITES = 2,
+//   WATCHED = 3,
+//   ADD = 4
+// }
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent implements OnInit{
 
-  subs: Subscription[] = [];
-  trending: Movie[] = [];
-  popular: Movie[] = [];
-  topRated: Movie[] = [];
-  originals: Movie[] = [];
-  nowPlaying: Movie[] = [];
-  latest: Movie[] = [];
+  // tab: AppTab = AppTab.HOME;
+  
 
-  sliderConfig = {
-    slidesToShow: 9,
-    slidesToScroll: 2,
-    arrows: true,
-    autoplay: false
-  };
-
-  sliderConfigSearch = {
-    slidesToShow: 0,
-    slidesToScroll: 2,
-    arrows: true,
-    autoplay: false
-  };
- 
-  public movies: Movie[] = [];
-
-
-  constructor(private movieService: MovieService, private sanitizer: DomSanitizer) {
-  }
+  constructor(
+    // private router: Router,
+    // private route: ActivatedRoute,
+    // private movieService: MovieService
+  ) {}
 
   ngOnInit(): void {
     
-    this.subs.push(this.movieService.getTrendingMovies().subscribe(data => {
-      this.trending = data;
-      // this.headerBGUrl = this.trending[0].image_path;  //poza de fundal
-    }));
-    this.subs.push(this.movieService.getPopularMovies().subscribe(data => this.popular = data));
-    this.subs.push(this.movieService.getTopRatedMovies().subscribe(data => this.topRated = data));
-    this.subs.push(this.movieService.getOriginalsMovies().subscribe(data => this.originals = data));
-    this.subs.push(this.movieService.getNowPlayingMovies().subscribe(data => this.nowPlaying = data));
-    this.subs.push(this.movieService.getLatestMovies().subscribe(data => this.latest = data));
-
-    this.getMovies();
-    
-  }
-  public getMovies(): void {
-    this.movieService.getMovies().subscribe(
-      (response: Movie[]) => {
-        this.movies = response;
-        console.log(this.movies);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-
-  }
-  ngOnDestroy(): void {
-    this.subs.map(s => s.unsubscribe());
   }
 
-  @HostListener('window:scroll', ['$event'])
-  // tslint:disable-next-line:typedef
-
-
-  public getVideoFromPath(path: string) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(path);
-
-  }
+  // onChangeTab(){
+  //   if(this.tab === AppTab.HOME) {
+  //     this.router.navigate(['home'], {relativeTo: this.route});
+  //   }
+  //   else if (this.tab === AppTab.GENRES){
+  //     this.router.navigate(['genres'], {relativeTo: this.route});
+  //   }
+  //   else if( this.tab === AppTab.FAVORITES){
+  //     this.router.navigate(['favorites'], {relativeTo: this.route});
+  //   }
+  //   else if( this.tab === AppTab.WATCHED){
+  //     this.router.navigate(['watched'], {relativeTo: this.route});
+  //   }
+  //}
+  
 
   
 

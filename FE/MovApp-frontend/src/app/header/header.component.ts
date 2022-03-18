@@ -1,6 +1,7 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import {MovieService} from "../services/movie.service";
 import {Movie} from "../models/movie";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,10 +12,12 @@ export class HeaderComponent implements OnInit {
 
   sticky = false;
   searchText = '';
-  trending: Movie[] = [];
   genres: string [] = ['Action','Drama'];
+  trending: Movie[] = [];
+  
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService,  private router: Router,
+    private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
   }

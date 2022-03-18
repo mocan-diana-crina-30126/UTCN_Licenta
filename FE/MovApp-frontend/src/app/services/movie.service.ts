@@ -82,5 +82,9 @@ export class MovieService {
     return this.http.get<Movie[]>(url, {params:queryParams});
   }
 
+  public getMovieGenre(id: number): Observable<Movie[]>{
+    return this.http.get<Movie[]>(`${this.apiServerUrl}/genres/${id}`);
+  }
+
 
 }

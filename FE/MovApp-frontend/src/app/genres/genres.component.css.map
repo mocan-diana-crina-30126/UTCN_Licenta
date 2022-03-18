@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "app.component.scss"
+        "genres.component.scss"
     ],
     "names": [],
-    "file": "app.component.css"
+    "file": "genres.component.css"
 }
