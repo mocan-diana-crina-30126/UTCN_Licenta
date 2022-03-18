@@ -25,7 +25,7 @@ import { SliderComponent } from './main-page/components/slider/slider.component'
 import { FooterComponent } from './main-page/components/footer/footer.component';
 // import {SlickCarouselModule} from 'ngx-slick-carousel';
 
-import { FilterPipe } from './main-page/components/pipes/filter.pipe';
+import { PipeModule } from './main-page/components/pipes/pipe.module';
 
 //Components
 
@@ -40,6 +40,7 @@ import { FavoritesEditComponent } from './movies/favorites-list/favorites-edit/f
 import { WatchedEditComponent } from './movies/watched-list/watched-edit/watched-edit.component';
 import { ChildrenComponent } from './children/children.component';
 import { CardsComponent } from './cards/cards.component';
+import { HomeSliderComponent } from './home-slider/home-slider.component';
 
 
 
@@ -49,7 +50,6 @@ import { CardsComponent } from './cards/cards.component';
     SliderComponent,
     FooterComponent,
     HomeComponent,
-    FilterPipe,
     HeaderComponent,
     MoviesComponent,
     FavoritesListComponent,
@@ -59,7 +59,8 @@ import { CardsComponent } from './cards/cards.component';
     FavoritesEditComponent,
     WatchedEditComponent,
     ChildrenComponent,
-    CardsComponent
+    CardsComponent,
+    HomeSliderComponent
 
 
   ],
@@ -78,6 +79,7 @@ import { CardsComponent } from './cards/cards.component';
         FormsModule,
         MatChipsModule,
         MatCardModule,
+        PipeModule
     ],
   providers: [],
   bootstrap: [AppComponent]

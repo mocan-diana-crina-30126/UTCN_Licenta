@@ -1,10 +1,10 @@
 <div class="header">
   <!-- BANNER AREA -->
-  <div class="header__banner"
+  <!-- <div class="header__banner"
        [ngStyle]="{
     'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url(+headerBGUrl+)'
     }">
-    <!-- <h2>{{trending?.title}}</h2>  -->
+   
     <div class="header__buttons">
 
       <button class="play-button">
@@ -20,8 +20,8 @@
     </div>
 
 
-  </div> <!-- BANNER ENDS HERE -->
-
+  </div> -->
+<!--BANNER ENDS HERE-->
 
   <!-- MAIN AREA -->
   <div class="header__main" id="stickyHeader" [class.sticky]="sticky" #stickHeader>
@@ -30,14 +30,14 @@
         <img src="assets/images/MovApp-logos.jpeg" alt="logo" width="100" height="100">
       </a>
       <ul>
-        <li routerLinkActive="active" ><a routerLink='/home' >Home</a> </li>
+        <li routerLinkActive="active" ><a routerLink='/home' style="color: turquoise; font-size: 1.3rem;" >Home</a> </li>
         <li routerLinkActive="active" >
-          <a routerLink="/genres" >Genres </a>
+          <a routerLink="/genres" style="color: turquoise; font-size: 1.3rem;">Genres </a>
          
         </li>
-        <li routerLinkActive="active"><a routerLink='/favorites'>Favorites List</a></li>
-        <li routerLinkActive="active"><a routerLink='/watched'>Watched List</a></li>
-        <li ><a >Add movie</a></li>
+        <li routerLinkActive="active"><a routerLink='/favorites' style="color: turquoise; font-size: 1.3rem;">Favorites List</a></li>
+        <li routerLinkActive="active"><a routerLink='/watched' style="color: turquoise; font-size: 1.3rem;">Watch Later</a></li>
+        
       </ul>
     </div>
 
@@ -55,11 +55,11 @@
             <button color="accent"
                     matSuffix mat-button
                     (keyup.enter)="getMovieByTitle()"
-                    (click)="getMovieByTitle()"><mat-icon >search</mat-icon></button>
+                    (click)="getMovieByTitle()"><mat-icon style="color: turquoise;">search</mat-icon></button>
           </mat-form-field>
         </form>
         <!--           <li><a href="#"><mat-icon>search</mat-icon></a></li>-->
-        <li routerLinkActive="active"><a routerLink='/children' >Children</a></li>
+        <li routerLinkActive="active"><a routerLink='/children' style="color: turquoise; font-size: 1.3rem;">Children</a></li>
         <li>
           <img src="https://occ-0-4345-3647.1.nflxso.net/dnm/api/v6/Z-WHgqd_TeJxSuha8aZ5WpyLcX8/AAAABRGTK96GBeqNw5zzYXnoa8oVjSjhuk7SuseuKTmgEKwpcCB59994UWb6wd7d1WONZOuzJwbLNpzG5Okfo4rSDLg.png?r=ee6"
                alt="avatar">
