@@ -26,4 +26,12 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
             "where genres.name = :genre " +
             "order by movie.title asc")
     List<Movie> getAllMoviesByGenre(@Param("genre") String genre);
+
+    @Query("select movie from Movie movie " +
+            "join movie.genres genres " +
+            "where genres.id = :id " +
+            "order by movie.title asc")
+    List<Movie> getMovieGenre(@Param("id") Integer id);
+
+
 }

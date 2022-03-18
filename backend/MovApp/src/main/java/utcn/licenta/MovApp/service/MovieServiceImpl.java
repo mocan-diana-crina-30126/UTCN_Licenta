@@ -32,15 +32,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
         return list;
     }
 
-    @Override
-    public List<Movie> getMovieInfo(Integer id) {
-        //caut filmul in baza de date
-        Optional<Movie> movieOptional = movieRepository.findById(id);
-        Movie movie = movieOptional.get();
 
-        List<Movie> list = Arrays.asList(new Movie[]{movie});
-        return list;
-    }
 
 
     @Override
@@ -104,6 +96,16 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
     }
 
+    @Override
+    public List<Movie> getMovieByGenre(String genre) {
+        return movieRepository.getAllMoviesByGenre(genre);
+    }
+
+   @Override
+   public List<Movie> getMovieGenre(Integer id){
+        return movieRepository.getMovieGenre(id);
+   }
+
 
     @Override
     public Movie save(MultipartFile movie, String title, Integer year, Integer duration, String releaseDate, MultipartFile image) throws MovieDuplicatedException, MimeTypeException {
@@ -151,9 +153,6 @@ public class MovieServiceImpl implements MovieServiceInterface {
         return id;
     }
 
-    @Override
-    public List<Movie> getMovieByGenre(String genre) {
-        return movieRepository.getAllMoviesByGenre(genre);
-    }
+
 
 }

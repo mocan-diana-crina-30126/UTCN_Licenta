@@ -11,7 +11,6 @@ import java.util.List;
 public interface MovieServiceInterface {
 
     List<Movie> getAllMovies();
-    List<Movie> getMovieInfo(Integer id);
     List<Movie> getLatestMovies();
     List<Movie> getNowPlayingMovies();
     List<Movie> getPopularMovies();
@@ -20,6 +19,7 @@ public interface MovieServiceInterface {
     List<Movie> getTrendingMovies();
     List<Movie> getOriginalMovies();
     List<Movie> getMovieByTitle(String title);
+    List<Movie> getMovieGenre(Integer id);
 
     Movie save(MultipartFile movie, String title, Integer year, Integer duration, String releaseDate, MultipartFile image) throws MovieDuplicatedException, MimeTypeException;
 
@@ -27,4 +27,5 @@ public interface MovieServiceInterface {
     Integer delete(Integer id) throws MovieNotFoundException;
 
     List<Movie> getMovieByGenre(String genre);
+
 }

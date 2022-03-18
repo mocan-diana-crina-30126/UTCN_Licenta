@@ -29,11 +29,11 @@ public class MovieController {
         return movieService.getAllMovies();
     }
 
-    @GetMapping("/{id}")
-    public List<Movie> getMovieInfo(@PathVariable("id") Integer id) {
-
-        return movieService.getMovieInfo(id);
-    }
+//    @GetMapping("/{id}")
+//    public List<Movie> getMovie(@PathVariable("id") Integer id) {
+//
+//        return movieService.getMovie(id);
+//    }
 
     @GetMapping("/top_rated")
     public List<Movie> getTopRatedMovies() {
