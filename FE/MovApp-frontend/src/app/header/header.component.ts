@@ -1,26 +1,36 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {MovieService} from "../services/movie.service";
 import {Movie} from "../models/movie";
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   sticky = false;
-  searchText = '';
+  
   genres: string [] = ['Action','Drama'];
   trending: Movie[] = [];
+  searchedMovies: Movie[] = [];
+  searchText='';
+  movies: Movie[] = [];
+  subs: Subscription[] = [];
+ 
   
 
   constructor(private movieService: MovieService,  private router: Router,
-    private route: ActivatedRoute,) { }
+    private route: ActivatedRoute,) {
+      
+     }
 
   ngOnInit(): void {
+    
   }
+
 
   @ViewChild('stickHeader') header!: ElementRef;
   headerBGUrl!: string;
@@ -36,15 +46,23 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  public getMovieByTitle(): void {
+  getMoviesByTitle(){
     console.log(this.searchText);
-    this.movieService.getMovieByTitle(this.searchText).subscribe(data => {
-      console.log(data)
-      this.trending = data
-      //this.sliderConfigSearch.slidesToShow = data.length;
-    })
+    this.router.navigate(['search'], {relativeTo: this.route});
+    this.subs.push(this.movieService.getMovieByTitle(this.searchText).subscribe(data => {
+      this.movies = data;
+      console.log('In search bar from header i searched for: ' + this.searchText);
+      console.log('I got:');
+      console.log(this.movies);
+    }));
+    this.movieService.searchedMovies.next(this.movies);
+
+
   }
 
+  ngOnDestroy(): void {
+    this.subs.map(s => s.unsubscribe());
+  }
 
 
 }

@@ -8,7 +8,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-genres',
   templateUrl: './genres.component.html',
-  styleUrls: ['./genres.component.css']
+  styleUrls: ['./genres.component.scss']
 })
 export class GenresComponent implements OnInit {
 

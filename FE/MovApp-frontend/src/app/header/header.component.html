@@ -48,14 +48,15 @@
           <mat-form-field color="accent" class="example-full-width">
             <span matPrefix> </span>
             <input
-              type="tel"
+              type="text"
               matInput placeholder="Search"
               name= "search"
               [(ngModel)]= "searchText">
             <button color="accent"
                     matSuffix mat-button
-                    (keyup.enter)="getMovieByTitle()"
-                    (click)="getMovieByTitle()"><mat-icon style="color: turquoise;">search</mat-icon></button>
+                    (keyup.enter)="getMoviesByTitle()" 
+                    (click)="getMoviesByTitle()" 
+                    ><mat-icon style="color: turquoise;">search</mat-icon></button>
           </mat-form-field>
         </form>
         <!--           <li><a href="#"><mat-icon>search</mat-icon></a></li>-->

@@ -9,6 +9,7 @@ import { WatchedEditComponent } from './movies/watched-list/watched-edit/watched
 import { WatchedListComponent } from './movies/watched-list/watched-list.component';
 import { ChildrenComponent } from './children/children.component';
 import { GenresListComponent } from './genres-list/genres-list.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 const routes: Routes = [
 {
@@ -35,6 +36,10 @@ component: HomeComponent
 {
   path: 'children',
   component: ChildrenComponent
+},
+{
+  path: 'search',
+  component: SearchResultsComponent
 }
 
 ];

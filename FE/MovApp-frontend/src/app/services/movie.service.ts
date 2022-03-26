@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
 import { Movie } from "../models/movie";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { environment } from "src/environments/environment";
@@ -12,7 +12,7 @@ const enum endpoint{
   popular = '/movies/popular',
   top_rated = '/movies/top_rated',
   upcoming = '/movies/upcoming',
-  trending = '/trending/all/week',
+  trending = '/movies/trending',
   originals = '/discover/tv'
 }
 
@@ -22,6 +22,9 @@ const enum endpoint{
 export class MovieService {
     private apiServerUrl = environment.apiBaseUrl;
     private movies: Movie[] = [];
+    public searchText = '';
+    public searchedMovies: Subject<Movie[]> = new Subject();
+    
 
     constructor(private http: HttpClient){}
 
@@ -71,6 +74,16 @@ export class MovieService {
 
       return this.http.get<Movie[]>(url, {params:queryParams});
     }
+
+
+    // getByTitleObservable(): Observable<any> {
+    //   return this.searchedMovies.asObservable();
+    // }
+
+    public getSearchedMoviesAsObservable(): Observable<Movie[]>{
+      return this.searchedMovies.asObservable();
+    }
+    
 
 
   public getMovieByGenre(searchText: any): Observable<Movie[]>{

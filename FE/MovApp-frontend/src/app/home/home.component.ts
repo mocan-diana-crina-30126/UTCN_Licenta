@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.subs.push(this.movieService.getTrendingMovies().subscribe(data => {
       this.trending = data;
+     
       // this.headerBGUrl = this.trending[0].image_path;  //poza de fundal
     }));
     this.subs.push(this.movieService.getPopularMovies().subscribe(data => this.popular = data));

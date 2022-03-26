@@ -41,6 +41,7 @@ import { WatchedEditComponent } from './movies/watched-list/watched-edit/watched
 import { ChildrenComponent } from './children/children.component';
 import { CardsComponent } from './cards/cards.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
+import { SearchResultsComponent } from './search-results/search-results.component';
 
 
 
@@ -60,7 +61,8 @@ import { HomeSliderComponent } from './home-slider/home-slider.component';
     WatchedEditComponent,
     ChildrenComponent,
     CardsComponent,
-    HomeSliderComponent
+    HomeSliderComponent,
+    SearchResultsComponent
 
 
   ],
