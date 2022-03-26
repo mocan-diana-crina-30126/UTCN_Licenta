@@ -51,13 +51,10 @@ public class MovieController {
     }
 
     @GetMapping("/search")
-    public List<Movie> getMovieByTitle(@RequestParam(required = false) String title, @RequestParam(required = false) String genre) {
-        if (genre != null) {
-            return movieService.getMovieByGenre(genre);
-        } else {
+    public List<Movie> getMovieByTitle(@RequestParam(required = false) String title) {
             return movieService.getMovieByTitle(title);
-        }
     }
+
 
 
     @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

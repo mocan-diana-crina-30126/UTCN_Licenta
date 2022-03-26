@@ -34,4 +34,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     List<Movie> getMovieGenre(@Param("id") Integer id);
 
 
+
+
 }
