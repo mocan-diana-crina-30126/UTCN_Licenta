@@ -26,12 +26,12 @@ export class HomeSliderComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.getTopRated();
+    this.getTrending();
     this.sliderTimer();
   }
 
-  getTopRated(){
-    this.movieService.getTopRatedMovies().pipe(delay(2000)).subscribe((res:any) => {
+  getTrending(){
+    this.movieService.getTrendingMovies().pipe(delay(2000)).subscribe((res:any) => {
       this.movies_data = res;
       console.log(this.movies_data);
     });

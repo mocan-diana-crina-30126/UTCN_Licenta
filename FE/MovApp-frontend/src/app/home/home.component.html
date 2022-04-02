@@ -6,12 +6,11 @@
   
     <div class="body" style="margin-top: 1rem;">
       
-        <app-slider title="Trending" [movies]="trending" [sliderConfig]="sliderConfigSearch"></app-slider>
+        <app-slider title="Trending" [movies]="trending" [sliderConfig]="sliderConfig"></app-slider>
         <app-slider title="Top Rated" [movies]="topRated" [sliderConfig]="sliderConfig"></app-slider>
-        <app-slider title="Now Playing" [movies]="nowPlaying" [sliderConfig]="sliderConfig"></app-slider>
         <app-slider title="Originals" [movies]="originals" [sliderConfig]="sliderConfig"></app-slider>
-        <app-slider title="Popular" [movies]="popular" [sliderConfig]="sliderConfig"></app-slider>
-        <app-slider title="Latest" [movies]="latest" [sliderConfig]="sliderConfig"></app-slider>
+        <app-slider title="Popular" [movies]="populars" [sliderConfig]="sliderConfig"></app-slider>
+        <app-slider title="Upcoming" [movies]="upcoming" [sliderConfig]="sliderConfig"></app-slider>
       </div>
  
     <div *ngFor="let movie of movies">

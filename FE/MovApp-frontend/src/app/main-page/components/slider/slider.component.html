@@ -3,9 +3,15 @@
 <div class="movie">
   <div class="movie__images">
     <div class="thumbnails">
-      <ngx-slick-carousel [config]="sliderConfig" class="carousel">
+      <ngx-slick-carousel 
+      [config]="sliderConfig" 
+      class="carousel">
         <div class="slick-item" *ngFor="let m of movies" ngxSlickItem>
           <img src='assets\images\{{m.image_path}}' width="180" height="200" alt="{{m.title}}">
+          <div class="movie_title">
+            <p >{{m.title}}</p>
+            <a href="#" style="color: white;">Watch Now</a>
+          </div>
         </div>
       </ngx-slick-carousel>
     </div>

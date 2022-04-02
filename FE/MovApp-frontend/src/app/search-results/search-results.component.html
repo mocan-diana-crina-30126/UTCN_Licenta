@@ -1,10 +1,12 @@
 <div class = "movies">
-    <ng-container *ngFor = "let movie of searchedMovies">
-        <div>{{movie.title}}
+    <ng-container *ngFor = "let movie of data">
+        <div>{{movie?.title}}
            
      
-        <img src='assets\images\{{movie.image_path}}' width="100" height="100">
+        <img src='assets\images\{{movie?.image_path}}' width="100" height="100">
      
         </div>
     </ng-container>
 </div>
+
+

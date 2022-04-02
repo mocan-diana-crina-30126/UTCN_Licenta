@@ -9,6 +9,7 @@ h2 {
   
   .movie {
     margin: 20px 0;
+    
   
     .movie__images {
       div.thumbnails .carousel {
@@ -16,12 +17,20 @@ h2 {
         display: flex;
         .slick-item {
           transition: all 0.3s ease;
+        
         }
   
         .slick-item:hover {
           transform: scale(1.02);
           cursor: pointer;
         }
+        div.slick-item:hover .movie_text {
+             z-index: 1000;
+        }
+        div.slick-item .movie_text p {
+          color: #FF00FF;
+        }
       }
     }
   }
+ 

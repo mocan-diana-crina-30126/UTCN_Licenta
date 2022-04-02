@@ -55,16 +55,25 @@
             <button color="accent"
                     matSuffix mat-button
                     (keyup.enter)="getMoviesByTitle()" 
-                    (click)="getMoviesByTitle()" 
+                    (click)="getMoviesByTitle()"
                     ><mat-icon style="color: turquoise;">search</mat-icon></button>
           </mat-form-field>
         </form>
         <!--           <li><a href="#"><mat-icon>search</mat-icon></a></li>-->
         <li routerLinkActive="active"><a routerLink='/children' style="color: turquoise; font-size: 1.3rem;">Children</a></li>
-        <li>
           <img src="https://occ-0-4345-3647.1.nflxso.net/dnm/api/v6/Z-WHgqd_TeJxSuha8aZ5WpyLcX8/AAAABRGTK96GBeqNw5zzYXnoa8oVjSjhuk7SuseuKTmgEKwpcCB59994UWb6wd7d1WONZOuzJwbLNpzG5Okfo4rSDLg.png?r=ee6"
-               alt="avatar">
-        </li>
+               alt="avatar" >
+               <div class="profile">
+               <button color="accent"
+               matSuffix mat-button
+               ><mat-icon style="color: turquoise;" class="icon">expand_more</mat-icon>
+               <div class="options">
+                <span>Log Out</span>
+                </div>
+              </button>
+             
+            </div>
+          
       </ul>
     </div>
     <!-- <div class="card">

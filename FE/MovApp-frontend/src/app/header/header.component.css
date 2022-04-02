@@ -142,6 +142,15 @@
   color: white;
 }
 
+.header__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .header__right ul {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -156,6 +165,40 @@
   gap: 30px;
 }
 
+.header__right ul img {
+  cursor: pointer;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.header__right ul .profile .options {
+  display: none;
+  background-color: varr(--main-color);
+  border-radius: 5px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.header__right ul .profile span {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.header__right ul .profile:hover .options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: absolute;
+}
+
+.header__right ul .profile .icon {
+  margin-top: 2rem;
+}
+
 .header__right ul li a {
   color: white;
   display: inline-block;
@@ -168,6 +211,13 @@
 .header__right ul li a > mat-icon {
   margin-top: 5px;
   font-weight: 600;
+}
+
+.header__right ul input[type="text"], .header__right ul textarea {
+  background-color: white;
+  height: 21px;
+  width: 800px;
+  border-color: crimson;
 }
 
 ul {

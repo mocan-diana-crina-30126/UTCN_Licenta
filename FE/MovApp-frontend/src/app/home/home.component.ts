@@ -10,28 +10,55 @@ import {SlickCarouselModule} from 'node_modules/ngx-slick-carousel';
 import { GenreService } from '../services/genre.service';
 import { Genre } from '../models/genre';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
   subs: Subscription[] = [];
   trending: Movie[] = [];
-  popular: Movie[] = [];
+  populars: Movie[] = [];
   topRated: Movie[] = [];
   originals: Movie[] = [];
-  nowPlaying: Movie[] = [];
-  latest: Movie[] = [];
- // genres: Genre[] = [];
+  upcoming: Movie[] = [];
   public movies: Movie[] = [];
+  trendingLength!: number;
 
   sliderConfig = {
     slidesToShow: 9,
     slidesToScroll: 2,
     arrows: true,
-    autoplay: false
+    autoplay: false,
+    dots: true
+   
+    // "responsive": [
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 3,
+    //       infinite: true,
+    //       dots: true
+    //     }
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 2
+    //     }
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1
+    //     }
+    //   }
+    // ]
   };
 
   sliderConfigSearch = {
@@ -40,23 +67,27 @@ export class HomeComponent implements OnInit {
     arrows: true,
     autoplay: false
   };
- 
-  
+
+
 
   constructor(private movieService: MovieService, private sanitizer: DomSanitizer, private genreService:GenreService) { }
-  
+
 
   ngOnInit(): void {
-    this.subs.push(this.movieService.getTrendingMovies().subscribe(data => {
-      this.trending = data;
-     
+    this.subs.push(this.movieService.getTrendingMovies().subscribe(data =>
+      this.trending = data
+      
+      
+
       // this.headerBGUrl = this.trending[0].image_path;  //poza de fundal
-    }));
-    this.subs.push(this.movieService.getPopularMovies().subscribe(data => this.popular = data));
+    ));
+    this.subs.push(this.movieService.getPopularMovies().subscribe(data => 
+      this.populars = data
+      
+    ));
     this.subs.push(this.movieService.getTopRatedMovies().subscribe(data => this.topRated = data));
     this.subs.push(this.movieService.getOriginalsMovies().subscribe(data => this.originals = data));
-    this.subs.push(this.movieService.getNowPlayingMovies().subscribe(data => this.nowPlaying = data));
-    this.subs.push(this.movieService.getLatestMovies().subscribe(data => this.latest = data));
+    this.subs.push(this.movieService.getUpcomingMovies().subscribe(data => this.upcoming = data));
 
     //this.subs.push(this.genreService.getAllGenres().subscribe(data => {this.genres = data; console.log(this.genres);}));
 
@@ -88,6 +119,6 @@ export class HomeComponent implements OnInit {
   }
 
 
-  
+
 
 }

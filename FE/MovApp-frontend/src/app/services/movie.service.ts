@@ -7,13 +7,11 @@ import { environment } from "src/environments/environment";
 const enum endpoint{
 
   all = '/movies/all',
-  latest = '/movies/latest',
-  now_playing = '/movies/now_playing',
-  popular = '/movies/popular',
+  populars = '/movies/populars',
   top_rated = '/movies/top_rated',
   upcoming = '/movies/upcoming',
   trending = '/movies/trending',
-  originals = '/discover/tv'
+  originals = '/movies/originals'
 }
 
 @Injectable({
@@ -23,26 +21,26 @@ export class MovieService {
     private apiServerUrl = environment.apiBaseUrl;
     private movies: Movie[] = [];
     public searchText = '';
-    public searchedMovies: Subject<Movie[]> = new Subject();
+    private _searchedMovies: BehaviorSubject<any> = new BehaviorSubject<any>(null);
     
 
     constructor(private http: HttpClient){}
+
+    getData(): Observable<any> {
+      return this._searchedMovies.asObservable();
+    }
+  
+    setData(data: any) {
+      this._searchedMovies.next(data);
+    }
 
     public getMovies(): Observable<Movie[]>{
         return this.http.get<Movie[]>(`${this.apiServerUrl}${endpoint.all}`);
 
     }
 
-    public getLatestMovies(): Observable<Movie[]>{
-      return this.http.get<Movie[]>(`${this.apiServerUrl}${endpoint.latest}`);
-    }
-
-    public getNowPlayingMovies(): Observable<Movie[]>{
-      return this.http.get<Movie[]>(`${this.apiServerUrl}${endpoint.now_playing}`);
-    }
-
     public getPopularMovies(): Observable<Movie[]>{
-      return this.http.get<Movie[]>(`${this.apiServerUrl}${endpoint.popular}`);
+      return this.http.get<Movie[]>(`${this.apiServerUrl}${endpoint.populars}`);
     }
 
     public getTopRatedMovies(): Observable<Movie[]>{
@@ -74,17 +72,7 @@ export class MovieService {
 
       return this.http.get<Movie[]>(url, {params:queryParams});
     }
-
-
-    // getByTitleObservable(): Observable<any> {
-    //   return this.searchedMovies.asObservable();
-    // }
-
-    public getSearchedMoviesAsObservable(): Observable<Movie[]>{
-      return this.searchedMovies.asObservable();
-    }
-    
-
+  
 
   public getMovieByGenre(searchText: any): Observable<Movie[]>{
     let url = `${this.apiServerUrl}/movies/search`

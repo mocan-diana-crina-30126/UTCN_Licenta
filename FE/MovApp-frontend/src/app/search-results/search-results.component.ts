@@ -9,7 +9,7 @@ import { MovieService } from '../services/movie.service';
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']
 })
-export class SearchResultsComponent implements OnInit, OnDestroy {
+export class SearchResultsComponent implements OnInit {
 
   searchText : String = '';
   searchedMovies: Movie[] = [];
@@ -17,14 +17,23 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   public movies: Movie[] = [];
   title!: String;
 
+  data: any[] = [];
+
+
+   
 
   constructor(private movieService: MovieService, private router: ActivatedRoute) {
     //this.displayOnSearchResults();
    }
    ngOnInit(){
   
-    
+    this.movieService.getData().subscribe(
+      (data: any) => this.data = data
+    );
    }
+   
+    
+   
 
   //  public getMovieByTitle(): void {
   //   console.log(this.searchText);
@@ -35,20 +44,7 @@ export class SearchResultsComponent implements OnInit, OnDestroy {
   //   })
   // }
 
-  displayOnSearchResults(){
-    this.movieService.searchedMovies.subscribe(value => {
-      console.log('Value: ' + value);
-      this.searchedMovies = value;
-      console.log('Searched results: ' + this.searchedMovies);
-     
-    })
-  }
 
-  ngOnDestroy(): void {
-    if(this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
 
 
   }

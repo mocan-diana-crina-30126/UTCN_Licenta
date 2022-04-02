@@ -23,6 +23,15 @@ export class AppComponent implements OnInit{
 
   // tab: AppTab = AppTab.HOME;
   
+  private _searchedMovies: any[] = [];
+
+  get data(): any[]{
+    return this._searchedMovies;
+  }
+
+  set data(data: any[]){
+    this._searchedMovies = data;
+  }
 
   constructor(
     // private router: Router,

@@ -28,4 +28,12 @@ img {
           transform: scale(1.02);
   cursor: pointer;
 }
+
+.movie .movie__images div.thumbnails .carousel div.slick-item:hover .movie_text {
+  z-index: 1000;
+}
+
+.movie .movie__images div.thumbnails .carousel div.slick-item .movie_text p {
+  color: #FF00FF;
+}
 /*# sourceMappingURL=slider.component.css.map */

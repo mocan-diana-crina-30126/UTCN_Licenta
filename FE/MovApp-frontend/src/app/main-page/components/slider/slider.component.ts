@@ -5,7 +5,7 @@ import { MovieService } from 'src/app/services/movie.service';
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.css']
+  styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements OnInit {
 
