@@ -36,23 +36,12 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
 
     @Override
-    public List<Movie> getLatestMovies() {
-        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC, "release_date"));
-        return movies;
-    }
-
-    @Override
-    public List<Movie> getNowPlayingMovies() {
-        return null;
-    }
-
-    @Override
     public List<Movie> getPopularMovies() {
 
         ///in functie de popularitate (popularitate intre 0-10)
         ///ordonare descrescatoare
 
-        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC, "popularity"));
+        List<Movie> movies = movieRepository.getPopulars();
         return movies;
     }
 
@@ -67,7 +56,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
 //        }
 //        return list;
 
-        List<Movie> movies = movieRepository.sortDesc(Sort.by(Sort.Direction.DESC, "imdb_rating"));
+        List<Movie> movies = movieRepository.getTopRated();
         return movies;
     }
 
@@ -76,17 +65,20 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
         ///adaugare filme cu data mai mare decat data actuala
 
-        return null;
+        List<Movie> movies = movieRepository.getUpcoming();
+        return movies;
     }
 
     @Override
     public List<Movie> getTrendingMovies() {
-        return null;
+        List<Movie> movies = movieRepository.getTrending();
+        return movies;
     }
 
     @Override
     public List<Movie> getOriginalMovies() {
-        return null;
+        List<Movie> movies = movieRepository.getOriginals();
+        return movies;
     }
 
     @Override

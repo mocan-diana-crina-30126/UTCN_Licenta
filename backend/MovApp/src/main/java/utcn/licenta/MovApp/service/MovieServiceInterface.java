@@ -11,8 +11,6 @@ import java.util.List;
 public interface MovieServiceInterface {
 
     List<Movie> getAllMovies();
-    List<Movie> getLatestMovies();
-    List<Movie> getNowPlayingMovies();
     List<Movie> getPopularMovies();
     List<Movie> getTopRatedMovies();
     List<Movie> getUpcomingMovies();

@@ -34,6 +34,27 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     List<Movie> getMovieGenre(@Param("id") Integer id);
 
 
+    @Query("select movie from Movie movie " +
+           "where movie.imdb_rating >= 7 " +
+            "order by movie.imdb_rating desc")
+    List<Movie> getTopRated();
 
+    @Query("select movie from Movie movie " +
+            "where movie.release_date >= '2022-01-01' AND movie.release_date <='2022-04-01' " +
+            "order by movie.release_date desc")
+    List<Movie> getTrending();
 
+    @Query("select movie from Movie movie " +
+            "where movie.id IN (1,2,3,5,6,8,9,10,20,23)")
+    List<Movie> getOriginals();
+
+    @Query("select movie from Movie movie " +
+            "where movie.popularity >= 15" +
+            "order by movie.popularity desc")
+    List<Movie> getPopulars();
+
+    @Query("select movie from Movie movie " +
+            "where movie.release_date >= '2022-10-01'" +
+            "order by movie.title asc")
+    List<Movie> getUpcoming();
 }

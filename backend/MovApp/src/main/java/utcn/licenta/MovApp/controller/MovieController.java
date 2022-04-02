@@ -35,20 +35,24 @@ public class MovieController {
 //        return movieService.getMovie(id);
 //    }
 
+    @GetMapping("/trending")
+    public List<Movie> getTrendingMovies(){ return movieService.getTrendingMovies();}
+
     @GetMapping("/top_rated")
     public List<Movie> getTopRatedMovies() {
         return movieService.getTopRatedMovies();
     }
 
-    @GetMapping("/popular")
+    @GetMapping("/originals")
+    public List<Movie> getOriginalMovies(){return movieService.getOriginalMovies();}
+
+    @GetMapping("/populars")
     public List<Movie> getPopularMovies() {
         return movieService.getPopularMovies();
     }
 
-    @GetMapping("/latest")
-    public List<Movie> getLatestMovies() {
-        return movieService.getLatestMovies();
-    }
+    @GetMapping("/upcoming")
+    public List<Movie> getUpcomingMovies(){return movieService.getUpcomingMovies();}
 
     @GetMapping("/search")
     public List<Movie> getMovieByTitle(@RequestParam(required = false) String title) {
@@ -66,7 +70,7 @@ public class MovieController {
                                   @RequestParam(required = false) Integer duration,
                                   @RequestParam(required = false) String releaseDate) throws MovieDuplicatedException, MimeTypeException {
         if (movie == null) {  //daca filmul dat de utilizator este null
-            return ResponseEntity.badRequest().body("The provided movie is not valid");
+            return ResponseEntity.badRequest().body("The provided movie is not valid"); 
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(movieService.save(movie, title, year, duration, releaseDate, image));
     }
