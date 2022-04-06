@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit {
   public movies: Movie[] = [];
   trendingLength!: number;
   upcomingLength!: number;
+  popularLength!: number;
+  topRatedLength!: number;
+  originalLength!: number;
 
   sliderConfig = {
     slidesToShow: 9,
@@ -84,6 +87,9 @@ export class HomeComponent implements OnInit {
       if(this.trendingLength < 9){
         this.sliderConfig.slidesToShow = this.trendingLength;
       }
+      else{
+        this.sliderConfig.slidesToShow = 9;
+      }
 
       }
 
@@ -91,16 +97,52 @@ export class HomeComponent implements OnInit {
       // this.headerBGUrl = this.trending[0].image_path;  //poza de fundal
     ));
     this.subs.push(this.movieService.getPopularMovies().subscribe(data => 
-      this.populars = data
+     { this.populars = data;
+      this.popularLength = this.populars.length;
+      console.log(this.popularLength);
+      
+      if(this.popularLength < 9){
+        this.sliderConfig.slidesToShow = this.popularLength;
+      }
+      else{
+        this.sliderConfig.slidesToShow = 9;
+      }
+
+     }
       
     ));
-    this.subs.push(this.movieService.getTopRatedMovies().subscribe(data => this.topRated = data));
-    this.subs.push(this.movieService.getOriginalsMovies().subscribe(data => this.originals = data));
+    this.subs.push(this.movieService.getTopRatedMovies().subscribe(data => 
+      { this.topRated = data;
+        this.topRatedLength = this.topRated.length;
+      console.log(this.topRatedLength);
+      
+      if(this.topRatedLength < 9){
+        this.sliderConfig.slidesToShow = this.topRatedLength;
+      }
+      else{
+        this.sliderConfig.slidesToShow = 9;
+      }
+      }));
+    this.subs.push(this.movieService.getOriginalsMovies().subscribe(data => 
+      {this.originals = data;
+        this.originalLength = this.originals.length;
+      console.log(this.originalLength);
+      
+      if(this.originalLength < 9){
+        this.sliderConfig.slidesToShow = this.originalLength;
+      }
+      else{
+        this.sliderConfig.slidesToShow = 9;
+      }
+      }));
     this.subs.push(this.movieService.getUpcomingMovies().subscribe(data => {
       this.upcoming = data;
       this.upcomingLength = this.upcoming.length;
       if(this.upcomingLength < 9) {
         this.sliderConfig.slidesToShow = this.upcomingLength;
+      }
+      else{
+        this.sliderConfig.slidesToShow = 9;
       }
       
     }
