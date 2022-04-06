@@ -4,15 +4,15 @@
 </ng-container>
     <!-- <app-cards [movies]="movies"></app-cards> -->
   
-  <div class=container>
+  <div class=container style="margin-top: -5.1rem;">
     <div class="body" style="margin-top: 1rem;">
       
-        <app-slider title="Trending" [movies]="trending" [sliderConfig]="sliderConfig"></app-slider>
         <app-slider title="Top Rated" [movies]="topRated" [sliderConfig]="sliderConfig"></app-slider>
+        <app-slider title="Trending" [movies]="trending" [sliderConfig]="sliderConfig"></app-slider>
         <app-slider title="Originals" [movies]="originals" [sliderConfig]="sliderConfig"></app-slider>
         <app-slider title="Popular" [movies]="populars" [sliderConfig]="sliderConfig"></app-slider>
         <app-slider title="Upcoming" [movies]="upcoming" [sliderConfig]="sliderConfig"></app-slider>
-      </div>
+   </div>
  
     <div *ngFor="let movie of movies">
         <div>{{movie.title}}
