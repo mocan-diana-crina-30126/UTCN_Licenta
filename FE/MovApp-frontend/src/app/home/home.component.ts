@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   upcoming: Movie[] = [];
   public movies: Movie[] = [];
   trendingLength!: number;
+  upcomingLength!: number;
 
   sliderConfig = {
     slidesToShow: 9,
@@ -61,6 +62,7 @@ export class HomeComponent implements OnInit {
     // ]
   };
 
+
   sliderConfigSearch = {
     slidesToShow: 0,
     slidesToScroll: 2,
@@ -74,10 +76,17 @@ export class HomeComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.subs.push(this.movieService.getTrendingMovies().subscribe(data =>
-      this.trending = data
+    this.subs.push(this.movieService.getTrendingMovies().subscribe(data => {
+      this.trending = data;
+      this.trendingLength = this.trending.length;
+      console.log(this.trendingLength);
       
-      
+      if(this.trendingLength < 9){
+        this.sliderConfig.slidesToShow = this.trendingLength;
+      }
+
+      }
+
 
       // this.headerBGUrl = this.trending[0].image_path;  //poza de fundal
     ));
@@ -87,11 +96,20 @@ export class HomeComponent implements OnInit {
     ));
     this.subs.push(this.movieService.getTopRatedMovies().subscribe(data => this.topRated = data));
     this.subs.push(this.movieService.getOriginalsMovies().subscribe(data => this.originals = data));
-    this.subs.push(this.movieService.getUpcomingMovies().subscribe(data => this.upcoming = data));
+    this.subs.push(this.movieService.getUpcomingMovies().subscribe(data => {
+      this.upcoming = data;
+      this.upcomingLength = this.upcoming.length;
+      if(this.upcomingLength < 9) {
+        this.sliderConfig.slidesToShow = this.upcomingLength;
+      }
+      
+    }
+      ));
 
     //this.subs.push(this.genreService.getAllGenres().subscribe(data => {this.genres = data; console.log(this.genres);}));
 
     this.getMovies();
+    
   }
   public getMovies(): void {
     this.movieService.getMovies().subscribe(

@@ -1,4 +1,4 @@
-<div class = "movies">
+<!-- <div class = "movies">
     <ng-container *ngFor = "let movie of data">
         <div>{{movie?.title}}
            
@@ -7,6 +7,32 @@
      
         </div>
     </ng-container>
-</div>
+</div> -->
+
+<div class="listing">
+    <div class="listing__head"> 
+       <h2 class="listing__title" >Results found: </h2>
+    </div>
+  
+     <div class="row">
+       <div class="col-md-2 listing__items" *ngFor="let m of data | slice:0:18" >
+         <!-- <div [routerLink]="['/movies', m.genres]"> -->
+          <!-- <div [routerLink]="['/genres/', m.genres.id]"> -->
+           <div class="listing-item-style" >
+             <div class="overlay">
+               <div class="hover"><i class="material-icons">play_arrow</i>PLAY NOW</div>
+             </div>
+             <img src='assets\images\{{m?.image_path}}'>
+               
+               <h6>{{m?.title}}</h6>
+               <p class="rate"><i class="material-icons">star</i><span>{{m?.imdb_rating}}</span> /10</p>
+               <p class="year"><span>{{m?.release_date | date: 'yyyy'}}</span>
+               </p>
+               
+           </div>
+        </div>
+       <!-- </div> -->
+     </div>
+  </div>
 
 

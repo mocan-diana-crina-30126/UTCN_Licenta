@@ -106,12 +106,27 @@
       margin-top: 5px;
     }
 
+
+    li a{
+      color: turquoise;
+      font-size: 1.3rem;
+    }
+
     li.active {
       a {
-        color: white;
+        color: #2772db;
+        font-size: 1.7rem;
       }
     }
+   li{
+    a:hover{
+      color: rgb(230, 0, 230);
+    }
   }
+ 
+  }
+    
+  
 
   .header__right {
     display: flex;
@@ -146,6 +161,7 @@
       span{
         padding: 5px;
         cursor: pointer;
+        
       }
 
       &:hover{
@@ -172,6 +188,7 @@
       > mat-icon {
         margin-top: 5px;
         font-weight: 600;
+        
       }
      
     }

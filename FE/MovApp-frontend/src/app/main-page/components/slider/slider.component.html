@@ -6,11 +6,20 @@
       <ngx-slick-carousel 
       [config]="sliderConfig" 
       class="carousel">
-        <div class="slick-item" *ngFor="let m of movies" ngxSlickItem>
+        <div class="slick-item" *ngFor="let m of movies" ngxSlickItem >
           <img src='assets\images\{{m.image_path}}' width="180" height="200" alt="{{m.title}}">
+          <div class="less" *ngIf="title === 'trending' || title === 'upcoming'" >
+            <img src='assets\images\{{m.image_path}}' width="180" height="200"  alt="{{m.title}}">
+          </div>
           <div class="movie_title">
-            <p >{{m.title}}</p>
-            <a href="#" style="color: white;">Watch Now</a>
+            <p >{{m.title}} - {{m?.release_date | date: 'yyyy'}}</p>
+            <div class="icons" style="margin-top: 1rem; margin-left: 0.8rem;">
+            <i class="material-icons" (click)="displayVideo()">play_circle</i>
+            <i class="material-icons" style="color:blue">arrow_drop_down_circle</i>
+            <i class="material-icons" style=" color:blueviolet">add_circle</i>
+            <i class="material-icons" style="color: yellow;">star</i>
+          </div>
+         
           </div>
         </div>
       </ngx-slick-carousel>

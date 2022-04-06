@@ -42,6 +42,7 @@ import { ChildrenComponent } from './children/children.component';
 import { CardsComponent } from './cards/cards.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { VideoComponent } from './video/video.component';
 
 
 
@@ -62,8 +63,8 @@ import { SearchResultsComponent } from './search-results/search-results.componen
     ChildrenComponent,
     CardsComponent,
     HomeSliderComponent,
-    SearchResultsComponent
-
+    SearchResultsComponent,
+    VideoComponent,
 
   ],
     imports: [

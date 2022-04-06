@@ -138,8 +138,18 @@
   margin-top: 5px;
 }
 
+.header__left li a {
+  color: turquoise;
+  font-size: 1.3rem;
+}
+
 .header__left li.active a {
-  color: white;
+  color: #2772db;
+  font-size: 1.7rem;
+}
+
+.header__left li a:hover {
+  color: #e600e6;
 }
 
 .header__right {

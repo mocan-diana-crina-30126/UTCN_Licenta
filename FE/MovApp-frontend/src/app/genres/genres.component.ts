@@ -28,6 +28,9 @@ export class GenresComponent implements OnInit {
 
   constructor(private movieService: MovieService, private genreService: GenreService, private router: ActivatedRoute) { }
 
+   
+
+
   ngOnInit(): void {
     this.router.params.subscribe((params: Params) => {
       this.id = params['id'];

@@ -29,11 +29,34 @@ img {
   cursor: pointer;
 }
 
-.movie .movie__images div.thumbnails .carousel div.slick-item:hover .movie_text {
+.movie .movie__images div.thumbnails .carousel div.slick-item .movie_title {
+  display: none;
+}
+
+.movie .movie__images div.thumbnails .carousel div.slick-item:hover .movie_title {
+  display: -ms-grid;
+  display: grid;
   z-index: 1000;
 }
 
-.movie .movie__images div.thumbnails .carousel div.slick-item .movie_text p {
-  color: #FF00FF;
+.movie .movie__images div.thumbnails .carousel div.slick-item .movie_title p {
+  margin-top: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.movie .movie__images div.thumbnails .carousel div.slick-item .movie_title .icons .material-icons {
+  margin-top: 0.4rem;
+}
+
+.movie .movie__images div.thumbnails .carousel div.slick-item:hover .movie_title .icons .material-icons {
+  z-index: 1000;
+  display: inline;
+}
+
+.movie .movie__images div.thumbnails .carousel div.slick-item .movie_title .icons .material-icons {
+  margin-top: 0.8rem;
+  font-size: 40px;
+  color: turquoise;
 }
 /*# sourceMappingURL=slider.component.css.map */
