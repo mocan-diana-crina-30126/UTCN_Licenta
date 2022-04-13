@@ -98,6 +98,11 @@ public class MovieServiceImpl implements MovieServiceInterface {
         return movieRepository.getMovieGenre(id);
    }
 
+    @Override
+    public List<String> getMovieContent(Integer id) {
+        return movieRepository.getMovieContent(id);
+    }
+
 
     @Override
     public Movie save(MultipartFile movie, String title, Integer year, Integer duration, String releaseDate, MultipartFile image) throws MovieDuplicatedException, MimeTypeException {

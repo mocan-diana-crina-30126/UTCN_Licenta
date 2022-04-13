@@ -57,4 +57,9 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
             "where movie.release_date >= '2022-10-01'" +
             "order by movie.title asc")
     List<Movie> getUpcoming();
+
+    @Query("select movie.content from Movie movie " +
+            "where movie.id = :id ")
+    List<String> getMovieContent(@Param("id") Integer id);
+
 }

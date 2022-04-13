@@ -18,6 +18,7 @@ public interface MovieServiceInterface {
     List<Movie> getOriginalMovies();
     List<Movie> getMovieByTitle(String title);
     List<Movie> getMovieGenre(Integer id);
+    List<String> getMovieContent(Integer id);
 
     Movie save(MultipartFile movie, String title, Integer year, Integer duration, String releaseDate, MultipartFile image) throws MovieDuplicatedException, MimeTypeException;
 

@@ -59,6 +59,11 @@ public class MovieController {
             return movieService.getMovieByTitle(title);
     }
 
+    @GetMapping("/video/{id}")
+    public List<String> getMovieContent(@PathVariable("id") Integer id) {
+
+        return movieService.getMovieContent(id);
+    }
 
 
     @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
