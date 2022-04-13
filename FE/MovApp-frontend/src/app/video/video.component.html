@@ -1,8 +1,8 @@
-<div className="watch" *ngFor="let m of movies" >
+<div className="watch" *ngFor="let content of data" >
 <video controls style="width: 100%; height: 100%;" class="video"
 >
 
-<source src='assets\videos\{{m.content}}'
+<source src='assets\videos\{{content}}'
                  type="video/mp4">
 
 </video>
