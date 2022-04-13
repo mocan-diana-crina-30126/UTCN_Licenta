@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Routes, RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
@@ -10,13 +10,14 @@ import { WatchedListComponent } from './movies/watched-list/watched-list.compone
 import { ChildrenComponent } from './children/children.component';
 import { GenresListComponent } from './genres-list/genres-list.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
+import { VideoComponent } from './video/video.component';
 
 const routes: Routes = [
 {
   path: '', redirectTo: '/home', pathMatch: 'full'},
 {
 path: 'home',
-component: HomeComponent
+component: HomeComponent,
 },
 {
   path: 'genres/:id/:name',
@@ -40,7 +41,11 @@ component: HomeComponent
 {
   path: 'search',
   component: SearchResultsComponent
-}
+},
+  {
+    path: 'video/:id',
+    component: VideoComponent
+  }
 
 ];
 

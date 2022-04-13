@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
       console.log(this.trendingLength);
       
       if(this.trendingLength < 9){
-        this.sliderConfig.slidesToShow = this.trendingLength;
+        this.sliderConfig.slidesToShow = this.trendingLength ;
       }
       else{
         this.sliderConfig.slidesToShow = 9;
@@ -102,7 +102,7 @@ export class HomeComponent implements OnInit {
       console.log(this.popularLength);
       
       if(this.popularLength < 9){
-        this.sliderConfig.slidesToShow = this.popularLength;
+        this.sliderConfig.slidesToShow = this.popularLength ;
       }
       else{
         this.sliderConfig.slidesToShow = 9;
@@ -117,7 +117,7 @@ export class HomeComponent implements OnInit {
       console.log(this.topRatedLength);
       
       if(this.topRatedLength < 9){
-        this.sliderConfig.slidesToShow = this.topRatedLength;
+        this.sliderConfig.slidesToShow = this.topRatedLength ;
       }
       else{
         this.sliderConfig.slidesToShow = 9;
@@ -129,7 +129,7 @@ export class HomeComponent implements OnInit {
       console.log(this.originalLength);
       
       if(this.originalLength < 9){
-        this.sliderConfig.slidesToShow = this.originalLength;
+        this.sliderConfig.slidesToShow = this.originalLength ;
       }
       else{
         this.sliderConfig.slidesToShow = 9;
@@ -139,7 +139,7 @@ export class HomeComponent implements OnInit {
       this.upcoming = data;
       this.upcomingLength = this.upcoming.length;
       if(this.upcomingLength < 9) {
-        this.sliderConfig.slidesToShow = this.upcomingLength;
+        this.sliderConfig.slidesToShow = this.upcomingLength ;
       }
       else{
         this.sliderConfig.slidesToShow = 9;

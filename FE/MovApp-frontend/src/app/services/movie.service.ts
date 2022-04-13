@@ -11,7 +11,7 @@ const enum endpoint{
   top_rated = '/movies/top_rated',
   upcoming = '/movies/upcoming',
   trending = '/movies/trending',
-  originals = '/movies/originals'
+  originals = '/movies/originals',
 }
 
 @Injectable({
@@ -22,14 +22,14 @@ export class MovieService {
     private movies: Movie[] = [];
     public searchText = '';
     private _searchedMovies: BehaviorSubject<any> = new BehaviorSubject<any>(null);
-    
+
 
     constructor(private http: HttpClient){}
 
     getData(): Observable<any> {
       return this._searchedMovies.asObservable();
     }
-  
+
     setData(data: any) {
       this._searchedMovies.next(data);
     }
@@ -38,6 +38,7 @@ export class MovieService {
         return this.http.get<Movie[]>(`${this.apiServerUrl}${endpoint.all}`);
 
     }
+
 
     public getPopularMovies(): Observable<Movie[]>{
       return this.http.get<Movie[]>(`${this.apiServerUrl}${endpoint.populars}`);
@@ -64,6 +65,7 @@ export class MovieService {
       return this.http.get<Movie[]>(`${this.apiServerUrl}/movies/{id}`);
     }
 
+
     public getMovieByTitle(searchText: any): Observable<Movie[]>{
       let url = `${this.apiServerUrl}/movies/search`
 
@@ -72,7 +74,7 @@ export class MovieService {
 
       return this.http.get<Movie[]>(url, {params:queryParams});
     }
-  
+
 
   public getMovieByGenre(searchText: any): Observable<Movie[]>{
     let url = `${this.apiServerUrl}/movies/search`
@@ -85,6 +87,10 @@ export class MovieService {
 
   public getMovieGenre(id: number): Observable<Movie[]>{
     return this.http.get<Movie[]>(`${this.apiServerUrl}/genres/${id}`);
+  }
+
+  public getMovieContent(id: number): Observable<String[]>{
+      return this.http.get<String[]>(`${this.apiServerUrl}/movies/video/${id}`);
   }
 
 
