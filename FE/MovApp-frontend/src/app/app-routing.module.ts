@@ -23,6 +23,7 @@ component: HomeComponent,
   path: 'genres/:id/:name',
   component: GenresComponent
 },
+
 { path: 'genres',
   component: GenresListComponent
 },
@@ -42,10 +43,10 @@ component: HomeComponent,
   path: 'search',
   component: SearchResultsComponent
 },
-  {
+{
     path: 'video/:id',
     component: VideoComponent
-  }
+}
 
 ];
 

@@ -28,7 +28,7 @@ export class SearchResultsComponent implements OnInit {
    ngOnInit(){
   
     this.movieService.getData().subscribe(
-      (data: any) => this.data = data
+      (data: any) => {this.data = data;}
     );
    }
    
