@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +20,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatChipsModule} from "@angular/material/chips";
 import { MatCardModule} from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 import { SliderComponent } from './main-page/components/slider/slider.component';
 import { FooterComponent } from './main-page/components/footer/footer.component';
@@ -43,8 +46,14 @@ import { CardsComponent } from './cards/cards.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { VideoComponent } from './video/video.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -65,7 +74,12 @@ import { VideoComponent } from './video/video.component';
     HomeSliderComponent,
     SearchResultsComponent,
     VideoComponent,
-
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    BoardUserComponent,
+    BoardAdminComponent
+    
   ],
     imports: [
         BrowserModule,
@@ -82,9 +96,14 @@ import { VideoComponent } from './video/video.component';
         FormsModule,
         MatChipsModule,
         MatCardModule,
-        PipeModule
+        PipeModule,
+        FlexLayoutModule,
+        ReactiveFormsModule,
+        MatToolbarModule,
+        MatTooltipModule
     ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [authInterceptorProviders],
+  bootstrap: [AppComponent],
+  schemas: []
 })
 export class AppModule { }

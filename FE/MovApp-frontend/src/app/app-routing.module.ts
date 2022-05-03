@@ -11,13 +11,23 @@ import { ChildrenComponent } from './children/children.component';
 import { GenresListComponent } from './genres-list/genres-list.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { VideoComponent } from './video/video.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 {
-  path: '', redirectTo: '/home', pathMatch: 'full'},
+  path: '', redirectTo: '/register', pathMatch: 'full'},
 {
 path: 'home',
 component: HomeComponent,
+},
+{
+path: 'register',
+component: RegisterComponent,
+},
+{
+  path: 'login',
+  component: LoginComponent,
 },
 {
   path: 'genres/:id/:name',

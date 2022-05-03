@@ -4,7 +4,8 @@ import {MovieService} from './services/movie.service';
 import {DomSanitizer} from '@angular/platform-browser';
 import {Subscription} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 // enum AppTab {
 //   HOME = 0,
@@ -22,8 +23,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AppComponent implements OnInit{
 
   // tab: AppTab = AppTab.HOME;
-  
+
+  showHead: boolean = false;
   private _searchedMovies: any[] = [];
+ 
 
   get data(): any[]{
     return this._searchedMovies;
@@ -37,11 +40,25 @@ export class AppComponent implements OnInit{
     // private router: Router,
     // private route: ActivatedRoute,
     // private movieService: MovieService
-  ) {}
+    private router: Router
+  ) {
+    // on route change to '/login', set the variable showHead to false
+    router.events.forEach((event) => {
+      if (event instanceof NavigationStart) {
+        if (event['url'] == '/login' || event['url'] == '/register') {
+          this.showHead = false;
+        } else {
+          this.showHead = true;
+        }
+      }
+    });
+  }
+  
 
   ngOnInit(): void {
     
   }
+  
 
   // onChangeTab(){
   //   if(this.tab === AppTab.HOME) {

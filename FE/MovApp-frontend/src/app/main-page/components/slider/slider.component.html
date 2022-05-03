@@ -13,12 +13,15 @@
           </div>
           <div class="movie_title">
             <p >{{m.title}} - {{m?.release_date | date: 'yyyy'}}</p>
-            <div class="icons" style="margin-top: 1rem; margin-left: 0.8rem;">
-            <i class="material-icons"  routerLink="/video/{{m.id}}" >play_circle</i>
-            <i class="material-icons" style="color:blue">arrow_drop_down_circle</i>
-            <i class="material-icons" style=" color:blueviolet">add_circle</i>
-            <i class="material-icons" style="color: yellow;">star</i>
-          </div>
+
+             <div class="icons" style="margin-top: 1rem; margin-left: 0.8rem;">
+             <i class="material-icons"  routerLink="/video/{{m.id}}" >play_circle</i>
+             <i class="material-icons" style="color:blue">arrow_drop_down_circle</i>
+             <i class="material-icons" style=" color:blueviolet">add_circle</i>
+             <i class="material-icons" style="color: yellow;">star</i>
+            </div>
+
+            <p>{{m.duration}} minutes</p>
 
           </div>
         </div>

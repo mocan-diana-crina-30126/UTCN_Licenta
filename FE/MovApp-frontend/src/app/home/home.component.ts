@@ -9,6 +9,7 @@ import { SliderComponent } from '../main-page/components/slider/slider.component
 import {SlickCarouselModule} from 'node_modules/ngx-slick-carousel';
 import { GenreService } from '../services/genre.service';
 import { Genre } from '../models/genre';
+import { UserService } from '../services/user.service';
 
 
 @Component({
