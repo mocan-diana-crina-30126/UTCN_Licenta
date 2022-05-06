@@ -23,7 +23,6 @@ import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-
 import { SliderComponent } from './main-page/components/slider/slider.component';
 import { FooterComponent } from './main-page/components/footer/footer.component';
 // import {SlickCarouselModule} from 'ngx-slick-carousel';

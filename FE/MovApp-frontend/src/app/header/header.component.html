@@ -37,7 +37,7 @@
         </li>
         <li routerLinkActive="active"><a routerLink='/favorites' >Favorites List</a></li>
         <li routerLinkActive="active"><a routerLink='/watched' >Watch Later</a></li>
-        
+        <li routerLinkActive="active" *ngIf="showAdminBoard"><a routerLink='/admin' >Admin</a></li>
       </ul>
     </div>
 
@@ -77,7 +77,7 @@
                matSuffix mat-button 
                ><mat-icon style="color: turquoise;" class="icon">expand_more</mat-icon>
                <div class="options">
-                <span>Log Out</span>
+                <span (click)="onLogOut()">Log Out</span>
                 </div>
               </button>
              

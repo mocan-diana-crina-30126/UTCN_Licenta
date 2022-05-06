@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-md-12 text-center" >
             <h2 class="mb-5 mt-5" style="color:white; text-align: center; margin-bottom: 3.5rem;">Movies Genres</h2>
-            <a *ngFor="let genre of genresList" routerLink="/genres/{{genre.id}}/{{genre.name}}">
+            <a *ngFor="let genre of genresList" routerLink="/genres/{{genre.genre_id}}/{{genre.genre_name}}">
                 <button mat-raised-button color="primary" class="genre-card blue-theme" aria-label="Genres">
-                    {{genre.name}}
+                    {{genre.genre_name}}
                 </button>
             </a>
         </div>

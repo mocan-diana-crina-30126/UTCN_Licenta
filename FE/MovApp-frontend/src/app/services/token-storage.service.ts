@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 /* This service manages token and user information (username, email, roles) inside
 Browser's Session Storage. For Logout, we only need to clear this Session Storage
@@ -12,10 +13,11 @@ const USER_KEY = 'auth-user';
 })
 export class TokenStorageService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   signOut(): void {
     window.sessionStorage.clear();
+    this.router.navigate(['/login'])
   }
 
   public saveToken(token: string): void {
@@ -25,9 +27,9 @@ export class TokenStorageService {
 
   }
 
-  public getToken(): string | null {
-    
-     return window.sessionStorage.getItem(TOKEN_KEY);
+  public getToken(): string {
+    let token = window.sessionStorage.getItem(TOKEN_KEY) 
+     return token == null?"":token;
 
   }
 

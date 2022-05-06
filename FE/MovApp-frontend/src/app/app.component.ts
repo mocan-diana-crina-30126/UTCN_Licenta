@@ -6,6 +6,7 @@ import {Subscription} from 'rxjs';
 import {HttpErrorResponse} from '@angular/common/http';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
+import { TokenStorageService } from './services/token-storage.service';
 
 // enum AppTab {
 //   HOME = 0,
@@ -26,6 +27,7 @@ export class AppComponent implements OnInit{
 
   showHead: boolean = false;
   private _searchedMovies: any[] = [];
+  
  
 
   get data(): any[]{
@@ -56,6 +58,8 @@ export class AppComponent implements OnInit{
   
 
   ngOnInit(): void {
+
+
     
   }
   

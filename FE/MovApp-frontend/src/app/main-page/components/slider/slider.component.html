@@ -18,10 +18,10 @@
              <i class="material-icons"  routerLink="/video/{{m.id}}" >play_circle</i>
              <i class="material-icons" style="color:blue">arrow_drop_down_circle</i>
              <i class="material-icons" style=" color:blueviolet">add_circle</i>
-             <i class="material-icons" style="color: yellow;">star</i>
+             <i class="material-icons" style="color: yellow;"  (click)="addToFavoritesList(m.id)">star</i>
             </div>
 
-            <p>{{m.duration}} minutes</p>
+            <p>{{m.duration}} minutes </p>
 
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GenreService } from '../services/genre.service';
+import {Genre} from "../models/genre";
 
 @Component({
   selector: 'app-genres-list',
@@ -8,7 +9,7 @@ import { GenreService } from '../services/genre.service';
 })
 export class GenresListComponent implements OnInit {
 
- genresList: any;
+ genresList: Genre[] = [];
  sliderConfig = {
   slidesToShow: 9,
   slidesToScroll: 2,
@@ -23,7 +24,7 @@ export class GenresListComponent implements OnInit {
   }
 
   MovieGenre() {
-    this._movie.getAllGenres().subscribe(data => 
+    this._movie.getAllGenres().subscribe(data =>
       {this.genresList = data;
      console.log(this.genresList);
       }

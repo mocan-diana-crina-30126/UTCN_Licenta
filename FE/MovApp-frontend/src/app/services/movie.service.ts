@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
 import { Movie } from "../models/movie";
-import { HttpClient, HttpParams } from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import { environment } from "src/environments/environment";
+import {TokenStorageService} from "./token-storage.service";
 
 const enum endpoint{
 
@@ -23,8 +24,11 @@ export class MovieService {
     public searchText = '';
     private _searchedMovies: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Authorization': this.tokenStorageService.getToken() })
+  };
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient,private tokenStorageService: TokenStorageService){}
 
     getData(): Observable<any> {
       return this._searchedMovies.asObservable();
@@ -90,7 +94,7 @@ export class MovieService {
   }
 
   public getMovieContent(id: number): Observable<String[]>{
-      return this.http.get<String[]>(`${this.apiServerUrl}/movies/video/${id}`);
+      return this.http.get<String[]>(`${this.apiServerUrl}/movies/video/${id}`,this.httpOptions);
   }
 
 

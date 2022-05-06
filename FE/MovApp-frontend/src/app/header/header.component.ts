@@ -3,6 +3,7 @@ import {MovieService} from "../services/movie.service";
 import {Movie} from "../models/movie";
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { TokenStorageService } from '../services/token-storage.service';
 
 
 @Component({
@@ -20,11 +21,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   searchText='';
   movies: Movie[] = [];
   subs: Subscription[] = [];
+
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  username?: string;
  
   
 
   constructor(private movieService: MovieService,  private router: Router,
-    private route: ActivatedRoute,) {
+    private route: ActivatedRoute, private tokenStorageService: TokenStorageService ) {
       
      }
 
@@ -34,6 +40,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
     //   this.searchedMovies.emit(data);
     //     this.movieService.setData(data);
     // })
+
+    
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if(this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      this.username = user.username;
+    }
   }
 
 
@@ -56,6 +71,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
    // this.movieService.searchedMovies.next(this.movies);
     this.router.navigate(['search'], {relativeTo: this.route});
 
+  }
+
+  onLogOut(){
+    this.tokenStorageService.signOut();
   }
 
   ngOnDestroy(): void {

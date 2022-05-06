@@ -13,6 +13,7 @@ import { SearchResultsComponent } from './search-results/search-results.componen
 import { VideoComponent } from './video/video.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
 
 const routes: Routes = [
 {
@@ -38,7 +39,7 @@ component: RegisterComponent,
   component: GenresListComponent
 },
 {
-  path: 'favorites',
+  path: 'favorites/:id',
   component: FavoritesListComponent
 },
 {
@@ -56,6 +57,10 @@ component: RegisterComponent,
 {
     path: 'video/:id',
     component: VideoComponent
+},
+{
+  path: 'admin',
+  component: BoardAdminComponent
 }
 
 ];

@@ -10,6 +10,9 @@ import {SlickCarouselModule} from 'node_modules/ngx-slick-carousel';
 import { GenreService } from '../services/genre.service';
 import { Genre } from '../models/genre';
 import { UserService } from '../services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+
+
 
 
 @Component({
@@ -166,6 +169,9 @@ export class HomeComponent implements OnInit {
     );
 
   }
+
+  
+
   ngOnDestroy(): void {
     this.subs.map(s => s.unsubscribe());
   }
