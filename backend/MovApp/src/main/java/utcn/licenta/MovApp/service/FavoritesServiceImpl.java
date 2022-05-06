@@ -31,16 +31,16 @@ public class FavoritesServiceImpl implements FavoritesServiceInterface {
     @Override
     @Transactional
     public void addMovieToFavorites(Integer movieId) {
-        // aici ai luat userul care o facut request-ul
+        // aici am luat userul care a facut request-ul
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        // aici ai verificat si ai luat din db userul care are id-ul userului care o facut request-ul
+        // aici am verificat si am luat din db userul care are id-ul userului care a facut request-ul
         User existingUser = userRepository.getById(principal.getId());
 
-        //aici ai vericat in db ca movie-ul cu id-ul: movieId exista si l-ai luat, daca nu arunci exceptie
+        //aici am vericat in db ca movie-ul cu id-ul: movieId exista si l-am luat, daca nu arunc exceptie
         Movie existingMovie = movieService.getMovieById(movieId).orElseThrow();
 
-        // aici setezi pe userul existent filmul ca si favorit adaugand-ul la lista de favorite
+        // aici setez pe userul existent filmul ca si favorit adaugandu-l la lista de favorite
         existingUser.addFavoriteMovie(existingMovie);
 
         //userRepository.save(existingUser);

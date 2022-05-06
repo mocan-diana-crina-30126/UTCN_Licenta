@@ -119,7 +119,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
    }
 
     @Override
-    public Collection<String> getMovieContent(Integer id) {
+    public String getMovieContent(Integer id) {
         return movieRepository.getMovieContent(id);
     }
 

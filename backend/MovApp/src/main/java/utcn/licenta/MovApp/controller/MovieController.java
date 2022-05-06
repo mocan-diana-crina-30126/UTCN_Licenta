@@ -62,7 +62,7 @@ public class MovieController {
     }
 
     @GetMapping("/video/{id}")
-    public Collection<String> getMovieContent(@PathVariable("id") Integer id) {
+    public String getMovieContent(@PathVariable("id") Integer id) {
 
         return movieService.getMovieContent(id);
     }
