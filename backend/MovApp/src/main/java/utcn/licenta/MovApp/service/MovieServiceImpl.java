@@ -108,10 +108,9 @@ public class MovieServiceImpl implements MovieServiceInterface {
     }
 
     @Override
-    public Collection<MovieDTO> getAllFavoritesMovies(Long userId) {
+    public Collection<Movie> getAllFavoritesMovies(Long userId) {
         User user = movieRepository.findAllFavoritesByUserId(userId);
-        return movieConverter.convertAll(user.getFavorites());
-
+        return user.getFavorites();
     }
 
     @Override

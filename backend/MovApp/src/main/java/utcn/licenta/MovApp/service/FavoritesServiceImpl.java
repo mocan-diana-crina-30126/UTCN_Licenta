@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.model.User;
+import utcn.licenta.MovApp.repository.MovieRepository;
 import utcn.licenta.MovApp.repository.UserRepository;
 import utcn.licenta.MovApp.security.services.UserDetailsImpl;
 
@@ -20,10 +21,14 @@ public class FavoritesServiceImpl implements FavoritesServiceInterface {
     private final UserRepository userRepository;
     private final MovieConverter movieConverter;
 
-    public FavoritesServiceImpl(MovieServiceInterface movieService, UserRepository userRepository, MovieConverter movieConverter) {
+    private final MovieRepository movieRepository;
+
+    public FavoritesServiceImpl(MovieServiceInterface movieService, UserRepository userRepository, MovieConverter movieConverter,
+        MovieRepository movieRepository) {
         this.movieService = movieService;
         this.userRepository = userRepository;
         this.movieConverter = movieConverter;
+        this.movieRepository = movieRepository;
     }
 
 
@@ -49,7 +54,16 @@ public class FavoritesServiceImpl implements FavoritesServiceInterface {
     public Collection<MovieDTO> getAllFavoritesMovies() {
         // aici ai luat userul care o facut request-ul
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Collection<MovieDTO> allFavoriteMovies = movieService.getAllFavoritesMovies(principal.getId());
-        return allFavoriteMovies;
+        Collection<Movie> allFavoritesMovies = movieService.getAllFavoritesMovies(principal.getId());
+        return movieConverter.convertAll(allFavoritesMovies);
+    }
+
+    @Transactional
+    @Override
+    public void deleteMovieFromFavorites(Integer movieId) {
+        UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Collection<Movie> allFavoriteMovies  = movieRepository.findAllFavoritesByUserId(principal.getId()).getFavorites();
+        Movie movieToBeRemoved = allFavoriteMovies.stream().filter(movie -> movie.getId().equals(movieId)).findFirst().orElse(null);
+        allFavoriteMovies.remove(movieToBeRemoved);
     }
 }

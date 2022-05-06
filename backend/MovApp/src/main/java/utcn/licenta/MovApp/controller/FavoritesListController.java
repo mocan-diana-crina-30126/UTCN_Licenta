@@ -32,5 +32,9 @@ public class FavoritesListController {
         return ResponseEntity.ok(allFavoritesMovie);
     }
 
-
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMovieFromFavorites(@PathVariable("id") Integer movieId){
+        service.deleteMovieFromFavorites(movieId);
+        return ResponseEntity.noContent().build();
+    }
 }

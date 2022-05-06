@@ -10,4 +10,6 @@ public interface FavoritesServiceInterface {
     void addMovieToFavorites(Integer movieId);
 
     Collection<MovieDTO> getAllFavoritesMovies();
+
+  void deleteMovieFromFavorites(Integer movieId);
 }
