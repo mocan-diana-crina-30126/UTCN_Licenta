@@ -62,7 +62,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
     @Query("select movie.content from Movie movie " +
             "where movie.id = :id ")
-    String getMovieContent(@Param("id") Integer id);
+    List<String> getMovieContent(@Param("id") Integer id);
 
     @Query("select user from User user " +
             "join fetch user.favorites " +

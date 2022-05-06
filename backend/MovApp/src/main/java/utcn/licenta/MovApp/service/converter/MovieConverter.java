@@ -13,6 +13,7 @@ public class MovieConverter {
     public MovieDTO convertEntityToDTO(Movie movie) {
 
         MovieDTO movieDTO = new MovieDTO();
+        movieDTO.setId(movie.getId());
         movieDTO.setImdb_rating(movie.getImdb_rating());
         movieDTO.setRelease_date(movie.getRelease_date());
         movieDTO.setOverview(movie.getOverview());

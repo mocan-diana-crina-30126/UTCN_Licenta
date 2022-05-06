@@ -22,7 +22,6 @@ public class FavoritesListController {
 
     @PostMapping()
     public ResponseEntity<Void> addToFavorites(@RequestBody Integer movieId) {
-
         service.addMovieToFavorites(movieId);
         return ResponseEntity.ok().build();
     }
