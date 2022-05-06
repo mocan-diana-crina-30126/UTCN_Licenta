@@ -2,22 +2,22 @@ package utcn.licenta.MovApp.dto;
 
 public class GenreDTO {
 
-  private int id;
-  private String name;
+  private int genre_id;
+  private String genre_name;
 
-  public int getId() {
-    return id;
+  public int getGenre_id() {
+    return genre_id;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public void setGenre_id(int genre_id) {
+    this.genre_id = genre_id;
   }
 
-  public String getName() {
-    return name;
+  public String getGenre_name() {
+    return genre_name;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setGenre_name(String genre_name) {
+    this.genre_name = genre_name;
   }
 }

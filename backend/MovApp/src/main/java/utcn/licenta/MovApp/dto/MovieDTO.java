@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MovieDTO {
-
+   private Integer id;
    private String title;
    private Integer year;
    private Integer duration;
@@ -15,6 +15,14 @@ public class MovieDTO {
    private String overview;
    private Integer imdb_rating;
    private String content;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;

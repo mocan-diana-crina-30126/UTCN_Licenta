@@ -11,8 +11,8 @@ public class GenreConverter {
 
   public GenreDTO convert(Genre genre) {
     GenreDTO genreDTO = new GenreDTO();
-    genreDTO.setId(genreDTO.getId());
-    genreDTO.setName(genreDTO.getName());
+    genreDTO.setGenre_id(genre.getId());
+    genreDTO.setGenre_name(genre.getName());
     return genreDTO;
   }
 
