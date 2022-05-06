@@ -3,6 +3,7 @@ package utcn.licenta.MovApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import utcn.licenta.MovApp.dto.GenreDTO;
 import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.model.Genre;
 import utcn.licenta.MovApp.model.Movie;
@@ -24,7 +25,7 @@ public class GenreController {
    private MovieServiceImpl movieService;
 
    @GetMapping("/all")
-   public List<Genre> getAllGenres(){
+   public List<GenreDTO> getAllGenres(){
        return genreService.getAllGenres();
    }
 

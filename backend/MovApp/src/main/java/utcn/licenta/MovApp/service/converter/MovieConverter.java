@@ -1,4 +1,4 @@
-package utcn.licenta.MovApp.service;
+package utcn.licenta.MovApp.service.converter;
 
 import org.springframework.stereotype.Component;
 import utcn.licenta.MovApp.dto.MovieDTO;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 @Component
 public class MovieConverter {
 
-    public static MovieDTO convertEntityToDTO(Movie movie) {
+    public MovieDTO convertEntityToDTO(Movie movie) {
 
         MovieDTO movieDTO = new MovieDTO();
         movieDTO.setImdb_rating(movie.getImdb_rating());
@@ -24,7 +24,7 @@ public class MovieConverter {
         return movieDTO;
     }
 
-    public static Collection<MovieDTO> convertAll(Collection<Movie> movies){
-        return movies.stream().map(MovieConverter::convertEntityToDTO).collect(Collectors.toList());
+    public Collection<MovieDTO> convertAll(Collection<Movie> movies){
+        return movies.stream().map(this::convertEntityToDTO).collect(Collectors.toList());
     }
 }

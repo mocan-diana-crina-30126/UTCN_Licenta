@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.*;
+import utcn.licenta.MovApp.service.converter.MovieConverter;
 
 @Service
 public class MovieServiceImpl implements MovieServiceInterface {
