@@ -8,11 +8,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.exception.MovieDuplicatedException;
 import utcn.licenta.MovApp.exception.MovieNotFoundException;
 import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.service.MovieServiceImpl;
 
+import java.util.Collection;
 import java.util.List;
 
 @CrossOrigin
@@ -24,7 +26,7 @@ public class MovieController {
     private MovieServiceImpl movieService;
 
     @GetMapping("/all")
-    public List<Movie> getAllMovies() {
+    public Collection<MovieDTO> getAllMovies() {
 
         return movieService.getAllMovies();
     }
@@ -36,31 +38,31 @@ public class MovieController {
 //    }
 
     @GetMapping("/trending")
-    public List<Movie> getTrendingMovies(){ return movieService.getTrendingMovies();}
+    public Collection<MovieDTO> getTrendingMovies(){ return movieService.getTrendingMovies();}
 
     @GetMapping("/top_rated")
-    public List<Movie> getTopRatedMovies() {
+    public Collection<MovieDTO> getTopRatedMovies() {
         return movieService.getTopRatedMovies();
     }
 
     @GetMapping("/originals")
-    public List<Movie> getOriginalMovies(){return movieService.getOriginalMovies();}
+    public Collection<MovieDTO> getOriginalMovies(){return movieService.getOriginalMovies();}
 
     @GetMapping("/populars")
-    public List<Movie> getPopularMovies() {
+    public Collection<MovieDTO> getPopularMovies() {
         return movieService.getPopularMovies();
     }
 
     @GetMapping("/upcoming")
-    public List<Movie> getUpcomingMovies(){return movieService.getUpcomingMovies();}
+    public Collection<MovieDTO> getUpcomingMovies(){return movieService.getUpcomingMovies();}
 
     @GetMapping("/search")
-    public List<Movie> getMovieByTitle(@RequestParam(required = false) String title) {
+    public Collection<MovieDTO> getMovieByTitle(@RequestParam(required = false) String title) {
             return movieService.getMovieByTitle(title);
     }
 
     @GetMapping("/video/{id}")
-    public List<String> getMovieContent(@PathVariable("id") Integer id) {
+    public Collection<String> getMovieContent(@PathVariable("id") Integer id) {
 
         return movieService.getMovieContent(id);
     }

@@ -1,7 +1,8 @@
 package utcn.licenta.MovApp.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import utcn.licenta.MovApp.dto.MovieDTO;
+
+import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -31,6 +32,15 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "favorites_list", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private final List<Movie> favorites = new ArrayList<>();
+
+    @ManyToMany( fetch = FetchType.LAZY)
+    @JoinTable(name = "watch_later", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private List<Movie> watchLater = new ArrayList<>();
+
     public User() {
     }
     public User(String username, String email, String password) {
@@ -67,5 +77,22 @@ public class User {
     }
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<Movie> getFavorites() {
+        return favorites;
+    }
+
+    public List<Movie> getWatchLater() {
+        return watchLater;
+    }
+
+    public void setWatchLater(List<Movie> watchLater) {
+        this.watchLater = watchLater;
+    }
+
+    public void addFavoriteMovie(Movie movie){
+        // verify that this movie is not null
+        this.favorites.add(movie);
     }
 }

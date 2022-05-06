@@ -3,11 +3,13 @@ package utcn.licenta.MovApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.model.Genre;
 import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.service.GenreServiceImpl;
 import utcn.licenta.MovApp.service.MovieServiceImpl;
 
+import java.util.Collection;
 import java.util.List;
 
 @CrossOrigin
@@ -33,7 +35,7 @@ public class GenreController {
 //    }
 
         @GetMapping("/{id}")
-    public List<Movie> getMovieGenre(@PathVariable("id") Integer id) {
+    public Collection<MovieDTO> getMovieGenre(@PathVariable("id") Integer id) {
 
         return movieService.getMovieGenre(id);
     }

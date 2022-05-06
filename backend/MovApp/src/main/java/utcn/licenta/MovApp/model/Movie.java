@@ -49,6 +49,9 @@ public class Movie {
     @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genres = new ArrayList<>();
 
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "favorites")
+    private List<User> UsersTHatHaveThisToFavorites = new ArrayList<>();
+
     public String getLanguage() {
         return language;
     }
@@ -151,5 +154,13 @@ public class Movie {
 
     public void setGenres(List<Genre> genres) {
         this.genres = genres;
+    }
+
+    public List<User> getUsersTHatHaveThisToFavorites() {
+        return UsersTHatHaveThisToFavorites;
+    }
+
+    public void setUsersTHatHaveThisToFavorites(List<User> usersTHatHaveThisToFavorites) {
+        UsersTHatHaveThisToFavorites = usersTHatHaveThisToFavorites;
     }
 }

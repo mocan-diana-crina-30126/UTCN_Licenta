@@ -2,23 +2,26 @@ package utcn.licenta.MovApp.service;
 
 import org.apache.tika.mime.MimeTypeException;
 import org.springframework.web.multipart.MultipartFile;
+import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.exception.MovieDuplicatedException;
 import utcn.licenta.MovApp.exception.MovieNotFoundException;
 import utcn.licenta.MovApp.model.Movie;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 public interface MovieServiceInterface {
 
-    List<Movie> getAllMovies();
-    List<Movie> getPopularMovies();
-    List<Movie> getTopRatedMovies();
-    List<Movie> getUpcomingMovies();
-    List<Movie> getTrendingMovies();
-    List<Movie> getOriginalMovies();
-    List<Movie> getMovieByTitle(String title);
-    List<Movie> getMovieGenre(Integer id);
-    List<String> getMovieContent(Integer id);
+    Collection<MovieDTO> getAllMovies();
+    Collection<MovieDTO> getPopularMovies();
+    Collection<MovieDTO> getTopRatedMovies();
+    Collection<MovieDTO> getUpcomingMovies();
+    Collection<MovieDTO> getTrendingMovies();
+    Collection<MovieDTO> getOriginalMovies();
+    Collection<MovieDTO> getMovieByTitle(String title);
+    Collection<MovieDTO> getMovieGenre(Integer id);
+    Collection<String> getMovieContent(Integer id);
 
     Movie save(MultipartFile movie, String title, Integer year, Integer duration, String releaseDate, MultipartFile image) throws MovieDuplicatedException, MimeTypeException;
 
@@ -27,4 +30,7 @@ public interface MovieServiceInterface {
 
     List<Movie> getMovieByGenre(String genre);
 
+    Optional<Movie> getMovieById(Integer movieId);
+
+    Collection<MovieDTO> getAllFavoritesMovies(Long userId);
 }

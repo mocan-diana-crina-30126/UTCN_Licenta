@@ -16,9 +16,8 @@ public class Genre {
     @Column(name = "genre_name", length = 30, nullable = false)
     private String name;
 
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "movie_genre", joinColumns = @JoinColumn(name = "movie_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
-//    private List<Movie> movies = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "genres")
+    private List<Movie> movies = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -36,11 +35,11 @@ public class Genre {
         this.name = name;
     }
 
-//    public List<Movie> getMovies() {
-//        return movies;
-//    }
-//
-//    public void setMovies(List<Movie> movies) {
-//        this.movies = movies;
-//    }
+    public List<Movie> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<Movie> movies) {
+        this.movies = movies;
+    }
 }

@@ -4,7 +4,9 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.model.Movie;
+import utcn.licenta.MovApp.model.User;
 
 import java.util.List;
 
@@ -62,4 +64,8 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
             "where movie.id = :id ")
     List<String> getMovieContent(@Param("id") Integer id);
 
+    @Query("select user from User user " +
+            "join fetch user.favorites " +
+            "where user.id =:userId")
+    User findAllFavoritesByUserId(@Param("userId")Long userId);
 }

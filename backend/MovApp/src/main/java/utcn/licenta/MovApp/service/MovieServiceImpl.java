@@ -2,13 +2,13 @@ package utcn.licenta.MovApp.service;
 
 import org.apache.tika.mime.MimeTypeException;
 import org.apache.tika.mime.MimeTypes;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.exception.MovieDuplicatedException;
 import utcn.licenta.MovApp.exception.MovieNotFoundException;
 import utcn.licenta.MovApp.model.Movie;
+import utcn.licenta.MovApp.model.User;
 import utcn.licenta.MovApp.repository.MovieRepository;
 
 import java.io.IOException;
@@ -21,33 +21,40 @@ import java.util.*;
 @Service
 public class MovieServiceImpl implements MovieServiceInterface {
 
-    @Autowired
-    private MovieRepository movieRepository;
+
+    private final MovieRepository movieRepository;
+    private final MovieConverter movieConverter;
     private static final String BASE_MOVIE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\videos\\";
     private String BASE_IMAGE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\images\\";
     private static final MimeTypes ALL_TYPES = MimeTypes.getDefaultMimeTypes();
 
-    public List<Movie> getAllMovies() {
+    public MovieServiceImpl(MovieRepository movieRepository, MovieConverter movieConverter) {
+        this.movieRepository = movieRepository;
+        this.movieConverter = movieConverter;
+    }
+
+    public Collection<MovieDTO> getAllMovies() {
         List<Movie> list = movieRepository.getAllMovies();
-        return list;
+
+        return movieConverter.convertAll(list);
     }
 
 
 
 
     @Override
-    public List<Movie> getPopularMovies() {
+    public Collection<MovieDTO> getPopularMovies() {
 
         ///in functie de popularitate (popularitate intre 0-10)
         ///ordonare descrescatoare
 
-        List<Movie> movies = movieRepository.getPopulars();
-        return movies;
+        List<Movie> list = movieRepository.getPopulars();
+        return movieConverter.convertAll(list);
     }
 
 
     @Override
-    public List<Movie> getTopRatedMovies() {
+    public Collection<MovieDTO> getTopRatedMovies() {
 //        List<Movie> list = movieRepository.getAllMovies();
 //        for(Movie movie : list){
 //            if(movie.getImdb_rating() < 5){
@@ -57,34 +64,35 @@ public class MovieServiceImpl implements MovieServiceInterface {
 //        return list;
 
         List<Movie> movies = movieRepository.getTopRated();
-        return movies;
+        return movieConverter.convertAll(movies);
     }
 
     @Override
-    public List<Movie> getUpcomingMovies() {
+    public Collection<MovieDTO> getUpcomingMovies() {
 
         ///adaugare filme cu data mai mare decat data actuala
 
         List<Movie> movies = movieRepository.getUpcoming();
-        return movies;
+        return movieConverter.convertAll(movies);
     }
 
     @Override
-    public List<Movie> getTrendingMovies() {
+    public Collection<MovieDTO> getTrendingMovies() {
         List<Movie> movies = movieRepository.getTrending();
-        return movies;
+        return movieConverter.convertAll(movies);
     }
 
     @Override
-    public List<Movie> getOriginalMovies() {
+    public Collection<MovieDTO> getOriginalMovies() {
         List<Movie> movies = movieRepository.getOriginals();
-        return movies;
+        return movieConverter.convertAll(movies);
     }
 
     @Override
-    public List<Movie> getMovieByTitle(String title) {
+    public Collection<MovieDTO> getMovieByTitle(String title) {
         title = "%" + title + "%";
-        return movieRepository.getAllMoviesByTitle(title);
+        return movieConverter.convertAll(movieRepository.getAllMoviesByTitle(title));
+
 
     }
 
@@ -93,13 +101,25 @@ public class MovieServiceImpl implements MovieServiceInterface {
         return movieRepository.getAllMoviesByGenre(genre);
     }
 
-   @Override
-   public List<Movie> getMovieGenre(Integer id){
-        return movieRepository.getMovieGenre(id);
+    @Override
+    public Optional<Movie> getMovieById(Integer movieId) {
+        return movieRepository.findById(movieId);
+    }
+
+    @Override
+    public Collection<MovieDTO> getAllFavoritesMovies(Long userId) {
+        User user = movieRepository.findAllFavoritesByUserId(userId);
+        return movieConverter.convertAll(user.getFavorites());
+
+    }
+
+    @Override
+   public Collection<MovieDTO> getMovieGenre(Integer id){
+        return movieConverter.convertAll(movieRepository.getMovieGenre(id));
    }
 
     @Override
-    public List<String> getMovieContent(Integer id) {
+    public Collection<String> getMovieContent(Integer id) {
         return movieRepository.getMovieContent(id);
     }
 
