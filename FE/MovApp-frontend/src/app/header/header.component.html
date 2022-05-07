@@ -4,7 +4,7 @@
        [ngStyle]="{
     'background-image' : 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url(+headerBGUrl+)'
     }">
-   
+
     <div class="header__buttons">
 
       <button class="play-button">
@@ -33,10 +33,10 @@
         <li routerLinkActive="active" ><a routerLink='/home'  >Home</a> </li>
         <li routerLinkActive="active" >
           <a routerLink="/genres" >Genres </a>
-         
+
         </li>
         <li routerLinkActive="active"><a routerLink='/favorites' >Favorites List</a></li>
-        <li routerLinkActive="active"><a routerLink='/watched' >Watch Later</a></li>
+        <li routerLinkActive="active"><a routerLink='/watch' >Watch Later</a></li>
         <li routerLinkActive="active" *ngIf="showAdminBoard"><a routerLink='/admin' >Admin</a></li>
       </ul>
     </div>
@@ -54,7 +54,7 @@
               [(ngModel)]= "searchText">
             <button color="accent"
                     matSuffix mat-button
-                    (keyup.enter)="getMoviesByTitle()" 
+                    (keyup.enter)="getMoviesByTitle()"
                     (click)="getMoviesByTitle()"
                     ><mat-icon style="color: turquoise;">search</mat-icon></button>
           </mat-form-field>
@@ -74,15 +74,15 @@
                alt="avatar" >
                <div class="profile">
                <button color="accent"
-               matSuffix mat-button 
+               matSuffix mat-button
                ><mat-icon style="color: turquoise;" class="icon">expand_more</mat-icon>
                <div class="options">
                 <span (click)="onLogOut()">Log Out</span>
                 </div>
               </button>
-             
+
             </div>
-          
+
       </ul>
     </div>
     <!-- <div class="card">

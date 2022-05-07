@@ -34,12 +34,10 @@ import { PipeModule } from './main-page/components/pipes/pipe.module';
 import { HeaderComponent } from './header/header.component';
 
 import { MoviesComponent } from './movies/movies.component';
-import { WatchedListComponent } from './movies/watched-list/watched-list.component';
 import { GenresComponent } from './genres/genres.component';
 import { GenresListComponent } from './genres-list/genres-list.component';
 import { HomeComponent } from './home/home.component';
 
-import { WatchedEditComponent } from './movies/watched-list/watched-edit/watched-edit.component';
 import { ChildrenComponent } from './children/children.component';
 import { CardsComponent } from './cards/cards.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
@@ -53,6 +51,7 @@ import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {FavoritesListComponent} from "./favorites-list/favorites-list.component";
+import { WatchLaterComponent } from './watch-later/watch-later.component';
 
 @NgModule({
   declarations: [
@@ -63,10 +62,8 @@ import {FavoritesListComponent} from "./favorites-list/favorites-list.component"
     HeaderComponent,
     MoviesComponent,
     FavoritesListComponent,
-    WatchedListComponent,
     GenresComponent,
     GenresListComponent,
-    WatchedEditComponent,
     ChildrenComponent,
     CardsComponent,
     HomeSliderComponent,
@@ -76,7 +73,8 @@ import {FavoritesListComponent} from "./favorites-list/favorites-list.component"
     RegisterComponent,
     ProfileComponent,
     BoardUserComponent,
-    BoardAdminComponent
+    BoardAdminComponent,
+    WatchLaterComponent
 
   ],
     imports: [

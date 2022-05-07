@@ -4,6 +4,7 @@ import {MovieService} from 'src/app/services/movie.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {TokenStorageService} from 'src/app/services/token-storage.service';
 import {FavoritesService} from 'src/app/services/favorites.service';
+import {WatchLaterService} from "../../../services/watch-later.service";
 
 @Component({
   selector: 'app-slider',
@@ -22,7 +23,7 @@ export class SliderComponent implements OnInit {
   movie: [] = [];
 
 
-  constructor(private router: ActivatedRoute, private movieService: MovieService, private routerr: Router, private tokenStorageService: TokenStorageService, private favoritesService: FavoritesService) {
+  constructor(private router: ActivatedRoute, private movieService: MovieService, private routerr: Router, private tokenStorageService: TokenStorageService, private favoritesService: FavoritesService, private watchLaterService: WatchLaterService) {
   }
 
   ngOnInit(): void {
@@ -35,4 +36,9 @@ export class SliderComponent implements OnInit {
     this.favoritesService.addToFavorites(id).subscribe();
   }
 
+  addToWatchLaterList(id: any) {
+    console.log("Post request on Watch Later for",id)
+    this.watchLaterService.addToWatchLater(id).subscribe();
+
+  }
 }

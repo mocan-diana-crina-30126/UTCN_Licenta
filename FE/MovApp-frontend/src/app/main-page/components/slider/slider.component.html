@@ -17,7 +17,7 @@
              <div class="icons" style="margin-top: 1rem; margin-left: 0.8rem;">
              <i class="material-icons"  routerLink="/video/{{m.id}}" >play_circle</i>
              <i class="material-icons" style="color:blue">arrow_drop_down_circle</i>
-             <i class="material-icons" style=" color:blueviolet">add_circle</i>
+             <i class="material-icons" style=" color:blueviolet" (click)="addToWatchLaterList(m.id)">add_circle</i>
              <i class="material-icons" style="color: yellow;"  (click)="addToFavoritesList(m.id)">star</i>
             </div>
 
