@@ -33,4 +33,6 @@ public interface MovieServiceInterface {
     Optional<Movie> getMovieById(Integer movieId);
 
     Collection<Movie> getAllFavoritesMovies(Long userId);
+
+    Collection<Movie> getAllWatchLaterMovies(Long id);
 }

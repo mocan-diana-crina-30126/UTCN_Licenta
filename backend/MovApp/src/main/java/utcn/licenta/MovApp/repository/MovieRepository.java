@@ -37,7 +37,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
 
     @Query("select movie from Movie movie " +
-           "where movie.imdb_rating >= 7 " +
+            "where movie.imdb_rating >= 7 " +
             "order by movie.imdb_rating desc")
     List<Movie> getTopRated();
 
@@ -67,5 +67,11 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Query("select user from User user " +
             "join fetch user.favorites " +
             "where user.id =:userId")
-    User findAllFavoritesByUserId(@Param("userId")Long userId);
+    User findAllFavoritesByUserId(@Param("userId") Long userId);
+
+
+    @Query("select user from User user " +
+            "join fetch user.watchLater " +
+            "where user.id =:userId")
+    User findAllWatchLaterByUserId(@Param("userId") Long userId);
 }

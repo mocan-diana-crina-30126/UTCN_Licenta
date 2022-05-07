@@ -113,6 +113,12 @@ public class MovieServiceImpl implements MovieServiceInterface {
     }
 
     @Override
+    public Collection<Movie> getAllWatchLaterMovies(Long userId) {
+        User user = movieRepository.findAllWatchLaterByUserId(userId);
+        return user == null ? Collections.emptyList() : user.getWatchLater();
+    }
+
+    @Override
     public Collection<MovieDTO> getMovieGenre(Integer id) {
         return movieConverter.convertAll(movieRepository.getMovieGenre(id));
     }

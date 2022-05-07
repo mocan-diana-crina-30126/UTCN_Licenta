@@ -52,6 +52,9 @@ public class Movie {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "favorites")
     private List<User> UsersTHatHaveThisToFavorites = new ArrayList<>();
 
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "watchLater")
+    private List<User> UsersThatHaveThisToWatchLater = new ArrayList<>();
+
     public String getLanguage() {
         return language;
     }
@@ -162,5 +165,13 @@ public class Movie {
 
     public void setUsersTHatHaveThisToFavorites(List<User> usersTHatHaveThisToFavorites) {
         UsersTHatHaveThisToFavorites = usersTHatHaveThisToFavorites;
+    }
+
+    public List<User> getUsersThatHaveThisToWatchLater() {
+        return UsersThatHaveThisToWatchLater;
+    }
+
+    public void setUsersThatHaveThisToWatchLater(List<User> usersThatHaveThisToWatchLater) {
+        UsersThatHaveThisToWatchLater = usersThatHaveThisToWatchLater;
     }
 }
