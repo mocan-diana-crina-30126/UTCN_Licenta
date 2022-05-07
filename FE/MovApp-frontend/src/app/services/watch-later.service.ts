@@ -27,4 +27,9 @@ export class WatchLaterService {
   getAllWatchLaterMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>(WATCHLATER_API + '/all', this.httpOptions);
   }
+
+  deleteWatchLaterMovieById(id: number): Observable<any> {
+    return this.http.delete(WATCHLATER_API + '/' + id, this.httpOptions);
+  }
+
 }

@@ -14,7 +14,7 @@
         <img src='assets\images\{{m?.image_path}}'>
 
         <h6>{{m?.title}}</h6>
-<!--        <button (click)="deleteFavoriteMovie(m.id)">Delete</button>-->
+        <button (click)="deleteWatchLaterMovie(m.id)">Delete</button>
         <p class="rate"><i class="material-icons">star</i><span>{{m?.imdb_rating}}</span> /10</p>
         <p class="year"><span>{{m?.release_date | date: 'yyyy'}}</span>
         </p>

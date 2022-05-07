@@ -28,4 +28,8 @@ export class WatchLaterComponent implements OnInit {
     })
   }
 
+  deleteWatchLaterMovie(id: number){
+    this.watchLaterService.deleteWatchLaterMovieById(id).subscribe(data => {window.location.reload();});
+  }
+
 }
