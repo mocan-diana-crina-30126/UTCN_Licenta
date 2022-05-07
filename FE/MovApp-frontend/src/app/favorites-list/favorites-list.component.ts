@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
 import {FavoritesService} from "../services/favorites.service";
 import {Movie} from "../models/movie";
@@ -11,22 +11,25 @@ import {Movie} from "../models/movie";
 export class FavoritesListComponent implements OnInit {
 
   public id!: number;
-  movie : Movie[] = [];
+  movie: Movie[] = [];
 
-  constructor(private router: ActivatedRoute,private favoritesService: FavoritesService) { }
+  constructor(private router: ActivatedRoute, private favoritesService: FavoritesService) {
+  }
 
-  ngOnInit(): void {
-    this.router.params.subscribe((params: Params) => {
-      this.id = params['id'];
-      this.addToFavoritesList(this.id);
+  ngOnInit(): void {    console.log("on init")
+    this.getFavoriteMovies();
+  }
+
+  getFavoriteMovies() {
+    console.log("get all favorite movies")
+    this.favoritesService.getAllFavoriteMovies().subscribe(data => {
+      this.movie = data;
+      console.log(this.movie);
     });
   }
-  addToFavoritesList(id: any){
 
-    this.favoritesService.addToFavorites(id).subscribe(data => {
-        this.movie = data;
-    })
-
+  deleteFavoriteMovie(id: number){
+    this.favoritesService.deleteFavoriteMovieById(id).subscribe(data => {window.location.reload();});
   }
 
 }

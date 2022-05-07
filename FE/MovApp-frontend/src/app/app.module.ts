@@ -32,13 +32,13 @@ import { PipeModule } from './main-page/components/pipes/pipe.module';
 //Components
 
 import { HeaderComponent } from './header/header.component';
-import { FavoritesListComponent } from './movies/favorites-list/favorites-list.component';
+
 import { MoviesComponent } from './movies/movies.component';
 import { WatchedListComponent } from './movies/watched-list/watched-list.component';
 import { GenresComponent } from './genres/genres.component';
 import { GenresListComponent } from './genres-list/genres-list.component';
 import { HomeComponent } from './home/home.component';
-import { FavoritesEditComponent } from './movies/favorites-list/favorites-edit/favorites-edit.component';
+
 import { WatchedEditComponent } from './movies/watched-list/watched-edit/watched-edit.component';
 import { ChildrenComponent } from './children/children.component';
 import { CardsComponent } from './cards/cards.component';
@@ -51,8 +51,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {FavoritesListComponent} from "./favorites-list/favorites-list.component";
 
 @NgModule({
   declarations: [
@@ -66,7 +66,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     WatchedListComponent,
     GenresComponent,
     GenresListComponent,
-    FavoritesEditComponent,
     WatchedEditComponent,
     ChildrenComponent,
     CardsComponent,
@@ -78,7 +77,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ProfileComponent,
     BoardUserComponent,
     BoardAdminComponent
-    
+
   ],
     imports: [
         BrowserModule,

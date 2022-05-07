@@ -1,3 +1,8 @@
+<div class="listing">
+  <div class="listing__head">
+    <h2 class="listing__title" >Favorites Movies</h2>
+  </div>
+
 <div class="row">
   <div class="col-md-2 listing__items" *ngFor="let m of movie | slice:0:18" >
     <!-- <div [routerLink]="['/movies', m.genres]"> -->
@@ -9,6 +14,7 @@
       <img src='assets\images\{{m?.image_path}}'>
 
       <h6>{{m?.title}}</h6>
+      <button (click)="deleteFavoriteMovie(m.id)">Delete</button>
       <p class="rate"><i class="material-icons">star</i><span>{{m?.imdb_rating}}</span> /10</p>
       <p class="year"><span>{{m?.release_date | date: 'yyyy'}}</span>
       </p>

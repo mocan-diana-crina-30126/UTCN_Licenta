@@ -4,7 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { GenresComponent } from './genres/genres.component';
-import { FavoritesListComponent } from './movies/favorites-list/favorites-list.component';
+import { FavoritesListComponent } from './favorites-list/favorites-list.component';
 import { WatchedEditComponent } from './movies/watched-list/watched-edit/watched-edit.component';
 import { WatchedListComponent } from './movies/watched-list/watched-list.component';
 import { ChildrenComponent } from './children/children.component';
@@ -39,7 +39,7 @@ component: RegisterComponent,
   component: GenresListComponent
 },
 {
-  path: 'favorites/:id',
+  path: 'favorites',
   component: FavoritesListComponent
 },
 {
