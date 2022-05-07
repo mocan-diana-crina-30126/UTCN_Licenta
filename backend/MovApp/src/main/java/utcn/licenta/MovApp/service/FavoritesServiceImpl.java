@@ -11,6 +11,7 @@ import utcn.licenta.MovApp.repository.UserRepository;
 import utcn.licenta.MovApp.security.services.UserDetailsImpl;
 
 import java.util.Collection;
+
 import utcn.licenta.MovApp.service.converter.MovieConverter;
 
 @Service
@@ -24,7 +25,7 @@ public class FavoritesServiceImpl implements FavoritesServiceInterface {
     private final MovieRepository movieRepository;
 
     public FavoritesServiceImpl(MovieServiceInterface movieService, UserRepository userRepository, MovieConverter movieConverter,
-        MovieRepository movieRepository) {
+                                MovieRepository movieRepository) {
         this.movieService = movieService;
         this.userRepository = userRepository;
         this.movieConverter = movieConverter;
@@ -62,8 +63,13 @@ public class FavoritesServiceImpl implements FavoritesServiceInterface {
     @Override
     public void deleteMovieFromFavorites(Integer movieId) {
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        Collection<Movie> allFavoriteMovies  = movieRepository.findAllFavoritesByUserId(principal.getId()).getFavorites();
-        Movie movieToBeRemoved = allFavoriteMovies.stream().filter(movie -> movie.getId().equals(movieId)).findFirst().orElse(null);
-        allFavoriteMovies.remove(movieToBeRemoved);
+        User loggedInUser = movieRepository.findAllFavoritesByUserId(principal.getId());
+        if (loggedInUser != null) {
+            Collection<Movie> allFavoriteMovies = loggedInUser.getFavorites();
+            allFavoriteMovies.stream()
+                    .filter(movie -> movie.getId().equals(movieId))
+                    .findFirst()
+                    .ifPresent(allFavoriteMovies::remove);
+        }
     }
 }

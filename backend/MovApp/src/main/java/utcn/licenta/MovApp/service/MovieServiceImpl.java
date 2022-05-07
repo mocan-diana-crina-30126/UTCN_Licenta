@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.*;
+
 import utcn.licenta.MovApp.service.converter.MovieConverter;
 
 @Service
@@ -39,8 +40,6 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
         return movieConverter.convertAll(list);
     }
-
-
 
 
     @Override
@@ -110,13 +109,13 @@ public class MovieServiceImpl implements MovieServiceInterface {
     @Override
     public Collection<Movie> getAllFavoritesMovies(Long userId) {
         User user = movieRepository.findAllFavoritesByUserId(userId);
-        return user.getFavorites();
+        return user == null ? Collections.emptyList() : user.getFavorites();
     }
 
     @Override
-   public Collection<MovieDTO> getMovieGenre(Integer id){
+    public Collection<MovieDTO> getMovieGenre(Integer id) {
         return movieConverter.convertAll(movieRepository.getMovieGenre(id));
-   }
+    }
 
     @Override
     public List<String> getMovieContent(Integer id) {
@@ -169,7 +168,6 @@ public class MovieServiceImpl implements MovieServiceInterface {
         movieRepository.delete(movieFromDb);
         return id;
     }
-
 
 
 }

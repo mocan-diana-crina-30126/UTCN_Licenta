@@ -35,7 +35,7 @@ public class User {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "favorites_list", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    private final List<Movie> favorites = new ArrayList<>();
+    private final Set<Movie> favorites = new HashSet<>();
 
     @ManyToMany( fetch = FetchType.LAZY)
     @JoinTable(name = "watch_later", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
@@ -79,7 +79,7 @@ public class User {
         this.roles = roles;
     }
 
-    public List<Movie> getFavorites() {
+    public Set<Movie> getFavorites() {
         return favorites;
     }
 

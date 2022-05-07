@@ -75,11 +75,11 @@ public class MovieController {
                                   @RequestParam(required = false) String title,
                                   @RequestParam(required = false) Integer year,
                                   @RequestParam(required = false) Integer duration,
-                                  @RequestParam(required = false) String releaseDate) throws MovieDuplicatedException, MimeTypeException {
+                                  @RequestParam(required = false) String release_date) throws MovieDuplicatedException, MimeTypeException {
         if (movie == null) {  //daca filmul dat de utilizator este null
             return ResponseEntity.badRequest().body("The provided movie is not valid"); 
         }
-        return ResponseEntity.status(HttpStatus.CREATED).body(movieService.save(movie, title, year, duration, releaseDate, image));
+        return ResponseEntity.status(HttpStatus.CREATED).body(movieService.save(movie, title, year, duration, release_date, image));
     }
 
     @PutMapping("/")
