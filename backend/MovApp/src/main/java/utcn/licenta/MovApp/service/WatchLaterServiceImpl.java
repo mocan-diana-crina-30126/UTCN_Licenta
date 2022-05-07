@@ -55,6 +55,20 @@ public class WatchLaterServiceImpl implements WatchLaterServiceInterface{
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Collection<Movie> allWatchLaterMovies = movieService.getAllWatchLaterMovies(principal.getId());
         return movieConverter.convertAll(allWatchLaterMovies);
+    }
+
+    @Transactional
+    @Override
+    public void deleteMovieFromWatchLater(Integer movieId){
+        UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = movieRepository.findAllWatchLaterByUserId(principal.getId());
+        if (loggedInUser != null){
+            Collection<Movie> allWatchLaterMovies = loggedInUser.getWatchLater();
+            allWatchLaterMovies.stream()
+                    .filter(movie -> movie.getId().equals(movieId))
+                    .findFirst()
+                    .ifPresent(allWatchLaterMovies::remove);
+        }
 
     }
 }

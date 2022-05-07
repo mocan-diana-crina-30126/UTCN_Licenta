@@ -8,4 +8,6 @@ public interface WatchLaterServiceInterface {
     void addMovieToWatchLater(Integer movieId);
 
     Collection<MovieDTO> getAllWatchLaterMovies();
+
+    void deleteMovieFromWatchLater(Integer movieId);
 }

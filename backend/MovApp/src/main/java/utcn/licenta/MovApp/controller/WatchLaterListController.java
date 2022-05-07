@@ -31,4 +31,10 @@ public class WatchLaterListController {
         return ResponseEntity.ok(allWatchLaterMovies);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteMovieFromWatchLater(@PathVariable("id") Integer movieId){
+        service.deleteMovieFromWatchLater(movieId);
+        return ResponseEntity.noContent().build();
+    }
+
 }
