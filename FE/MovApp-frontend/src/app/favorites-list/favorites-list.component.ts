@@ -24,8 +24,11 @@ export class FavoritesListComponent implements OnInit {
     console.log("get all favorite movies")
     this.favoritesService.getAllFavoriteMovies().subscribe(data => {
       this.movie = data;
-      console.log(this.movie);
+      
+      console.log(this.movie.length);
     });
+    
+
   }
 
   deleteFavoriteMovie(id: number){

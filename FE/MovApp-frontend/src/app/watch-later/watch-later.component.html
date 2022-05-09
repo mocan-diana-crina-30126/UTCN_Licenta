@@ -3,6 +3,8 @@
     <h2 class="listing__title" >Watch Later</h2>
   </div>
 
+  <h3 style="color: red;" *ngIf="movie.length==1; else elseBlock">{{movie.length}} result found</h3>
+
   <div class="row">
     <div class="col-md-2 listing__items" *ngFor="let m of movie | slice:0:18" >
       <!-- <div [routerLink]="['/movies', m.genres]"> -->
@@ -14,7 +16,10 @@
         <img src='assets\images\{{m?.image_path}}'>
 
         <h6>{{m?.title}}</h6>
-        <button (click)="deleteWatchLaterMovie(m.id)">Delete</button>
+        <button mat-fab color="primary" (click)="deleteWatchLaterMovie(m.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+<!--        <button (click)="deleteWatchLaterMovie(m.id)">Delete</button>-->
         <p class="rate"><i class="material-icons">star</i><span>{{m?.imdb_rating}}</span> /10</p>
         <p class="year"><span>{{m?.release_date | date: 'yyyy'}}</span>
         </p>
@@ -23,3 +28,8 @@
     </div>
     <!-- </div> -->
   </div>
+
+  <ng-template #elseBlock >
+    <h3 style="color: red;">{{movie.length}} results found</h3>
+  </ng-template>
+</div>
