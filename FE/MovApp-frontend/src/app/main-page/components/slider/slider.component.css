@@ -45,5 +45,8 @@ img {
   font-size: 40px;
   color: turquoise;
 }
+.movie .movie__images div.thumbnails .carousel div.slick-item .movie_title .icons .material-icons:hover {
+  background-color: #FF0066;
+}
 
 /*# sourceMappingURL=slider.component.css.map */

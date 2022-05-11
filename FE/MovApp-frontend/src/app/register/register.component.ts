@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {SuccessfullyDialogComponent} from "../successfully-dialog/successfully-dialog.component";
 
 
 /*This component binds form data (username, email, password) from template to AuthService.register() method that returns an Observable object.
@@ -13,6 +15,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  dialogRef!: MatDialogRef<SuccessfullyDialogComponent>;
+
   form: any = {
     username: null,
     email: null,
@@ -22,11 +26,11 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
-    
+
   }
 
   onSubmit(): void {
@@ -37,7 +41,15 @@ export class RegisterComponent implements OnInit {
        console.log(data);
        this.isSuccessful = true;
        this.isSignUpFailed = false;
-       this.reloadPage();
+       this.dialogRef = this.dialog.open(SuccessfullyDialogComponent, {
+         disableClose: false
+
+       });
+       this.dialogRef.componentInstance.confirmMessage = "Registered successfully!";
+
+       this.dialogRef.afterClosed().subscribe(result =>{
+         window.location.reload();
+       });
       //  this.router.navigate(['/login']);
      },
      err => {

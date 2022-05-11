@@ -1,8 +1,8 @@
 
-<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" *ngIf="!isSuccessful">
   <mat-card class="box">
 
-    <mat-card-header>
+    <mat-card-header >
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
 
@@ -24,9 +24,9 @@
             minlength="3"
             maxlength="20"
             #username="ngModel"/>
-           
+
         </mat-form-field>
-   
+
         <div class="alert-danger" *ngIf="username.errors && f.submitted">
           <div *ngIf="username.errors['required']" >Username is required</div>
           <div *ngIf="username.errors['minlength']" >
@@ -36,10 +36,10 @@
             Username must be at most 20 characters
           </div>
         </div>
-        
-        
+
+
           <mat-form-field class="example-full-width">
-          
+
           <input matInput placeholder="Email"
             type="email"
             class="form-control"
@@ -57,7 +57,7 @@
               Email must be a valid email address
             </div>
           </div>
-        
+
 
 
         <mat-form-field class="example-full-width">
@@ -78,7 +78,7 @@
               Password must be at least 6 characters
             </div>
           </div>
-        
+
 
       </mat-card-content>
 
@@ -86,16 +86,17 @@
         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed " style="color: red; margin-top: 1rem">
           Signup failed!<br />{{ errorMessage }}
         </div>
-      
-        
+
+
+
     </form>
-    
-    <div class="alert alert-success" *ngIf="isSuccessful" style="margin-top: 1rem;color:chartreuse">
-      Your registration is successful!
-    </div>
+
+<!--    <div class="alert alert-success" *ngIf="isSuccessful" style="margin-top: 1rem;color:chartreuse">-->
+<!--      Your registration is successful!-->
+<!--    </div>-->
   </mat-card>
-  
+
 </div>
-      
-   
-  
+
+
+

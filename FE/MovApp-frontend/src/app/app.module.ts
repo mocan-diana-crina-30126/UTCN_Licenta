@@ -22,6 +22,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { SliderComponent } from './main-page/components/slider/slider.component';
 import { FooterComponent } from './main-page/components/footer/footer.component';
@@ -52,6 +53,9 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {FavoritesListComponent} from "./favorites-list/favorites-list.component";
 import { WatchLaterComponent } from './watch-later/watch-later.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { SuccessfullyDialogComponent } from './successfully-dialog/successfully-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -74,7 +78,9 @@ import { WatchLaterComponent } from './watch-later/watch-later.component';
     ProfileComponent,
     BoardUserComponent,
     BoardAdminComponent,
-    WatchLaterComponent
+    WatchLaterComponent,
+    ConfirmationDialogComponent,
+    SuccessfullyDialogComponent
 
   ],
     imports: [
@@ -96,10 +102,12 @@ import { WatchLaterComponent } from './watch-later/watch-later.component';
         FlexLayoutModule,
         ReactiveFormsModule,
         MatToolbarModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatDialogModule
     ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
+  entryComponents: [ConfirmationDialogComponent],
   schemas: []
 })
 export class AppModule { }
