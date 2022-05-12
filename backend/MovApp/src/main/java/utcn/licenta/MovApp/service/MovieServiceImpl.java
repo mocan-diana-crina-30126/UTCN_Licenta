@@ -5,20 +5,23 @@ import org.apache.tika.mime.MimeTypes;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import utcn.licenta.MovApp.dto.MovieDTO;
-import utcn.licenta.MovApp.exception.MovieDuplicatedException;
+import utcn.licenta.MovApp.exception.InvalidFieldException;
 import utcn.licenta.MovApp.exception.MovieNotFoundException;
 import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.model.User;
 import utcn.licenta.MovApp.repository.MovieRepository;
+import utcn.licenta.MovApp.service.converter.MovieConverter;
+import utcn.licenta.MovApp.service.vlidator.LocalDateValidator;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.util.*;
-
-import utcn.licenta.MovApp.service.converter.MovieConverter;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieServiceImpl implements MovieServiceInterface {
@@ -26,13 +29,15 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
     private final MovieRepository movieRepository;
     private final MovieConverter movieConverter;
+    private final LocalDateValidator localDateValidator;
     private static final String BASE_MOVIE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\videos\\";
     private String BASE_IMAGE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\images\\";
     private static final MimeTypes ALL_TYPES = MimeTypes.getDefaultMimeTypes();
 
-    public MovieServiceImpl(MovieRepository movieRepository, MovieConverter movieConverter) {
+    public MovieServiceImpl(MovieRepository movieRepository, MovieConverter movieConverter, LocalDateValidator localDateValidator) {
         this.movieRepository = movieRepository;
         this.movieConverter = movieConverter;
+        this.localDateValidator = localDateValidator;
     }
 
     public Collection<MovieDTO> getAllMovies() {
@@ -130,7 +135,10 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
 
     @Override
-    public Movie save(MultipartFile movie, String title, Integer year, Integer duration, String releaseDate, MultipartFile image) throws MovieDuplicatedException, MimeTypeException {
+    public MovieDTO save(MultipartFile movie, MultipartFile image, String title, Integer duration, String releaseDate,
+                         String content, Integer languageId, Integer directorId, Integer imdbRating, String overview)
+            throws MimeTypeException, InvalidFieldException {
+        // TODO: 12.05.2022 Add validation for the fields
         Path path = Paths.get(BASE_MOVIE_NAME + movie.getName() + ALL_TYPES.forName(movie.getContentType()).getExtension());
         Path imagePath = Paths.get(BASE_IMAGE_NAME + image.getName() + ALL_TYPES.forName(image.getContentType()).getExtension());
 
@@ -145,14 +153,18 @@ public class MovieServiceImpl implements MovieServiceInterface {
         movieEntity.setTitle(title);
         movieEntity.setDuration(duration);
         movieEntity.setImage_path(image.getName() + ".jpeg");
-        movieEntity.setRelease_date(LocalDate.now());
-        movieEntity.setContent("some content");
-        movieEntity.setLanguage_id(1);
-        movieEntity.setDirector_id(1);
-        movieEntity.setImdb_rating(1);
-        movieEntity.setOverview("Some overview");
+        if (localDateValidator.isValid(releaseDate)) {
+            movieEntity.setRelease_date(LocalDate.parse(releaseDate));
+        } else {
+            throw new InvalidFieldException("Invalid release date: " + releaseDate);
+        }
+        movieEntity.setContent(content);
+        movieEntity.setLanguage_id(languageId);
+        movieEntity.setDirector_id(directorId);
+        movieEntity.setImdb_rating(imdbRating);
+        movieEntity.setOverview(overview);
 
-        return movieRepository.save(movieEntity);
+        return movieConverter.convertEntityToDTO(movieRepository.save(movieEntity));
     }
 
     @Override
@@ -166,13 +178,12 @@ public class MovieServiceImpl implements MovieServiceInterface {
     }
 
     @Override
-    public Integer delete(Integer id) throws MovieNotFoundException {
+    public void deleteMovieById(Integer id) throws MovieNotFoundException {
         Movie movieFromDb = movieRepository.findById(id).orElse(null);
         if (movieFromDb == null) {
             throw new MovieNotFoundException(id);
         }
         movieRepository.delete(movieFromDb);
-        return id;
     }
 
 

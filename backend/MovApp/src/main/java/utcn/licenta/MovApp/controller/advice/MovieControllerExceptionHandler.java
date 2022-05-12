@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import utcn.licenta.MovApp.exception.InvalidFieldException;
 import utcn.licenta.MovApp.exception.MovieDuplicatedException;
 import utcn.licenta.MovApp.exception.MovieNotFoundException;
 
@@ -24,5 +25,12 @@ public class MovieControllerExceptionHandler {
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(responseMessage);
+    }
+
+    @ExceptionHandler(InvalidFieldException.class)
+    private ResponseEntity<?> handleInvalidFieldException(InvalidFieldException exception) {
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exception.getMessage());
     }
 }
