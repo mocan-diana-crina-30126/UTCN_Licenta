@@ -21,6 +21,7 @@ public class MovieConverter {
         movieDTO.setImage_path(movie.getImage_path());
         movieDTO.setContent(movie.getContent());
         movieDTO.setTitle(movie.getTitle());
+        movieDTO.setPopularity(movie.getPopularity());
 
         return movieDTO;
     }

@@ -46,6 +46,7 @@ public class FavoritesServiceImpl implements FavoritesServiceInterface {
         Movie existingMovie = movieService.getMovieById(movieId).orElseThrow();
 
         // aici setez pe userul existent filmul ca si favorit adaugandu-l la lista de favorite
+
         existingUser.addFavoriteMovie(existingMovie);
 
         //userRepository.save(existingUser);

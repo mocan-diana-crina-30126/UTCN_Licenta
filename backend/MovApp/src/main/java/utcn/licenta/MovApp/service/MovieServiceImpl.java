@@ -136,11 +136,11 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
     @Override
     public MovieDTO save(MultipartFile movie, MultipartFile image, String title, Integer duration, String releaseDate,
-                         String content, Integer languageId, Integer directorId, Integer imdbRating, String overview)
+                         String content, String language, Integer directorId, Integer imdbRating, String overview, Integer popularity)
             throws MimeTypeException, InvalidFieldException {
         // TODO: 12.05.2022 Add validation for the fields
-        Path path = Paths.get(BASE_MOVIE_NAME + movie.getName() + ALL_TYPES.forName(movie.getContentType()).getExtension());
-        Path imagePath = Paths.get(BASE_IMAGE_NAME + image.getName() + ALL_TYPES.forName(image.getContentType()).getExtension());
+        Path path = Paths.get(BASE_MOVIE_NAME + movie.getOriginalFilename() );
+        Path imagePath = Paths.get(BASE_IMAGE_NAME + image.getOriginalFilename());
 
         try {
             Files.write(path, movie.getBytes());
@@ -152,17 +152,20 @@ public class MovieServiceImpl implements MovieServiceInterface {
         Movie movieEntity = new Movie();
         movieEntity.setTitle(title);
         movieEntity.setDuration(duration);
-        movieEntity.setImage_path(image.getName() + ".jpeg");
+        movieEntity.setImage_path(image.getOriginalFilename());
         if (localDateValidator.isValid(releaseDate)) {
             movieEntity.setRelease_date(LocalDate.parse(releaseDate));
         } else {
             throw new InvalidFieldException("Invalid release date: " + releaseDate);
         }
-        movieEntity.setContent(content);
-        movieEntity.setLanguage_id(languageId);
+        movieEntity.setContent(movie.getOriginalFilename());
+        //movieEntity.setContent(content);
+        movieEntity.setLanguage(language);
         movieEntity.setDirector_id(directorId);
         movieEntity.setImdb_rating(imdbRating);
         movieEntity.setOverview(overview);
+        movieEntity.setPopularity(popularity);
+
 
         return movieConverter.convertEntityToDTO(movieRepository.save(movieEntity));
     }

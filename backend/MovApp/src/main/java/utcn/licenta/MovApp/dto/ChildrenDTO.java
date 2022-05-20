@@ -5,25 +5,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class MovieDTO {
-   private Integer id;
-   private String title;
-   private Integer year;
-   private Integer duration;
-   private LocalDate release_date;
-   private String image_path;
-   private String overview;
-   private Integer imdb_rating;
-   private String content;
-   private Integer popularity;
+public class ChildrenDTO {
 
-    public Integer getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(Integer popularity) {
-        this.popularity = popularity;
-    }
+    private Integer id;
+    private String title;
+    private Integer duration;
+    private LocalDate release_date;
+    private String image_path;
+    private String overview;
+    private Integer rating;
+    private String content;
+    private Integer popularity;
+    private String language;
 
     public Integer getId() {
         return id;
@@ -39,14 +32,6 @@ public class MovieDTO {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
     }
 
     public Integer getDuration() {
@@ -81,12 +66,12 @@ public class MovieDTO {
         this.overview = overview;
     }
 
-    public Integer getImdb_rating() {
-        return imdb_rating;
+    public Integer getRating() {
+        return rating;
     }
 
-    public void setImdb_rating(Integer imdb_rating) {
-        this.imdb_rating = imdb_rating;
+    public void setRating(Integer rating) {
+        this.rating = rating;
     }
 
     public String getContent() {
@@ -95,5 +80,21 @@ public class MovieDTO {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Integer popularity) {
+        this.popularity = popularity;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

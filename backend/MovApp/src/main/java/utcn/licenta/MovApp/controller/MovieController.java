@@ -83,12 +83,13 @@ public class MovieController {
                                   @RequestParam(required = false) Integer duration,
                                   @RequestParam(required = false) String release_date,
                                   @RequestParam(required = false) String content,
-                                  @RequestParam(required = false) Integer languageId,
+                                  @RequestParam(required = false) String language,
                                   @RequestParam(required = false) Integer directorId,
                                   @RequestParam(required = false) Integer imdbRating,
+                                  @RequestParam(required = false) Integer popularity,
                                   @RequestParam(required = false) String overview) throws MimeTypeException, InvalidFieldException {
-        MovieDTO createdMovie = movieService.save(movie, image, title, duration, release_date, content, languageId,
-                directorId, imdbRating, overview);
+        MovieDTO createdMovie = movieService.save(movie, image, title, duration, release_date, content, language,
+                directorId, imdbRating, overview, popularity);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMovie);// TODO: 12.05.2022 create uri
     }
 
