@@ -105,11 +105,12 @@ public class MovieController {
                                     @RequestParam(required = false) String language,
                                     @RequestParam(required = false) Integer directorId,
                                     @RequestParam(required = false) Integer imdbRating,
-                                    @RequestParam(required = false) String overview)
+                                    @RequestParam(required = false) String overview,
+                                    @RequestParam(required = false) Integer popularity)
             throws MimeTypeException, InvalidFieldException, MovieNotFoundException {
 
         MovieDTO createdMovie = movieService.update(movieId, movie, image, title, duration, release_date, content, language,
-                directorId, imdbRating, overview);
+                directorId, imdbRating, overview, popularity);
 
         return ResponseEntity.ok(createdMovie);
     }

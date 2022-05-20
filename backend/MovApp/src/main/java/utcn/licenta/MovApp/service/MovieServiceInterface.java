@@ -36,5 +36,5 @@ public interface MovieServiceInterface {
 
     Collection<Movie> getAllWatchLaterMovies(Long id);
 
-    MovieDTO update(Integer movieId, MultipartFile movie, MultipartFile image, String title, Integer duration, String release_date, String content, String language, Integer directorId, Integer imdbRating, String overview) throws MovieNotFoundException, MimeTypeException, InvalidFieldException;
+    MovieDTO update(Integer movieId, MultipartFile movie, MultipartFile image, String title, Integer duration, String releaseDate, String content, String language, Integer directorId, Integer imdbRating, String overview, Integer popularity) throws MovieNotFoundException, MimeTypeException, InvalidFieldException;
 }

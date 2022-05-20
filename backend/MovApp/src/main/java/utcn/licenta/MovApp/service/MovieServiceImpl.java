@@ -140,7 +140,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
                          String content, String language, Integer directorId, Integer imdbRating, String overview, Integer popularity)
             throws MimeTypeException, InvalidFieldException {
         // TODO: 12.05.2022 Add validation for the fields
-        Path path = Paths.get(BASE_MOVIE_NAME + movie.getOriginalFilename() );
+        Path path = Paths.get(BASE_MOVIE_NAME + movie.getOriginalFilename());
         Path imagePath = Paths.get(BASE_IMAGE_NAME + image.getOriginalFilename());
 
         try {
@@ -174,7 +174,8 @@ public class MovieServiceImpl implements MovieServiceInterface {
     @Override
     public MovieDTO update(Integer movieId, MultipartFile movie, MultipartFile image, String title, Integer duration,
                            String releaseDate, String content, String language, Integer directorId, Integer imdbRating,
-                           String overview) throws MovieNotFoundException, MimeTypeException, InvalidFieldException {
+                           String overview, Integer popularity)
+            throws MovieNotFoundException, MimeTypeException, InvalidFieldException {
         Movie existingMovie = movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId));
 
         if (null != movie) {
@@ -224,6 +225,10 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
         if (null != overview) {
             existingMovie.setOverview(overview);
+        }
+
+        if (null != popularity) {
+            existingMovie.setPopularity(popularity);
         }
 
         Movie updatedMovie = movieRepository.save(existingMovie);
