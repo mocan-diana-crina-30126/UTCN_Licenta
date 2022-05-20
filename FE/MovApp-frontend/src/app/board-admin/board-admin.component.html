@@ -7,11 +7,20 @@
     >
       Remove Rows
     </button>
-    <button class="button-add-row" mat-button (click)="addRow()">
+    <button class="button-add-row" mat-button (click)="toggleAddForm()">
       Add Row
     </button>
   </div>
 </article>
+
+<form [formGroup]="form">
+<app-add-form [form]="form" *ngIf="displayForm"></app-add-form>
+</form>
+
+<form [formGroup]="editForm">
+  <app-edit-form [editForm]="editForm" *ngIf="displayEditForm"></app-edit-form>
+</form>
+
 <table mat-table [dataSource]="dataSource">
   <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
     <th mat-header-cell *matHeaderCellDef>
@@ -25,7 +34,7 @@
           ></mat-checkbox>
         </ng-container>
         <div class="btn-edit" *ngSwitchCase="'isEdit'">
-          <button mat-button (click)="element.isEdit = !element.isEdit">
+          <button mat-button (click)="editRow(element)">
             Edit
           </button>
           <button
@@ -42,13 +51,14 @@
         <span *ngSwitchDefault>
           {{ element[col.key] }}
         </span>
+
       </div>
       <div [ngSwitch]="col.type" *ngIf="element.isEdit">
         <div *ngSwitchCase="'isSelected'"></div>
         <div class="btn-edit" *ngSwitchCase="'isEdit'">
           <button
             mat-button
-            (click)="editRow(element)"
+
             [disabled]="disableSubmit(element.id)"
           >
             Done
@@ -80,9 +90,19 @@
             [(ngModel)]="element[col.key]"
             (change)="inputHandler($event, element.id, col.key)"
           />
-
         </mat-form-field>
+<!--        <mat-form-field class="form-input" *ngSwitchCase="'movie'" appearance="fill">-->
+<!--          <mat-label>Choose a movie</mat-label>-->
+<!--          <input type="file" name="movie" (change)="onMovieSelect($event)" />-->
+<!--        </mat-form-field>-->
+<!--        <mat-form-field class="form-input" *ngSwitchCase="'image'" appearance="fill">-->
+<!--          <mat-label>Choose an image</mat-label>-->
+<!--          <input type="file" name="image" (change)="onImageSelect($event)" />-->
+<!--        </mat-form-field>-->
+
+
       </div>
+
     </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

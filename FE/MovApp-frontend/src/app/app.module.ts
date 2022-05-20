@@ -62,6 +62,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { AddFormComponent } from './add-form/add-form.component';
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 
 @NgModule({
@@ -88,7 +90,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     WatchLaterComponent,
     ConfirmationDialogComponent,
     SuccessfullyDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    AddFormComponent,
+    EditFormComponent
 
   ],
   imports: [

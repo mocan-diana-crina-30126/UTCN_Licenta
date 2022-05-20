@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewEncapsulation, DefaultIterableDiffer} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, DefaultIterableDiffer, Input} from '@angular/core';
 import {HttpResponse, HttpEventType, HttpErrorResponse} from '@angular/common/http';
 import {UploadFileService} from '../services/upload-file.service';
 import {MovieService} from "../services/movie.service";
@@ -6,6 +6,8 @@ import {Movie, MovieColumns} from "../models/movie";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-board-admin',
@@ -19,14 +21,32 @@ export class BoardAdminComponent implements OnInit {
   dataSource = new MatTableDataSource<Movie>();
   valid: any = {};
 
-  constructor(public dialog: MatDialog, private movieService: MovieService) {
+  form!: FormGroup;
+  displayForm: boolean = false;
+
+  editForm!: FormGroup;
+  displayEditForm: boolean = false;
+
+
+  constructor(public dialog: MatDialog, private movieService: MovieService,  private formBuilder: FormBuilder) {
   }
 
 
   ngOnInit(): void {
 
     this.getListOfMovies();
+    this.form = this.formBuilder.group({
+      title: '',
+      duration: '',
+      releaseDate: '',
+      imdbRating: '',
+      popularity: '',
+      movie: '',
+      image: ''
+
+    });
   }
+
 
 
   public getListOfMovies(): void {
@@ -40,35 +60,23 @@ export class BoardAdminComponent implements OnInit {
 
   }
 
-  editRow(row: Movie) {
-    if (row.id === 0) {
-      this.movieService.addMovie(row.content, row.image_path, row.title, row.duration, row.release_date,row.imdb_rating, row.popularity).subscribe((newMovie: Movie) => {
-        row.id = newMovie.id;
-        row.isEdit = false;
-      })
-    } else {
-      //this.movieService.updatMovie(row).subscribe(() => (row.isEdit = false));
-    }
+  editRow(movie: Movie) {
+    console.log(movie);
+    this.editForm = this.formBuilder.group({
+      title: movie.title,
+      duration: movie.duration,
+      releaseDate: movie.release_date,
+      imdbRating: movie.imdb_rating,
+      popularity: movie.popularity,
+      movie: movie.movie,
+      image: movie.image,
+      id: movie.id
+    });
+    this.displayEditForm = true;
   }
 
-  addRow() {
-    const newRow: Movie = {
-      id: 0,
-      title: '',
-      duration: 0,
-      release_date: new Date(Date.now()),
-      imdb_rating: 0,
-      popularity: 0,
-      overview: '',
-      content: '',
-      image_path: '',
-      director_id: 0,
-      language: '',
-      genres: [],
-      isEdit: true,
-      isSelected: false,
-    };
-    this.dataSource.data = [newRow, ...this.dataSource.data];
+  toggleAddForm() {
+    this.displayForm = !this.displayForm;
   }
 
   removeRow(id: number) {
@@ -108,5 +116,6 @@ export class BoardAdminComponent implements OnInit {
     }
     return false;
   }
+
 
 }

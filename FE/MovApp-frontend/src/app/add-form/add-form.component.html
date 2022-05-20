@@ -1,0 +1,55 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+
+  <div>
+    <label for="title">
+      Title
+    </label>
+    <input id="title" type="text" formControlName="title">
+  </div>
+
+  <div>
+    <label for="duration">
+      Duration
+    </label>
+    <input id="duration" type="text" formControlName="duration">
+  </div>
+
+  <div>
+    <label for="releaseDate">
+      Release Date
+    </label>
+    <input id="releaseDate" type="text" formControlName="releaseDate">
+  </div>
+
+  <div>
+    <label for="imdbRating">
+      Rating
+    </label>
+    <input id="imdbRating" type="text" formControlName="imdbRating">
+  </div>
+
+  <div>
+    <label for="popularity">
+      Popularity
+    </label>
+    <input id="popularity" type="text" formControlName="popularity">
+  </div>
+
+  <div>
+    <label for="movie">
+      Movie
+    </label>
+    <input id="movie" type="file" formControlName="movie" (change)="onMovieSelected($event)">
+  </div>
+
+  <div>
+    <label for="image">
+      Image
+    </label>
+    <input id="image" type="file" formControlName="image" (change)="onImageSelected($event)">
+  </div>
+
+
+  <button class="button" type="submit" >Add</button>
+
+</form>

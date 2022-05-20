@@ -2,7 +2,9 @@ package utcn.licenta.MovApp.service;
 
 import org.apache.tika.mime.MimeTypeException;
 import org.apache.tika.mime.MimeTypes;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.exception.InvalidFieldException;
@@ -10,6 +12,8 @@ import utcn.licenta.MovApp.exception.MovieNotFoundException;
 import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.model.User;
 import utcn.licenta.MovApp.repository.MovieRepository;
+import utcn.licenta.MovApp.repository.UserRepository;
+import utcn.licenta.MovApp.security.services.UserDetailsImpl;
 import utcn.licenta.MovApp.service.converter.MovieConverter;
 import utcn.licenta.MovApp.service.vlidator.LocalDateValidator;
 
@@ -29,14 +33,16 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
 
     private final MovieRepository movieRepository;
+    private final UserRepository userRepository;
     private final MovieConverter movieConverter;
     private final LocalDateValidator localDateValidator;
     private static final String BASE_MOVIE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\videos\\";
     private static final String BASE_IMAGE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\images\\";
     private static final MimeTypes ALL_TYPES = MimeTypes.getDefaultMimeTypes();
 
-    public MovieServiceImpl(MovieRepository movieRepository, MovieConverter movieConverter, LocalDateValidator localDateValidator) {
+    public MovieServiceImpl(MovieRepository movieRepository, UserRepository userRepository, MovieConverter movieConverter, LocalDateValidator localDateValidator) {
         this.movieRepository = movieRepository;
+        this.userRepository = userRepository;
         this.movieConverter = movieConverter;
         this.localDateValidator = localDateValidator;
     }
@@ -136,6 +142,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
 
     @Override
+    @Transactional
     public MovieDTO save(MultipartFile movie, MultipartFile image, String title, Integer duration, String releaseDate,
                          String content, String language, Integer directorId, Integer imdbRating, String overview, Integer popularity)
             throws InvalidFieldException {
@@ -162,7 +169,6 @@ public class MovieServiceImpl implements MovieServiceInterface {
         movieEntity.setContent(movie.getOriginalFilename());
         //movieEntity.setContent(content);
         movieEntity.setLanguage(language);
-        movieEntity.setDirector_id(directorId);
         movieEntity.setImdb_rating(imdbRating);
         movieEntity.setOverview(overview);
         movieEntity.setPopularity(popularity);
@@ -242,6 +248,19 @@ public class MovieServiceImpl implements MovieServiceInterface {
         if (movieFromDb == null) {
             throw new MovieNotFoundException(id);
         }
+        List<User> users = movieRepository.findAllUsersThatHaveMovieAsFavorite(id);
+        users.forEach(user -> user.getFavorites().stream()
+                .filter(movie -> movie.getId().equals(id))
+                .findFirst()
+                .ifPresent(movie -> user.getFavorites().remove(movie)));
+
+        userRepository.saveAll(users);
+        List<User> usersWL = movieRepository.findAllUsersThatHaveMovieAsWatchLater(id);
+        usersWL.forEach(user -> user.getWatchLater().stream()
+                .filter(movie -> movie.getId().equals(id))
+                .findFirst()
+                .ifPresent(movie -> user.getWatchLater().remove(movie)));
+        userRepository.saveAll(usersWL);
         movieRepository.delete(movieFromDb);
     }
 
