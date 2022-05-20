@@ -2,6 +2,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
+import{MatNativeDateModule} from "@angular/material/core";
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -23,6 +25,7 @@ import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { SliderComponent } from './main-page/components/slider/slider.component';
 import { FooterComponent } from './main-page/components/footer/footer.component';
@@ -55,6 +58,10 @@ import {FavoritesListComponent} from "./favorites-list/favorites-list.component"
 import { WatchLaterComponent } from './watch-later/watch-later.component';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { SuccessfullyDialogComponent } from './successfully-dialog/successfully-dialog.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -80,31 +87,37 @@ import { SuccessfullyDialogComponent } from './successfully-dialog/successfully-
     BoardAdminComponent,
     WatchLaterComponent,
     ConfirmationDialogComponent,
-    SuccessfullyDialogComponent
+    SuccessfullyDialogComponent,
+    ConfirmDialogComponent
 
   ],
-    imports: [
-        BrowserModule,
-        HttpClientModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatBadgeModule,
-        SlickCarouselModule,
-        HttpClientModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatButtonModule,
-        FormsModule,
-        MatChipsModule,
-        MatCardModule,
-        PipeModule,
-        FlexLayoutModule,
-        ReactiveFormsModule,
-        MatToolbarModule,
-        MatTooltipModule,
-        MatDialogModule
-    ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatBadgeModule,
+    SlickCarouselModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    MatChipsModule,
+    MatCardModule,
+    PipeModule,
+    FlexLayoutModule,
+    ReactiveFormsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatTabsModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatNativeDateModule
+  ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmationDialogComponent],

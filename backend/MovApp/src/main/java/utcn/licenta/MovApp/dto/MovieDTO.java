@@ -15,6 +15,15 @@ public class MovieDTO {
    private String overview;
    private Integer imdb_rating;
    private String content;
+   private Integer popularity;
+
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Integer popularity) {
+        this.popularity = popularity;
+    }
 
     public Integer getId() {
         return id;

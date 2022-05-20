@@ -1,6 +1,6 @@
 <div class="listing">
   <div class="listing__head">
-    <h2 class="listing__title" >Favorites Movies</h2>
+    <h2 class="listing__title" >Favorite Movies</h2>
   </div>
 
   <h3 style="color: red;" *ngIf="movie.length==1; else elseBlock">{{movie.length}} result found</h3>
@@ -16,13 +16,13 @@
       </div>
       <img src='assets\images\{{m?.image_path}}'>
 
-      <h6>{{m?.title}}</h6>
+      <h6 style="color: #FF0066 ;text-align: center">{{m?.title}}</h6>
       <button mat-fab color="primary" (click)="deleteFavoriteMovie(m.id)" style="position: absolute; right: 0px; top: 0px">
         <mat-icon>delete</mat-icon>
       </button>
 <!--      <button (click)="deleteFavoriteMovie(m.id)">Delete</button>-->
       <p class="rate"><i class="material-icons">star</i><span>{{m?.imdb_rating}}</span> /10</p>
-      <p class="year"><span>{{m?.release_date | date: 'yyyy'}}</span>
+      <p class="year" style="color: lime"><span>{{m?.release_date | date: 'yyyy'}}</span>
       </p>
 
     </div>

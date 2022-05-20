@@ -23,8 +23,8 @@ public interface MovieServiceInterface {
     Collection<MovieDTO> getMovieGenre(Integer id);
     List<String> getMovieContent(Integer id);
     MovieDTO save(MultipartFile movie, MultipartFile image, String title, Integer duration, String releaseDate,
-                  String content, Integer languageId, Integer directorId, Integer imdbRating,
-                  String overview) throws MimeTypeException, InvalidFieldException;
+                  String content, String language, Integer directorId, Integer imdbRating,
+                  String overview, Integer popularity) throws MimeTypeException, InvalidFieldException;
 
     void deleteMovieById(Integer id) throws MovieNotFoundException;
 

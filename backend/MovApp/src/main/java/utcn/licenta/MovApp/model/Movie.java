@@ -127,14 +127,6 @@ public class Movie {
         this.imdb_rating = imdb_rating;
     }
 
-    public String getLanguage_id() {
-        return language;
-    }
-
-    public void setLanguage_id(Integer language_id) {
-        this.language = language;
-    }
-
     public Integer getDirector_id() {
         return director_id;
     }
