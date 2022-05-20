@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.exception.InvalidFieldException;
 import utcn.licenta.MovApp.exception.MovieNotFoundException;
-import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.security.authorization.HasAdminRole;
 import utcn.licenta.MovApp.service.MovieServiceImpl;
 
@@ -100,7 +99,7 @@ public class MovieController {
                                     @RequestParam(required = false) MultipartFile image,
                                     @RequestParam(required = false) String title,
                                     @RequestParam(required = false) Integer duration,
-                                    @RequestParam(required = false) String release_date,
+                                    @RequestParam(required = false) String releaseDate,
                                     @RequestParam(required = false) String content,
                                     @RequestParam(required = false) String language,
                                     @RequestParam(required = false) Integer directorId,
@@ -109,7 +108,7 @@ public class MovieController {
                                     @RequestParam(required = false) Integer popularity)
             throws MimeTypeException, InvalidFieldException, MovieNotFoundException {
 
-        MovieDTO createdMovie = movieService.update(movieId, movie, image, title, duration, release_date, content, language,
+        MovieDTO createdMovie = movieService.update(movieId, movie, image, title, duration, releaseDate, content, language,
                 directorId, imdbRating, overview, popularity);
 
         return ResponseEntity.ok(createdMovie);
