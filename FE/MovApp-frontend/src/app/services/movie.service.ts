@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, Subject, Subscription } from "rxjs";
+import {BehaviorSubject, forkJoin, Observable, Subject, Subscription} from "rxjs";
 import { Movie } from "../models/movie";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import { environment } from "src/environments/environment";
@@ -97,5 +97,28 @@ export class MovieService {
       return this.http.get<String[]>(`${this.apiServerUrl}/movies/video/${id}`,this.httpOptions);
   }
 
+  public addMovie(content: string, image_path: string, title: string, duration: number, release_date: Date, imdb_rating: number, popularity: number): Observable<Movie> {
+      return this.http.post<Movie>(`${this.apiServerUrl}/movies`, {
+        content,
+        image_path,
+        title,
+        duration,
+        release_date,
+        imdb_rating,
+        popularity
+      });
+  }
+
+  public deleteMovie(id: number): Observable<Movie> {
+      return this.http.delete<Movie>(`${this.apiServerUrl}/movies/${id}`);
+  }
+
+  public deleteMovies(movies: Movie[]): Observable<Movie[]>{
+      return forkJoin(
+        movies.map((movie) =>
+        this.http.delete<Movie>(`${this.apiServerUrl}/${movie.id}`)
+      )
+  );
+  }
 
 }

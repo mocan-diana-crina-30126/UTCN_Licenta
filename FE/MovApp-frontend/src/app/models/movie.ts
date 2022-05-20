@@ -11,37 +11,91 @@ export interface Movie {
     content: string;
     popularity: number;
     genres: [];
+    isSelected: boolean;
+    isEdit: boolean;
 }
+
+export const MovieColumns = [
+  {
+    key: 'isSelected',
+    type: 'isSelected',
+    label: '',
+  },
+  {
+    key: 'title',
+    type: 'text',
+    label: 'Title',
+  },
+  {
+    key: 'duration',
+    type: 'number',
+    label: 'Duration',
+  },
+  {
+    key: 'release_date',
+    type: 'date',
+    label: 'Release date',
+  },
+  {
+    key: 'imdb_rating',
+    type: 'number',
+    label: 'Rating',
+  },
+  {
+    key: 'popularity',
+    type: 'number',
+    label: 'Popularity',
+  },
+  // {
+  //   key: 'overview',
+  //   type: 'text',
+  //   label: 'Overview',
+  // },
+  {
+    key: 'content',
+    type: 'file',
+    label: 'Video',
+  },
+  {
+    key: 'image_path',
+    type: 'file',
+    label: 'Image',
+  },
+  {
+    key: 'isEdit',
+    type: 'isEdit',
+    label: '',
+  }
+]
 
 // export interface Movies extends Array<Movie>{}
 
 // export interface Movie {
-//     results?: (ResultsEntity)[] | null;
-//     page: number;
-//     total_results: number;
-//     dates: Dates;
-//     total_pages: number;
+//     results?: (ResultsEntity)[] | null'
+//     page: number'
+//     total_results: number'
+//     dates: Dates'
+//     total_pages: number'
 //   }
 //   export interface ResultsEntity {
-//     popularity: number;
-//     vote_count: number;
-//     video: boolean;
-//     poster_path: string;
-//     content: string;
-//     image_path: string;
-//     id: number;
-//     adult: boolean;
-//     backdrop_path: string;
-//     original_language: string;
-//     original_title: string;
-//     genre_ids?: (number)[] | null;
-//     title: string;
-//     vote_average: number;
-//     overview: string;
-//     release_date: string;
+//     popularity: number'
+//     vote_count: number'
+//     video: boolean'
+//     poster_path: string'
+//     content: string'
+//     image_path: string'
+//     id: number'
+//     adult: boolean'
+//     backdrop_path: string'
+//     original_language: string'
+//     original_title: string'
+//     genre_ids?: (number)[] | null'
+//     title: string'
+//     vote_average: number'
+//     overview: string'
+//     release_date: string'
 //   }
 //   export interface Dates {
-//     maximum: string;
-//     minimum: string;
+//     maximum: string'
+//     minimum: string'
 //   }
-  
