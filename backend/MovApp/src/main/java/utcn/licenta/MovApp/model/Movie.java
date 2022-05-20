@@ -27,17 +27,14 @@ public class Movie {
     @Column(name = "image_path", nullable = false, length = 255)
     private String image_path;
 
-    @Column(name = "overview", nullable = false, length = 255)
+    @Column(name = "overview", nullable = true, length = 255)
     private String overview;
 
     @Column(name = "imdb_rating", nullable = false)
     private Integer imdb_rating;
 
-    @Column(name = "language", nullable = false)
+    @Column(name = "language", nullable = true)
     private String language;
-
-    @Column(name = "director_id", nullable = false)
-    private Integer director_id;
 
     @Column(name = "content", nullable = false, length = 255)
     private String content;
@@ -125,14 +122,6 @@ public class Movie {
 
     public void setImdb_rating(Integer imdb_rating) {
         this.imdb_rating = imdb_rating;
-    }
-
-    public Integer getDirector_id() {
-        return director_id;
-    }
-
-    public void setDirector_id(Integer director_id) {
-        this.director_id = director_id;
     }
 
     public String getContent() {

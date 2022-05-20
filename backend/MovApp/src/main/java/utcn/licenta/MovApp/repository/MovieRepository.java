@@ -74,4 +74,14 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
             "join fetch user.watchLater " +
             "where user.id =:userId")
     User findAllWatchLaterByUserId(@Param("userId") Long userId);
+
+    @Query("select user from User user " +
+            "join fetch user.favorites f " +
+            "where f.id =:id")
+    List<User> findAllUsersThatHaveMovieAsFavorite(Integer id);
+
+    @Query("select user from User user " +
+            "join fetch user.watchLater wl " +
+            "where wl.id =:id")
+    List<User> findAllUsersThatHaveMovieAsWatchLater(Integer id);
 }
