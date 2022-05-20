@@ -3,6 +3,8 @@ export interface Movie {
     title: string;
     duration: number;
     release_date: Date;
+    movie: any;
+    image: any;
     image_path: string;
     overview: string;
     imdb_rating: number;
@@ -51,16 +53,16 @@ export const MovieColumns = [
   //   type: 'text',
   //   label: 'Overview',
   // },
-  {
-    key: 'content',
-    type: 'file',
-    label: 'Video',
-  },
-  {
-    key: 'image_path',
-    type: 'file',
-    label: 'Image',
-  },
+  // {
+  //   key: 'movie',
+  //   type: 'movie',
+  //   label: 'Video',
+  // },
+  // {
+  //   key: 'image',
+  //   type: 'image',
+  //   label: 'Image',
+  // },
   {
     key: 'isEdit',
     type: 'isEdit',
