@@ -92,12 +92,25 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdMovie);// TODO: 12.05.2022 create uri
     }
 
-    @PutMapping("/")
-    public ResponseEntity<?> update(@RequestBody Movie movie) throws MovieNotFoundException {
-        if (movie == null) {
-            return ResponseEntity.badRequest().body("The provided movie is not valid");
-        }
-        return ResponseEntity.ok().body(movieService.update(movie));
+    @HasAdminRole
+    @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> update(@PathVariable("id") Integer movieId,
+                                    @RequestParam(required = false) MultipartFile movie,
+                                    @RequestParam(required = false) MultipartFile image,
+                                    @RequestParam(required = false) String title,
+                                    @RequestParam(required = false) Integer duration,
+                                    @RequestParam(required = false) String release_date,
+                                    @RequestParam(required = false) String content,
+                                    @RequestParam(required = false) String language,
+                                    @RequestParam(required = false) Integer directorId,
+                                    @RequestParam(required = false) Integer imdbRating,
+                                    @RequestParam(required = false) String overview)
+            throws MimeTypeException, InvalidFieldException, MovieNotFoundException {
+
+        MovieDTO createdMovie = movieService.update(movieId, movie, image, title, duration, release_date, content, language,
+                directorId, imdbRating, overview);
+
+        return ResponseEntity.ok(createdMovie);
     }
 
     @HasAdminRole

@@ -26,7 +26,6 @@ public interface MovieServiceInterface {
                   String content, Integer languageId, Integer directorId, Integer imdbRating,
                   String overview) throws MimeTypeException, InvalidFieldException;
 
-    Movie update(Movie movie) throws MovieNotFoundException;
     void deleteMovieById(Integer id) throws MovieNotFoundException;
 
     List<Movie> getMovieByGenre(String genre);
@@ -36,4 +35,6 @@ public interface MovieServiceInterface {
     Collection<Movie> getAllFavoritesMovies(Long userId);
 
     Collection<Movie> getAllWatchLaterMovies(Long id);
+
+    MovieDTO update(Integer movieId, MultipartFile movie, MultipartFile image, String title, Integer duration, String release_date, String content, String language, Integer directorId, Integer imdbRating, String overview) throws MovieNotFoundException, MimeTypeException, InvalidFieldException;
 }

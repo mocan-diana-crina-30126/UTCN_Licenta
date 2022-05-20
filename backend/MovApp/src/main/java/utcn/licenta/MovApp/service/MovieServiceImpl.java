@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
@@ -168,13 +169,63 @@ public class MovieServiceImpl implements MovieServiceInterface {
     }
 
     @Override
-    public Movie update(Movie movie) throws MovieNotFoundException {
-        Movie movieFromDb = movieRepository.findById(movie.getId()).orElse(null);
-        if (movieFromDb == null) {
-            throw new MovieNotFoundException(movie.getId());
+    public MovieDTO update(Integer movieId, MultipartFile movie, MultipartFile image, String title, Integer duration,
+                           String releaseDate, String content, String language, Integer directorId, Integer imdbRating,
+                           String overview) throws MovieNotFoundException, MimeTypeException, InvalidFieldException {
+        Movie existingMovie = movieRepository.findById(movieId).orElseThrow(() -> new MovieNotFoundException(movieId));
+
+        if (null != movie) {
+            Path moviePath = Paths.get(BASE_MOVIE_NAME + movie.getName() + ALL_TYPES.forName(movie.getContentType()).getExtension());
+            try {
+                Files.write(moviePath, movie.getBytes(), StandardOpenOption.CREATE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        movie.setId(movieFromDb.getId());
-        return movieRepository.save(movie);
+
+        if (null != image) {
+            Path imagePath = Paths.get(BASE_IMAGE_NAME + image.getName() + ALL_TYPES.forName(image.getContentType()).getExtension());
+            try {
+                Files.write(imagePath, image.getBytes(), StandardOpenOption.CREATE);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            existingMovie.setImage_path(image.getName() + ".jpeg"); // TODO: 20.05.2022 add custom types
+        }
+
+        if (null != title) {
+            existingMovie.setTitle(title);
+        }
+
+        if (null != duration) {
+            existingMovie.setDuration(duration);
+        }
+
+        if (localDateValidator.isValid(releaseDate)) {
+            existingMovie.setRelease_date(LocalDate.parse(releaseDate));
+        } else {
+            throw new InvalidFieldException("Invalid release date: " + releaseDate);
+        }
+
+        if (null != content) {
+            existingMovie.setContent(content);
+        }
+
+        if (null != language) {
+            existingMovie.setLanguage(language);
+        }
+
+        if (null != imdbRating) {
+            existingMovie.setImdb_rating(imdbRating);
+        }
+
+        if (null != overview) {
+            existingMovie.setOverview(overview);
+        }
+
+        Movie updatedMovie = movieRepository.save(existingMovie);
+
+        return movieConverter.convertEntityToDTO(updatedMovie);
     }
 
     @Override
