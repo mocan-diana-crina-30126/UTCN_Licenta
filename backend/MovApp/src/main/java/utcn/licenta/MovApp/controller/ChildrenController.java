@@ -18,14 +18,14 @@ public class ChildrenController {
     private ChildrenServiceImpl childrenService;
 
     @GetMapping("/all")
-    public Collection<ChildrenDTO> getAllCartoons(){
+    public Collection<ChildrenDTO> getAllCartoons() {
 
         return childrenService.getAllCartoons();
 
     }
 
     @GetMapping("/video/{id}")
-    public List<String> getCartoonContent(@PathVariable("id") Integer id){
+    public List<String> getCartoonContent(@PathVariable("id") Integer id) {
         return childrenService.getCartoonContent(id);
     }
 

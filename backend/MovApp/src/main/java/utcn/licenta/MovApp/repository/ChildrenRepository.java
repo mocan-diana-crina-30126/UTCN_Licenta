@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import utcn.licenta.MovApp.model.Children;
-import utcn.licenta.MovApp.model.Movie;
 
 import java.util.List;
 

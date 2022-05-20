@@ -3,7 +3,6 @@ package utcn.licenta.MovApp.service;
 import utcn.licenta.MovApp.dto.MovieDTO;
 
 import java.util.Collection;
-import java.util.List;
 
 public interface FavoritesServiceInterface {
 
@@ -11,5 +10,5 @@ public interface FavoritesServiceInterface {
 
     Collection<MovieDTO> getAllFavoritesMovies();
 
-  void deleteMovieFromFavorites(Integer movieId);
+    void deleteMovieFromFavorites(Integer movieId);
 }

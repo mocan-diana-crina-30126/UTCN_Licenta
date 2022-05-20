@@ -11,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.exception.InvalidFieldException;
 import utcn.licenta.MovApp.exception.MovieNotFoundException;
-import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.security.authorization.HasAdminRole;
 import utcn.licenta.MovApp.service.MovieServiceImpl;
 

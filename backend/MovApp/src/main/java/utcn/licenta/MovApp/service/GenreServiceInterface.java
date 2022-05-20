@@ -8,5 +8,6 @@ import java.util.List;
 public interface GenreServiceInterface {
 
     List<GenreDTO> getAllGenres();
+
     List<Genre> getGenre(Integer id);
 }

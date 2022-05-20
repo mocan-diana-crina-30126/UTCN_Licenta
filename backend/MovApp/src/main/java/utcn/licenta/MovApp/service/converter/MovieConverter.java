@@ -26,7 +26,7 @@ public class MovieConverter {
         return movieDTO;
     }
 
-    public Collection<MovieDTO> convertAll(Collection<Movie> movies){
+    public Collection<MovieDTO> convertAll(Collection<Movie> movies) {
         return movies.stream().map(this::convertEntityToDTO).collect(Collectors.toList());
     }
 }

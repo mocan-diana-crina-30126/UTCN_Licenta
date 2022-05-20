@@ -1,15 +1,16 @@
 package utcn.licenta.MovApp.service.converter;
 
-import java.util.Collection;
-import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 import utcn.licenta.MovApp.dto.ChildrenDTO;
 import utcn.licenta.MovApp.model.Children;
 
+import java.util.Collection;
+import java.util.stream.Collectors;
+
 @Component
 public class ChildrenConverter {
 
-    public ChildrenDTO convertEntityToDTO(Children children){
+    public ChildrenDTO convertEntityToDTO(Children children) {
 
         ChildrenDTO childrenDTO = new ChildrenDTO();
         childrenDTO.setId(children.getId());
@@ -26,7 +27,7 @@ public class ChildrenConverter {
         return childrenDTO;
     }
 
-    public Collection<ChildrenDTO> convertAll(Collection<Children> children){
+    public Collection<ChildrenDTO> convertAll(Collection<Children> children) {
         return children.stream().map(this::convertEntityToDTO).collect(Collectors.toList());
     }
 

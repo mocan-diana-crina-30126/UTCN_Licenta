@@ -10,7 +10,9 @@ import java.util.Optional;
 public interface ChildrenServiceInterface {
 
     Collection<ChildrenDTO> getAllCartoons();
+
     List<String> getCartoonContent(Integer id);
+
     Optional<Children> getCartoonById(Integer cartoonId);
 
 }

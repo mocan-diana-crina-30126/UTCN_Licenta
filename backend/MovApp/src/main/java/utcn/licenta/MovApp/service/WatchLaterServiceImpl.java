@@ -14,7 +14,7 @@ import utcn.licenta.MovApp.service.converter.MovieConverter;
 import java.util.Collection;
 
 @Service
-public class WatchLaterServiceImpl implements WatchLaterServiceInterface{
+public class WatchLaterServiceImpl implements WatchLaterServiceInterface {
 
     private final UserRepository userRepository;
     private final MovieRepository movieRepository;
@@ -59,10 +59,10 @@ public class WatchLaterServiceImpl implements WatchLaterServiceInterface{
 
     @Transactional
     @Override
-    public void deleteMovieFromWatchLater(Integer movieId){
+    public void deleteMovieFromWatchLater(Integer movieId) {
         UserDetailsImpl principal = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User loggedInUser = movieRepository.findAllWatchLaterByUserId(principal.getId());
-        if (loggedInUser != null){
+        if (loggedInUser != null) {
             Collection<Movie> allWatchLaterMovies = loggedInUser.getWatchLater();
             allWatchLaterMovies.stream()
                     .filter(movie -> movie.getId().equals(movieId))

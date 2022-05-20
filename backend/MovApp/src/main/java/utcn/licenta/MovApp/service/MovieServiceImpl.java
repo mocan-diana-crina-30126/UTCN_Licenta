@@ -32,7 +32,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
     private final MovieConverter movieConverter;
     private final LocalDateValidator localDateValidator;
     private static final String BASE_MOVIE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\videos\\";
-    private String BASE_IMAGE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\images\\";
+    private static final String BASE_IMAGE_NAME = "D:\\LICENTA\\UTCN_Licenta\\FE\\MovApp-frontend\\src\\assets\\images\\";
     private static final MimeTypes ALL_TYPES = MimeTypes.getDefaultMimeTypes();
 
     public MovieServiceImpl(MovieRepository movieRepository, MovieConverter movieConverter, LocalDateValidator localDateValidator) {
@@ -138,7 +138,7 @@ public class MovieServiceImpl implements MovieServiceInterface {
     @Override
     public MovieDTO save(MultipartFile movie, MultipartFile image, String title, Integer duration, String releaseDate,
                          String content, String language, Integer directorId, Integer imdbRating, String overview, Integer popularity)
-            throws MimeTypeException, InvalidFieldException {
+            throws InvalidFieldException {
         // TODO: 12.05.2022 Add validation for the fields
         Path path = Paths.get(BASE_MOVIE_NAME + movie.getOriginalFilename());
         Path imagePath = Paths.get(BASE_IMAGE_NAME + image.getOriginalFilename());

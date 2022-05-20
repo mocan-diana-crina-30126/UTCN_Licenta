@@ -1,12 +1,11 @@
 package utcn.licenta.MovApp.model;
 
-import utcn.licenta.MovApp.dto.MovieDTO;
-
-import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users",
@@ -36,11 +35,11 @@ public class User {
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "favorites_list", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    private Set<Movie> favorites = new HashSet<>();
+    private final Set<Movie> favorites = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "watch_later", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
-    private Set<Movie> watchLater = new HashSet<>();
+    private final Set<Movie> watchLater = new HashSet<>();
 
     public User() {
     }
@@ -104,7 +103,7 @@ public class User {
         this.favorites.add(movie);
     }
 
-    public void addWatchLaterMovie(Movie movie){
+    public void addWatchLaterMovie(Movie movie) {
         this.watchLater.add(movie);
     }
 }

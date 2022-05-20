@@ -3,11 +3,9 @@ package utcn.licenta.MovApp.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import utcn.licenta.MovApp.dto.MovieDTO;
-import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.service.FavoritesServiceInterface;
 
 import java.util.Collection;
-import java.util.List;
 
 
 @CrossOrigin
@@ -33,7 +31,7 @@ public class FavoritesListController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMovieFromFavorites(@PathVariable("id") Integer movieId){
+    public ResponseEntity<Void> deleteMovieFromFavorites(@PathVariable("id") Integer movieId) {
         service.deleteMovieFromFavorites(movieId);
         return ResponseEntity.noContent().build();
     }

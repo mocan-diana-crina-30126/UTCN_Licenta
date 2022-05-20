@@ -14,17 +14,26 @@ import java.util.Optional;
 public interface MovieServiceInterface {
 
     Collection<MovieDTO> getAllMovies();
+
     Collection<MovieDTO> getPopularMovies();
+
     Collection<MovieDTO> getTopRatedMovies();
+
     Collection<MovieDTO> getUpcomingMovies();
+
     Collection<MovieDTO> getTrendingMovies();
+
     Collection<MovieDTO> getOriginalMovies();
+
     Collection<MovieDTO> getMovieByTitle(String title);
+
     Collection<MovieDTO> getMovieGenre(Integer id);
+
     List<String> getMovieContent(Integer id);
+
     MovieDTO save(MultipartFile movie, MultipartFile image, String title, Integer duration, String releaseDate,
                   String content, String language, Integer directorId, Integer imdbRating,
-                  String overview, Integer popularity) throws MimeTypeException, InvalidFieldException;
+                  String overview, Integer popularity) throws InvalidFieldException;
 
     void deleteMovieById(Integer id) throws MovieNotFoundException;
 

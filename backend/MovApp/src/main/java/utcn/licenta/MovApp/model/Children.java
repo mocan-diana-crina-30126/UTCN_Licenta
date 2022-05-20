@@ -2,12 +2,9 @@ package utcn.licenta.MovApp.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name="children")
+@Table(name = "children")
 public class Children {
 
     @Id

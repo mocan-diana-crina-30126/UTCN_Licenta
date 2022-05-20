@@ -6,16 +6,16 @@ import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MovieDTO {
-   private Integer id;
-   private String title;
-   private Integer year;
-   private Integer duration;
-   private LocalDate release_date;
-   private String image_path;
-   private String overview;
-   private Integer imdb_rating;
-   private String content;
-   private Integer popularity;
+    private Integer id;
+    private String title;
+    private Integer year;
+    private Integer duration;
+    private LocalDate release_date;
+    private String image_path;
+    private String overview;
+    private Integer imdb_rating;
+    private String content;
+    private Integer popularity;
 
     public Integer getPopularity() {
         return popularity;

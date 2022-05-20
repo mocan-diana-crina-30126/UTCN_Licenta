@@ -9,10 +9,9 @@ import utcn.licenta.MovApp.model.User;
 import utcn.licenta.MovApp.repository.MovieRepository;
 import utcn.licenta.MovApp.repository.UserRepository;
 import utcn.licenta.MovApp.security.services.UserDetailsImpl;
+import utcn.licenta.MovApp.service.converter.MovieConverter;
 
 import java.util.Collection;
-
-import utcn.licenta.MovApp.service.converter.MovieConverter;
 
 @Service
 public class FavoritesServiceImpl implements FavoritesServiceInterface {

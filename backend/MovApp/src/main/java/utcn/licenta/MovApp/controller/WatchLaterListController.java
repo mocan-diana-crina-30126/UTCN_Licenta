@@ -20,19 +20,19 @@ public class WatchLaterListController {
     }
 
     @PostMapping()
-    public ResponseEntity<Void> addToWatchLater(@RequestBody Integer movieId){
+    public ResponseEntity<Void> addToWatchLater(@RequestBody Integer movieId) {
         service.addMovieToWatchLater(movieId);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/all")
-    public ResponseEntity<Collection<MovieDTO>> getAllWatchLaterMovies(){
+    public ResponseEntity<Collection<MovieDTO>> getAllWatchLaterMovies() {
         Collection<MovieDTO> allWatchLaterMovies = service.getAllWatchLaterMovies();
         return ResponseEntity.ok(allWatchLaterMovies);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteMovieFromWatchLater(@PathVariable("id") Integer movieId){
+    public ResponseEntity<Void> deleteMovieFromWatchLater(@PathVariable("id") Integer movieId) {
         service.deleteMovieFromWatchLater(movieId);
         return ResponseEntity.noContent().build();
     }

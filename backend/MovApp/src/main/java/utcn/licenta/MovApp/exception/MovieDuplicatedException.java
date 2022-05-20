@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
-public class MovieDuplicatedException extends Exception{
+public class MovieDuplicatedException extends Exception {
 
     private Integer mid;
 }
