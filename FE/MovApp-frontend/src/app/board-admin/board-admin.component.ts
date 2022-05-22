@@ -1,13 +1,15 @@
-import {Component, OnInit, ViewEncapsulation, DefaultIterableDiffer, Input} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, DefaultIterableDiffer, Input, ViewChild, ElementRef} from '@angular/core';
 import {HttpResponse, HttpEventType, HttpErrorResponse} from '@angular/common/http';
 import {UploadFileService} from '../services/upload-file.service';
 import {MovieService} from "../services/movie.service";
 import {Movie, MovieColumns} from "../models/movie";
 import {MatTableDataSource} from "@angular/material/table";
-import {MatDialog} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {Form, FormBuilder, FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
+import {AddDialogComponent} from "../add-dialog/add-dialog.component";
+import {EditDialogComponent} from "../edit-dialog/edit-dialog.component";
 
 @Component({
   selector: 'app-board-admin',
@@ -26,7 +28,7 @@ export class BoardAdminComponent implements OnInit {
 
   editForm!: FormGroup;
   displayEditForm: boolean = false;
-
+  edit: boolean = false;
 
   constructor(public dialog: MatDialog, private movieService: MovieService,  private formBuilder: FormBuilder) {
   }
@@ -45,9 +47,62 @@ export class BoardAdminComponent implements OnInit {
       image: ''
 
     });
+
+
   }
 
+  openDialog() {
 
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = this.form;
+
+    this.edit = true;
+
+    this.dialog.open(AddDialogComponent, dialogConfig);
+
+    const dialogRef = this.dialog.open(AddDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => console.log("Dialog output:", data)
+    );
+  }
+
+  openEditDialog(movie: Movie){
+
+    this.editForm = this.formBuilder.group({
+      title: movie.title,
+      duration: movie.duration,
+      releaseDate: movie.release_date,
+      imdbRating: movie.imdb_rating,
+      popularity: movie.popularity,
+      movie: movie.movie,
+      image: movie.image,
+      id: movie.id
+    });
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+
+
+    dialogConfig.data = this.editForm;
+    console.log("DATELE SUNT: ")
+    console.log(dialogConfig.data);
+
+    this.dialog.open(EditDialogComponent, dialogConfig);
+
+    const dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      data => console.log("Dialog output:", data)
+    );
+  }
 
   public getListOfMovies(): void {
 
@@ -61,22 +116,28 @@ export class BoardAdminComponent implements OnInit {
   }
 
   editRow(movie: Movie) {
-    console.log(movie);
-    this.editForm = this.formBuilder.group({
-      title: movie.title,
-      duration: movie.duration,
-      releaseDate: movie.release_date,
-      imdbRating: movie.imdb_rating,
-      popularity: movie.popularity,
-      movie: movie.movie,
-      image: movie.image,
-      id: movie.id
-    });
-    this.displayEditForm = true;
+    //console.log(movie);
+    // this.editForm = this.formBuilder.group({
+    //   title: movie.title,
+    //   duration: movie.duration,
+    //   releaseDate: movie.release_date,
+    //   imdbRating: movie.imdb_rating,
+    //   popularity: movie.popularity,
+    //   movie: movie.movie,
+    //   image: movie.image,
+    //   id: movie.id
+    // });
+
+
+    this.openEditDialog(movie);
+
+    this.displayEditForm = !this.displayEditForm;
+
   }
 
   toggleAddForm() {
     this.displayForm = !this.displayForm;
+    this.openDialog();
   }
 
   removeRow(id: number) {

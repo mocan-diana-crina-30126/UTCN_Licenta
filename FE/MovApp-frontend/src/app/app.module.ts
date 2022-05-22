@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
  import {SlickCarouselModule} from 'node_modules/ngx-slick-carousel';
+import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 
  import { HttpClientModule } from '@angular/common/http';
 
@@ -64,6 +65,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { AddFormComponent } from './add-form/add-form.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
+import { AddDialogComponent } from './add-dialog/add-dialog.component';
+import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
 
 
 @NgModule({
@@ -92,7 +95,9 @@ import { EditFormComponent } from './edit-form/edit-form.component';
     SuccessfullyDialogComponent,
     ConfirmDialogComponent,
     AddFormComponent,
-    EditFormComponent
+    EditFormComponent,
+    AddDialogComponent,
+    EditDialogComponent
 
   ],
   imports: [
@@ -120,11 +125,12 @@ import { EditFormComponent } from './edit-form/edit-form.component';
     MatTableModule,
     MatDatepickerModule,
     MatCheckboxModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MdbCheckboxModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmationDialogComponent],
+  entryComponents: [ConfirmationDialogComponent, AddDialogComponent],
   schemas: []
 })
 export class AppModule { }

@@ -8,6 +8,9 @@ table {
 }
 .btn-edit {
   text-align: right;
+  .mat-button:hover{
+     background-color: #2196f3;
+  }
 }
 h2 {
   text-align: center;
@@ -25,14 +28,24 @@ h2 {
 }
 
 .button-add-row {
-  background: #1b9e1b;
+  background:   #1b9e1b;
   color: #ffffff;
 }
 
+.button-add-row:hover {
+  background-color: lime ;
+}
+
+
+
 .button-remove-rows {
-  background: red;
+  background:  #c83126;
   color: #ffffff;
   margin-right: 5px;
+}
+
+.button-remove-rows:hover {
+  background-color: #ff1100;
 }
 
 .button-remove {

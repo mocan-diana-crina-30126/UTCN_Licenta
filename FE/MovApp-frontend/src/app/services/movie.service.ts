@@ -136,16 +136,16 @@ export class MovieService {
     );
   }
 
-  public editMovie(id:number,movie: any, image: any, title: string, duration: string, release_date: string, imdb_rating: string, popularity: string): Observable<Movie> {
+  public editMovie(id:number,movie: any, image: any, title: string, duration: number, release_date: Date, imdb_rating: number, popularity: number): Observable<Movie> {
 
     let fd = new FormData();
     fd.append('movie', movie);
     fd.append('image', image);
     fd.append('title', title);
-    fd.append('duration', duration);
-    fd.append('releaseDate', release_date);
-    fd.append('imdbRating', imdb_rating);
-    fd.append('popularity', popularity);
+    fd.append('duration', duration + '');
+    fd.append('releaseDate', release_date + '');
+    fd.append('imdbRating', imdb_rating + '') ;
+    fd.append('popularity', popularity + '');
 
     return this.http.put<Movie>(`${this.apiServerUrl}/movies/${id}`, fd);
 

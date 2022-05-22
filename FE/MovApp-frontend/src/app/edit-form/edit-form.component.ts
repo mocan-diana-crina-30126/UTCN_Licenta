@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MovieService} from "../services/movie.service";
+import {Movie} from "../models/movie";
 
 @Component({
   selector: 'app-edit-form',
@@ -17,6 +18,8 @@ export class EditFormComponent implements OnInit {
   image: any;
 
   ngOnInit(): void {
+
+
   }
 
   onSubmit(): void {

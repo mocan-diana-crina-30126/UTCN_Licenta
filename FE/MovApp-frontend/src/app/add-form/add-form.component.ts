@@ -19,6 +19,7 @@ export class AddFormComponent implements OnInit {
   image: any;
 
   ngOnInit(): void {
+
   }
 
   onSubmit(): void {

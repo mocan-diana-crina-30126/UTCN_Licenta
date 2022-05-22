@@ -13,11 +13,11 @@
   body {
     background-color: #1d1d1d;
   }
-  
-  
+
+
   html, body { height: 100%; }
   body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-  
+
   .slick-next {
     right:20px;
     z-index: 99;
@@ -25,7 +25,7 @@
       font-size: 40px;
     }
   }
-  
+
   .slick-prev {
     left: 20px;
     z-index: 99;
@@ -37,7 +37,7 @@
   .navbarRegisterLogin{
     height: 70px;
     .nav-tool-items{
-      
+
       @media (min-width: $breakpoint-xsmall){
         margin-left: 30rem;
       }
@@ -58,7 +58,7 @@
       }
 
     }
-   
+
   }
 
   .login-wrapper {
@@ -137,4 +137,3 @@
   .login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
     padding: 0.8375em 0;
   }
-  
