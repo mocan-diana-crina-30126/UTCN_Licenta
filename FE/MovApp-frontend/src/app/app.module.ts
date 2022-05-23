@@ -67,6 +67,7 @@ import { AddFormComponent } from './add-form/add-form.component';
 import { EditFormComponent } from './edit-form/edit-form.component';
 import { AddDialogComponent } from './add-dialog/add-dialog.component';
 import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
+import { ErrorMessageComponent } from './error-message/error-message.component';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { EditDialogComponent } from './edit-dialog/edit-dialog.component';
     AddFormComponent,
     EditFormComponent,
     AddDialogComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    ErrorMessageComponent
 
   ],
   imports: [

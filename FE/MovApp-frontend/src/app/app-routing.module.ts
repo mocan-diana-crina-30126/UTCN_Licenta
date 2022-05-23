@@ -13,14 +13,18 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {BoardAdminComponent} from './board-admin/board-admin.component';
 import {WatchLaterComponent} from "./watch-later/watch-later.component";
+import {AdminGuardGuard} from "./guards/admin-guard.guard";
+import {AuthenticationGuard} from "./guards/authentication.guard";
+import {ErrorMessageComponent} from "./error-message/error-message.component";
 
 const routes: Routes = [
   {
-    path: '', redirectTo: '/register', pathMatch: 'full'
+    path: '', redirectTo: '/home', pathMatch: 'full'
   },
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'register',
@@ -32,37 +36,49 @@ const routes: Routes = [
   },
   {
     path: 'genres/:id/:name',
-    component: GenresComponent
+    component: GenresComponent,
+    canActivate: [AuthenticationGuard]
   },
 
   {
     path: 'genres',
-    component: GenresListComponent
+    component: GenresListComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'favorites',
-    component: FavoritesListComponent
+    component: FavoritesListComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'watch',
-    component: WatchLaterComponent
+    component: WatchLaterComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'children',
-    component: ChildrenComponent
+    component: ChildrenComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'search',
-    component: SearchResultsComponent
+    component: SearchResultsComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'video/:id',
-    component: VideoComponent
+    component: VideoComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'admin',
-    component: BoardAdminComponent
+    component: BoardAdminComponent,
+    canActivate: [AdminGuardGuard]
   },
+  {
+    path: 'error',
+    component: ErrorMessageComponent
+  }
 
 ];
 

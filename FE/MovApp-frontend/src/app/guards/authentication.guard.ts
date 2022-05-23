@@ -7,13 +7,12 @@ import {Token} from "@angular/compiler";
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuardGuard implements CanActivate {
+export class AuthenticationGuard implements CanActivate {
 
   constructor(private tokenStorageService: TokenStorageService, private router: Router) {
   }
 
   isLoggedIn: boolean = false;
-  roles: String[] = [];
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -24,8 +23,8 @@ export class AdminGuardGuard implements CanActivate {
 
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorageService.getUser().roles;
-      console.log('Logare: ' + this.isLoggedIn + ' Rol: ' + this.roles);
+
+      console.log('Logare: ' + this.isLoggedIn );
       return true;
     }
     else{

@@ -3,6 +3,9 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MovieService} from "../services/movie.service";
 import {Observable} from "rxjs";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {SuccessfullyDialogComponent} from "../successfully-dialog/successfully-dialog.component";
+
 
 @Component({
   selector: 'app-add-form',
@@ -12,11 +15,12 @@ import {Observable} from "rxjs";
 export class AddFormComponent implements OnInit {
 
 
-  constructor( private formBuilder: FormBuilder, private movieService: MovieService) { }
+  constructor( private formBuilder: FormBuilder, private movieService: MovieService, public dialog: MatDialog) { }
 
    @Input() form!: FormGroup;
   movie: any;
   image: any;
+  dialogRefSuccess!: MatDialogRef<SuccessfullyDialogComponent>;
 
   ngOnInit(): void {
 
@@ -38,9 +42,18 @@ export class AddFormComponent implements OnInit {
     console.log(popularity)
 
     this.movieService.addMovie(this.movie,this.image,title,duration,releaseDate,imdbRating,popularity).subscribe(data =>{
-      window.location.reload();
       this.form.reset();
     });
+
+    this.dialogRefSuccess = this.dialog.open(SuccessfullyDialogComponent, {
+      disableClose: false
+    });
+    this.dialogRefSuccess.componentInstance.confirmMessage = "Movie added successfully!";
+    this.dialogRefSuccess.afterClosed().subscribe(result => {
+      window.location.reload();
+    });
+
+
 
   }
 

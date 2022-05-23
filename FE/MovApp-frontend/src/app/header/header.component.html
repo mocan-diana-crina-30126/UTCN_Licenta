@@ -1,4 +1,4 @@
-<div class="header">
+<div class="header" *ngIf="isLoggedIn">
   <!-- BANNER AREA -->
   <!-- <div class="header__banner"
        [ngStyle]="{
@@ -70,10 +70,10 @@
           <span style="color: yellow;">E</span>
           <span style="color:turquoise">N</span>
          </a></li>
-        
+
           <img src="https://occ-0-4345-3647.1.nflxso.net/dnm/api/v6/Z-WHgqd_TeJxSuha8aZ5WpyLcX8/AAAABRGTK96GBeqNw5zzYXnoa8oVjSjhuk7SuseuKTmgEKwpcCB59994UWb6wd7d1WONZOuzJwbLNpzG5Okfo4rSDLg.png?r=ee6"
                alt="avatar" >
-               
+
                <div class="profile">
                 <button color="accent"
                 matSuffix mat-button
@@ -82,11 +82,11 @@
                  <span (click)="onLogOut()">Log Out</span>
                  </div>
                </button>
-        
+
              </div>
-          
+
       </ul>
-      
+
     </div>
     <!-- <div class="card">
      <ul class="list-group list-group-flush">

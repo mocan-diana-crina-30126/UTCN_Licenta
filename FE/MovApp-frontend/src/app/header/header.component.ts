@@ -14,7 +14,7 @@ import { TokenStorageService } from '../services/token-storage.service';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   sticky = false;
-  
+
   genres: string [] = ['Action','Drama'];
   trending: Movie[] = [];
   @Output() searchedMovies: EventEmitter<any> = new EventEmitter<any>();
@@ -26,22 +26,22 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn = false;
   showAdminBoard = false;
   username?: string;
- 
-  
+
+
 
   constructor(private movieService: MovieService,  private router: Router,
     private route: ActivatedRoute, private tokenStorageService: TokenStorageService ) {
-      
+
      }
 
   ngOnInit(): void {
     // this.movieService.getMovieByTitle(this.searchText).subscribe((data: any) =>{
-    //   console.log(data);  
+    //   console.log(data);
     //   this.searchedMovies.emit(data);
     //     this.movieService.setData(data);
     // })
 
-    
+
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if(this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
@@ -55,7 +55,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('stickHeader') header!: ElementRef;
   headerBGUrl!: string;
 
- 
+
 
   getMoviesByTitle(){
     console.log(this.searchText);

@@ -4,12 +4,14 @@ import {UploadFileService} from '../services/upload-file.service';
 import {MovieService} from "../services/movie.service";
 import {Movie, MovieColumns} from "../models/movie";
 import {MatTableDataSource} from "@angular/material/table";
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {MatDialog, MatDialogConfig, MatDialogRef} from "@angular/material/dialog";
 import {ConfirmDialogComponent} from "../confirm-dialog/confirm-dialog.component";
 import {Form, FormBuilder, FormGroup} from "@angular/forms";
 import {Observable} from "rxjs";
 import {AddDialogComponent} from "../add-dialog/add-dialog.component";
 import {EditDialogComponent} from "../edit-dialog/edit-dialog.component";
+import {ConfirmationDialogComponent} from "../confirmation-dialog/confirmation-dialog.component";
+import {SuccessfullyDialogComponent} from "../successfully-dialog/successfully-dialog.component";
 
 @Component({
   selector: 'app-board-admin',
@@ -29,6 +31,9 @@ export class BoardAdminComponent implements OnInit {
   editForm!: FormGroup;
   displayEditForm: boolean = false;
   edit: boolean = false;
+
+  dialogRef!: MatDialogRef<ConfirmationDialogComponent>;
+  dialogRefSuccess!: MatDialogRef<SuccessfullyDialogComponent>;
 
   constructor(public dialog: MatDialog, private movieService: MovieService,  private formBuilder: FormBuilder) {
   }
@@ -141,10 +146,29 @@ export class BoardAdminComponent implements OnInit {
   }
 
   removeRow(id: number) {
-    this.movieService.deleteMovie(id).subscribe(() => {
-      this.dataSource.data = this.dataSource.data.filter(
-        (m: Movie) => m.id !== id
-      );
+    this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      disableClose: false
+    });
+    this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete?"
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.movieService.deleteMovie(id).subscribe(() => {
+          this.dataSource.data = this.dataSource.data.filter(
+            (m: Movie) => m.id !== id
+          );
+        });
+
+        this.dialogRefSuccess = this.dialog.open(SuccessfullyDialogComponent, {
+          disableClose: false
+        });
+        this.dialogRefSuccess.componentInstance.confirmMessage = "Deleted successfully!";
+        this.dialogRefSuccess.afterClosed().subscribe(result => {
+          window.location.reload();
+        });
+
+      }
+
     });
   }
 
@@ -159,6 +183,13 @@ export class BoardAdminComponent implements OnInit {
             this.dataSource.data = this.dataSource.data.filter(
               (m: Movie) => !m.isSelected
             );
+          });
+          this.dialogRefSuccess = this.dialog.open(SuccessfullyDialogComponent, {
+            disableClose: false
+          });
+          this.dialogRefSuccess.componentInstance.confirmMessage = "Deleted successfully!";
+          this.dialogRefSuccess.afterClosed().subscribe(result => {
+            window.location.reload();
           });
         }
       });
