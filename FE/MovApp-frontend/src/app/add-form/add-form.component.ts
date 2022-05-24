@@ -17,7 +17,7 @@ export class AddFormComponent implements OnInit {
 
   constructor( private formBuilder: FormBuilder, private movieService: MovieService, public dialog: MatDialog) { }
 
-   @Input() form!: FormGroup;
+  @Input() form!: FormGroup;
   movie: any;
   image: any;
   dialogRefSuccess!: MatDialogRef<SuccessfullyDialogComponent>;

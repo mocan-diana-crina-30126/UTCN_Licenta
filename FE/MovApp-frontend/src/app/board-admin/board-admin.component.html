@@ -18,9 +18,9 @@
 <!--</form>-->
 
 
-    <form [formGroup]="editForm" *ngIf="displayEditForm">
-      <app-edit-form [editForm]="editForm" ></app-edit-form>
-    </form>
+<!--    <form [formGroup]="editForm" *ngIf="displayEditForm">-->
+<!--      <app-edit-form [editForm]="editForm" ></app-edit-form>-->
+<!--    </form>-->
 
     <table mat-table [dataSource]="dataSource">
       <ng-container [matColumnDef]="col.key" *ngFor="let col of columnsSchema">
@@ -92,14 +92,14 @@
                 (change)="inputHandler($event, element.id, col.key)"
               />
             </mat-form-field>
-            <!--        <mat-form-field class="form-input" *ngSwitchCase="'movie'" appearance="fill">-->
-            <!--          <mat-label>Choose a movie</mat-label>-->
-            <!--          <input type="file" name="movie" (change)="onMovieSelect($event)" />-->
-            <!--        </mat-form-field>-->
-            <!--        <mat-form-field class="form-input" *ngSwitchCase="'image'" appearance="fill">-->
-            <!--          <mat-label>Choose an image</mat-label>-->
-            <!--          <input type="file" name="image" (change)="onImageSelect($event)" />-->
-            <!--        </mat-form-field>-->
+<!--                    <mat-form-field class="form-input" *ngSwitchCase="'movie'" appearance="fill">-->
+<!--                      <mat-label>Choose a movie</mat-label>-->
+<!--                      <input type="file" name="movie" (change)="onMovieSelect($event)" />-->
+<!--                    </mat-form-field>-->
+<!--                    <mat-form-field class="form-input" *ngSwitchCase="'image'" appearance="fill">-->
+<!--                      <mat-label>Choose an image</mat-label>-->
+<!--                      <input type="file" name="image" (change)="onImageSelect($event)" />-->
+<!--                    </mat-form-field>-->
 
 
           </div>

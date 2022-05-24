@@ -1,5 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" >
 
+<!--  <mat-form-field appearance="legacy" >-->
+<!--    <mat-label>Title</mat-label>-->
+<!--    <input matInput placeholder="Title">-->
+<!--  </mat-form-field>-->
+
   <div>
     <label for="title">
       Title
@@ -7,7 +12,7 @@
     <input id="title" type="text" formControlName="title">
   </div>
 
-  <div>
+  <div >
     <label for="duration">
       Duration
     </label>

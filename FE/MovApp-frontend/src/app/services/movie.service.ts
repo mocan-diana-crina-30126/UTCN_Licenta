@@ -4,7 +4,9 @@ import {Movie} from "../models/movie";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "src/environments/environment";
 import {TokenStorageService} from "./token-storage.service";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {Form, FormBuilder, FormGroup} from "@angular/forms";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {EditDialogComponent} from "../edit-dialog/edit-dialog.component";
 
 const enum endpoint {
 
@@ -24,6 +26,15 @@ export class MovieService {
   private movies: Movie[] = [];
   public searchText = '';
   private _searchedMovies: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
+  private form:any = undefined;
+
+  setForm(form: any){
+    this.form = form;
+  }
+  getForm(){
+    return this.form;
+  }
 
   httpOptions = {
     headers: new HttpHeaders({'Authorization': this.tokenStorageService.getToken()})
@@ -150,5 +161,7 @@ export class MovieService {
     return this.http.put<Movie>(`${this.apiServerUrl}/movies/${id}`, fd);
 
   }
+
+
 
 }

@@ -19,6 +19,7 @@ export class EditFormComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.editForm = this.movieService.getForm();
 
   }
 

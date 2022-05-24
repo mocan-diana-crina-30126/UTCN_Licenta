@@ -1,4 +1,13 @@
-import {Component, OnInit, ViewEncapsulation, DefaultIterableDiffer, Input, ViewChild, ElementRef} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  DefaultIterableDiffer,
+  Input,
+  ViewChild,
+  ElementRef,
+  Output, EventEmitter
+} from '@angular/core';
 import {HttpResponse, HttpEventType, HttpErrorResponse} from '@angular/common/http';
 import {UploadFileService} from '../services/upload-file.service';
 import {MovieService} from "../services/movie.service";
@@ -29,6 +38,7 @@ export class BoardAdminComponent implements OnInit {
   displayForm: boolean = false;
 
   editForm!: FormGroup;
+
   displayEditForm: boolean = false;
   edit: boolean = false;
 
@@ -49,7 +59,7 @@ export class BoardAdminComponent implements OnInit {
       imdbRating: '',
       popularity: '',
       movie: '',
-      image: ''
+      image: '',
 
     });
 
@@ -88,6 +98,8 @@ export class BoardAdminComponent implements OnInit {
       image: movie.image,
       id: movie.id
     });
+
+    this.movieService.setForm(this.editForm);
 
     const dialogConfig = new MatDialogConfig();
 
