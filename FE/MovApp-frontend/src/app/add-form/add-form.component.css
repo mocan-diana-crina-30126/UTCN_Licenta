@@ -1,0 +1,25 @@
+mat-form-field{
+  width: 100%;
+}
+
+
+.button-add {
+  margin-left: 6rem;
+  background:   #1b9e1b;
+  color: #ffffff;
+
+}
+
+.button-add:hover {
+  background-color: lime ;
+}
+
+.cancel-button{
+  margin-left: 1rem;
+  background: indianred;
+  color: #ffffff;
+}
+
+.cancel-button:hover {
+  background-color: red;
+}

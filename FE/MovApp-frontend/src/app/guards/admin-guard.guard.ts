@@ -14,6 +14,7 @@ export class AdminGuardGuard implements CanActivate {
 
   isLoggedIn: boolean = false;
   roles: String[] = [];
+  isOk: boolean = false;
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -26,11 +27,22 @@ export class AdminGuardGuard implements CanActivate {
       this.isLoggedIn = true;
       this.roles = this.tokenStorageService.getUser().roles;
       console.log('Logare: ' + this.isLoggedIn + ' Rol: ' + this.roles);
+      if(this.roles.includes('ROLE_ADMIN')){
+        this.isOk = true;
+      }
+
+    }
+    else{
+
+      this.isOk = false;
+
+    }
+    if(this.isOk){
+
       return true;
     }
     else{
       this.router.navigate(['/error']);
-      console.log('User nelogat');
       return false;
     }
 

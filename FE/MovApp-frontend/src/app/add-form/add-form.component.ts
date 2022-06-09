@@ -5,6 +5,7 @@ import {MovieService} from "../services/movie.service";
 import {Observable} from "rxjs";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {SuccessfullyDialogComponent} from "../successfully-dialog/successfully-dialog.component";
+import {AddDialogComponent} from "../add-dialog/add-dialog.component";
 
 
 @Component({
@@ -68,6 +69,8 @@ export class AddFormComponent implements OnInit {
       this.image = event.target.files[0];
     }
   }
+
+
 
 
 

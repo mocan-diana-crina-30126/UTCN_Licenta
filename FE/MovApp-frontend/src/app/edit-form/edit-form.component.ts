@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MovieService} from "../services/movie.service";
 import {Movie} from "../models/movie";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-edit-form',

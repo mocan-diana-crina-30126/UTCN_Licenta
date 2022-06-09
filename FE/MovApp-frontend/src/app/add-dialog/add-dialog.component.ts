@@ -12,7 +12,7 @@ export class AddDialogComponent implements OnInit {
   form!: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private dialogRef: MatDialogRef<AddDialogComponent>,
+              public dialogRef: MatDialogRef<AddDialogComponent>,
               @Inject(MAT_DIALOG_DATA) data:any) { }
 
   ngOnInit(): void {

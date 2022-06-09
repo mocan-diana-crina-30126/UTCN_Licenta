@@ -72,6 +72,7 @@ export class BoardAdminComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.width = '30%';
 
     dialogConfig.data = this.form;
 
@@ -82,7 +83,10 @@ export class BoardAdminComponent implements OnInit {
     const dialogRef = this.dialog.open(AddDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data => console.log("Dialog output:", data)
+      data =>
+        console.log("Dialog output:", data)
+
+
     );
   }
 
@@ -105,6 +109,7 @@ export class BoardAdminComponent implements OnInit {
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.width = '30%';
 
 
 
