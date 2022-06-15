@@ -44,7 +44,6 @@ import { GenresListComponent } from './genres-list/genres-list.component';
 import { HomeComponent } from './home/home.component';
 
 import { ChildrenComponent } from './children/children.component';
-import { CardsComponent } from './cards/cards.component';
 import { HomeSliderComponent } from './home-slider/home-slider.component';
 import { SearchResultsComponent } from './search-results/search-results.component';
 import { VideoComponent } from './video/video.component';
@@ -81,7 +80,6 @@ import { ErrorMessageComponent } from './error-message/error-message.component';
     GenresComponent,
     GenresListComponent,
     ChildrenComponent,
-    CardsComponent,
     HomeSliderComponent,
     SearchResultsComponent,
     VideoComponent,

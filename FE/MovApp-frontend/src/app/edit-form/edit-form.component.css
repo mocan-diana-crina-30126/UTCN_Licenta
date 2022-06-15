@@ -3,9 +3,10 @@ mat-form-field{
 }
 
 .button-edit {
-  margin-left: 6rem;
+  margin-left: 13rem;
   background:   #1b9e1b;
   color: #ffffff;
+  width: 100px;
 
 }
 

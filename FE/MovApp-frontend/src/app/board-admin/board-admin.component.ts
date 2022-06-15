@@ -70,7 +70,7 @@ export class BoardAdminComponent implements OnInit {
 
     const dialogConfig = new MatDialogConfig();
 
-    dialogConfig.disableClose = true;
+    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
 
@@ -83,9 +83,17 @@ export class BoardAdminComponent implements OnInit {
     const dialogRef = this.dialog.open(AddDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data =>
-        console.log("Dialog output:", data)
-
+      result => {
+        if (result !== undefined) {
+          if (result !== 'no') {
+            const enabled = "Y"
+            console.log(result);
+          } else if (result === 'no') {
+            console.log('User clicked no.');
+            this.dialog.closeAll();
+          }
+        }
+      }
 
     );
   }
@@ -122,7 +130,17 @@ export class BoardAdminComponent implements OnInit {
     const dialogRef = this.dialog.open(EditDialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data => console.log("Dialog output:", data)
+      result => {
+        if (result !== undefined) {
+          if (result !== 'no') {
+            const enabled = "Y"
+            console.log(result);
+          } else if (result === 'no') {
+            console.log('User clicked no.');
+            this.dialog.closeAll();
+          }
+        }
+      }
     );
   }
 
