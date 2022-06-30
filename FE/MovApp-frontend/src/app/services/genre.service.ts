@@ -1,24 +1,24 @@
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { Genre } from "../models/genre";
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { environment } from "src/environments/environment";
+import {Injectable} from "@angular/core";
+import {Observable} from "rxjs";
+import {Genre} from "../models/genre";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "src/environments/environment";
 
 @Injectable({
-    providedIn: 'root'
-  })
+  providedIn: 'root'
+})
 
-  export class GenreService{
+export class GenreService {
 
-    private apiServerUrl = environment.apiBaseUrl;
-    private genres: Genre[] = [];
+  private apiServerUrl = environment.apiBaseUrl;
+  private genres: Genre[] = [];
 
-    constructor(private http: HttpClient){}
-
-    public getAllGenres(): Observable<Genre[]>{
-        return this.http.get<Genre[]>(`${this.apiServerUrl}/genres/all`);
-      }
-
-   
-
+  constructor(private http: HttpClient) {
   }
+
+  public getAllGenres(): Observable<Genre[]> {
+    return this.http.get<Genre[]>(`${this.apiServerUrl}/genres/all`);
+  }
+
+
+}

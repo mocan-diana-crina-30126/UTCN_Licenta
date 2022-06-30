@@ -1,19 +1,17 @@
 <div class="container">
   <app-header (searchedMovies)="data = $event" *ngIf="showHead"></app-header>
   <div *ngIf="!showHead">
-    <mat-toolbar color="accent" class="navbarRegisterLogin" >
-      
-        <img src="assets/images/MovApp-logos.jpeg" alt="logo" width="70px" height="100%" >
-      
-      <span class="nav-tool-items"  >
-        <a mat-button routerLink="login" routerLinkActive="active" >Log in</a>
+    <mat-toolbar color="accent" class="navbarRegisterLogin">
+
+      <img src="assets/images/MovApp-logos.jpeg" alt="logo" width="70px" height="100%">
+
+      <span class="nav-tool-items">
+        <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
         <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
       </span>
     </mat-toolbar>
   </div>
   <router-outlet></router-outlet>
-  <!-- <app-home></app-home>
-   <app-genres></app-genres>  -->
 </div>
 
 

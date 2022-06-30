@@ -5,14 +5,12 @@
 
   <h3 style="color: red;" *ngIf="cartoons.length==1; else elseBlock">{{cartoons.length}} result found</h3>
 
-  <div class="row" >
+  <div class="row">
 
-    <div class="col-md-2 listing__items" *ngFor="let m of cartoons | slice:0:18" >
-      <!-- <div [routerLink]="['/movies', m.genres]"> -->
-      <!-- <div [routerLink]="['/genres/', m.genres.id]"> -->
-      <div class="listing-item-style" >
+    <div class="col-md-2 listing__items" *ngFor="let m of cartoons | slice:0:18">
+      <div class="listing-item-style">
         <div class="overlay">
-          <div class="hover" routerLink="/video/{{m.id}}"><i class="material-icons" >play_arrow</i>PLAY NOW</div>
+          <div class="hover" routerLink="/video/{{m.id}}"><i class="material-icons">play_arrow</i>PLAY NOW</div>
         </div>
         <img src='assets\images\{{m?.image_path}}'>
 
@@ -24,10 +22,9 @@
       </div>
     </div>
 
-    <!-- </div> -->
   </div>
 
-  <ng-template #elseBlock >
+  <ng-template #elseBlock>
     <h3 style="color: red;">{{cartoons.length}} results found</h3>
   </ng-template>
 </div>

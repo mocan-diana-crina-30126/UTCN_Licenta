@@ -1,8 +1,7 @@
-import {Component, Inject, Input, OnInit} from '@angular/core';
-
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {MovieService} from "../services/movie.service";
+
 
 @Component({
   selector: 'app-edit-dialog',
@@ -16,21 +15,10 @@ export class EditDialogComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private dialogRef: MatDialogRef<EditDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) data:any, private movieService: MovieService) { }
+              @Inject(MAT_DIALOG_DATA) data: any) {
+  }
 
   ngOnInit(): void {
-
-    // this.editForm = this.fb.group({
-    //   title: '',
-    //   duration: '',
-    //   releaseDate: '',
-    //   imdbRating: '',
-    //   popularity: '',
-    //   movie: '',
-    //   image: ''
-    // });
-
-
   }
 
   save() {

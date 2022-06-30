@@ -1,9 +1,9 @@
-import {Component, ElementRef, EventEmitter,HostListener,Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {MovieService} from "../services/movie.service";
 import {Movie} from "../models/movie";
-import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { TokenStorageService } from '../services/token-storage.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
+import {TokenStorageService} from '../services/token-storage.service';
 
 
 @Component({
@@ -15,10 +15,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   sticky = false;
 
-  genres: string [] = ['Action','Drama'];
+  genres: string [] = ['Action', 'Drama'];
   trending: Movie[] = [];
   @Output() searchedMovies: EventEmitter<any> = new EventEmitter<any>();
-  searchText='';
+  searchText = '';
   movies: Movie[] = [];
   subs: Subscription[] = [];
 
@@ -28,22 +28,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
   username?: string;
 
 
+  constructor(private movieService: MovieService, private router: Router,
+              private route: ActivatedRoute, private tokenStorageService: TokenStorageService) {
 
-  constructor(private movieService: MovieService,  private router: Router,
-    private route: ActivatedRoute, private tokenStorageService: TokenStorageService ) {
-
-     }
+  }
 
   ngOnInit(): void {
-    // this.movieService.getMovieByTitle(this.searchText).subscribe((data: any) =>{
-    //   console.log(data);
-    //   this.searchedMovies.emit(data);
-    //     this.movieService.setData(data);
-    // })
-
 
     this.isLoggedIn = !!this.tokenStorageService.getToken();
-    if(this.isLoggedIn) {
+    if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.roles = user.roles;
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
@@ -56,11 +49,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   headerBGUrl!: string;
 
 
-
-  getMoviesByTitle(){
+  getMoviesByTitle() {
     console.log(this.searchText);
     this.subs.push(this.movieService.getMovieByTitle(this.searchText).subscribe(data => {
-      //this.movies = data;
       console.log('In search bar from header i searched for: ' + this.searchText);
       console.log('I got:');
       console.log(data);
@@ -68,12 +59,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
       //set data in the service that other components can subscribe to
       this.movieService.setData(data);
     }));
-   // this.movieService.searchedMovies.next(this.movies);
     this.router.navigate(['search'], {relativeTo: this.route});
 
   }
 
-  onLogOut(){
+  onLogOut() {
     this.tokenStorageService.signOut();
   }
 

@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 import {FavoritesService} from "../services/favorites.service";
 import {Movie} from "../models/movie";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
@@ -21,7 +21,8 @@ export class FavoritesListComponent implements OnInit {
   constructor(private router: ActivatedRoute, private favoritesService: FavoritesService, public dialog: MatDialog) {
   }
 
-  ngOnInit(): void {    console.log("on init")
+  ngOnInit(): void {
+    console.log("on init")
     this.getFavoriteMovies();
   }
 
@@ -36,28 +37,27 @@ export class FavoritesListComponent implements OnInit {
 
   }
 
-  deleteFavoriteMovie(id: number){
+  deleteFavoriteMovie(id: number) {
     this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       disableClose: false
     });
     this.dialogRef.componentInstance.confirmMessage = "Are you sure you want to delete?"
 
     this.dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.favoritesService.deleteFavoriteMovieById(id).subscribe(data => {
 
           this.dialogRefSuccess = this.dialog.open(SuccessfullyDialogComponent, {
             disableClose: false
           });
           this.dialogRefSuccess.componentInstance.confirmMessage = "Deleted successfully!";
-          this.dialogRefSuccess.afterClosed().subscribe(result =>{
+          this.dialogRefSuccess.afterClosed().subscribe(result => {
             window.location.reload();
           });
 
         });
 
       }
-      //this.dialogRef = null;
     });
 
 

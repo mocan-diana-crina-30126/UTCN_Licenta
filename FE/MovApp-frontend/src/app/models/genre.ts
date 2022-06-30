@@ -1,6 +1,6 @@
-export interface Genre{
+export interface Genre {
 
-genre_id: number;
-genre_name: String;
+  genre_id: number;
+  genre_name: String;
 
 }

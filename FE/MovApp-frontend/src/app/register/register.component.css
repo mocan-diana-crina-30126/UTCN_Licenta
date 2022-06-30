@@ -8,10 +8,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   min-height: 100vh;
   background: #e2e2e2;
-  
+
 }
-
-
 
 .login-wrapper {
   height: 100%;
@@ -36,7 +34,7 @@ body {
   -ms-transform: scale(1);
   z-index: 5;
   max-width: 400px;
-  
+
 }
 
 .box.back {
@@ -100,6 +98,6 @@ body {
   padding: 0.8375em 0;
 }
 
-.alert-danger{
+.alert-danger {
   color: red;
 }

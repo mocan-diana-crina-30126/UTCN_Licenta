@@ -1,17 +1,21 @@
 p {
   font-family: Lato;
 }
+
 table {
   width: 90%;
   margin: auto;
   margin-top: 25px;
 }
+
 .btn-edit {
   text-align: right;
-  .mat-button:hover{
-     background-color: #2196f3;
+
+  .mat-button:hover {
+    background-color: #2196f3;
   }
 }
+
 h2 {
   text-align: center;
   padding-top: 20px;
@@ -28,18 +32,17 @@ h2 {
 }
 
 .button-add-row {
-  background:   #1b9e1b;
+  background: #1b9e1b;
   color: #ffffff;
 }
 
 .button-add-row:hover {
-  background-color: lime ;
+  background-color: lime;
 }
 
 
-
 .button-remove-rows {
-  background:  #c83126;
+  background: #c83126;
   color: #ffffff;
   margin-right: 5px;
 }
@@ -53,7 +56,7 @@ h2 {
 }
 
 ::ng-deep .mat-form-field-infix {
-  width: 100% important;
+  width: 100% !important;
 }
 
 .form-input {

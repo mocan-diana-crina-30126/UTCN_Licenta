@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import {Observable} from 'rxjs';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {TokenStorageService} from "../services/token-storage.service";
-import {Token} from "@angular/compiler";
 
 @Injectable({
   providedIn: 'root'
@@ -24,16 +22,13 @@ export class AuthenticationGuard implements CanActivate {
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
 
-      console.log('Logare: ' + this.isLoggedIn );
+      console.log('Logare: ' + this.isLoggedIn);
       return true;
-    }
-    else{
+    } else {
       this.router.navigate(['/error']);
       console.log('User nelogat');
       return false;
     }
-
-
 
 
   }

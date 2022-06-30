@@ -1,10 +1,1 @@
-{
-    "version": 3,
-    "mappings": "AAKA,AAAA,WAAW,CAAC;EACV,OAAO,EAAE,YAAY;EACrB,MAAM,EAAE,SAAS;EACjB,OAAO,EAAE,QAAQ;EACjB,cAAc,EAAE,GAAG;EACnB,KAAK,EAAE,gBAAgB;EACvB,SAAS,EAAE,MAAM;CAClB;;AAED,AAAA,IAAI,CAAA;EACF,MAAM,EAAE,gBAAgB;CACzB;;AAGD,MAAM,EAAE,SAAS,EAAE,MAAM;EACvB,AAAA,WAAW,CAAC;IACV,KAAK,EAAE,GAAG;GACX;;;AAGH,AAAA,WAAW,CAAC;EACV,gBAAgB,ECTA,OAAO;EDUvB,aAAa,EAAE,GAAG;CACnB",
-    "sources": [
-        "genres-list.component.scss",
-        "../../assets/scss/_variables.scss"
-    ],
-    "names": [],
-    "file": "genres-list.component.css"
-}
+{"version":3,"sourceRoot":"","sources":["genres-list.component.scss","../../assets/scss/_variables.scss"],"names":[],"mappings":"AAGA;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;;;AAIF;EACE;IACE;;;AAIJ;EACE,kBCPgB;EDQhB","file":"genres-list.component.css"}

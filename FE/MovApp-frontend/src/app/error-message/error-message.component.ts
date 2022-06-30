@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-error-message',
@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorMessageComponent implements OnInit {
 
-  h2Message! : string;
-  h1Message! : string;
+  h2Message!: string;
+  h1Message!: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
 

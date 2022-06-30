@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Movie } from 'src/app/models/movie';
-import { MovieService } from 'src/app/services/movie.service';
+import {Component, OnInit, Input} from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
+import {Movie} from 'src/app/models/movie';
+import {MovieService} from 'src/app/services/movie.service';
 
 @Component({
   selector: 'app-video',
@@ -14,7 +14,8 @@ export class VideoComponent implements OnInit {
   data: any;
   public id!: number;
 
-  constructor(private movieService: MovieService, private router: ActivatedRoute) { }
+  constructor(private movieService: MovieService, private router: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
     this.router.params.subscribe((params: Params) => {
@@ -24,8 +25,11 @@ export class VideoComponent implements OnInit {
     })
   }
 
-  getMovieContent(id: any){
-    this.movieService.getMovieContent(id).subscribe((data => { this.data = data; console.log(this.data)} ));
+  getMovieContent(id: any) {
+    this.movieService.getMovieContent(id).subscribe((data => {
+      this.data = data;
+      console.log(this.data)
+    }));
   }
 
 }

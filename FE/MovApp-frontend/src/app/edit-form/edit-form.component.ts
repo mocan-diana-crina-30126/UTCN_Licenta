@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MovieService} from "../services/movie.service";
-import {Movie} from "../models/movie";
-import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-edit-form',
@@ -40,13 +38,14 @@ export class EditFormComponent implements OnInit {
     console.log(imdbRating)
     console.log(popularity)
 
-    this.movieService.editMovie(id,this.movie, this.image, title, duration, releaseDate, imdbRating, popularity).subscribe(data => {
+    this.movieService.editMovie(id, this.movie, this.image, title, duration, releaseDate, imdbRating, popularity).subscribe(data => {
       window.location.reload();
       this.editForm.reset();
     });
 
 
   }
+
   onMovieSelected(event: any) {
     if (event.target.files.length > 0) {
       this.movie = event.target.files[0];

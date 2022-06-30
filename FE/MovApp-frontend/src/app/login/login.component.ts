@@ -1,8 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
-import { TokenStorageService } from '../services/token-storage.service';
+import {Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
+import {TokenStorageService} from '../services/token-storage.service';
 import {SuccessfullyDialogComponent} from "../successfully-dialog/successfully-dialog.component";
 
 /*Login Component also uses AuthService to work with Observable object.
@@ -27,15 +27,19 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, public dialog: MatDialog) { }
+
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router, public dialog: MatDialog) {
+  }
+
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
     }
   }
+
   onSubmit(): void {
-    const { username, password } = this.form;
+    const {username, password} = this.form;
     this.authService.login(username, password).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
@@ -51,7 +55,7 @@ export class LoginComponent implements OnInit {
         this.dialogRef.componentInstance.confirmMessage = "Successfully logged in!";
 
         this.dialogRef.afterClosed().subscribe();
-       this.router.navigate(['/home']);
+        this.router.navigate(['/home']);
       },
       err => {
         this.errorMessage = err.error.message;
@@ -59,6 +63,7 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
   reloadPage(): void {
     window.location.reload();
   }

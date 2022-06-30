@@ -39,7 +39,7 @@
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  background: linear-gradient(to bottom, #ff6ec4,#7873f5);
+  background: linear-gradient(to bottom, #ff6ec4, #7873f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: cover;
@@ -53,7 +53,7 @@
   font-weight: 700;
   text-transform: uppercase;
   margin-top: 0;
-  background: linear-gradient(to bottom, #ff6ec4,#7873f5);
+  background: linear-gradient(to bottom, #ff6ec4, #7873f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: cover;
@@ -67,8 +67,8 @@
   text-decoration: none;
   text-transform: uppercase;
   background: #DE6262; /* for old browsers */
-  background: -webkit-linear-gradient(to bottom, #ff6ec4,#7873f5); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #ff6ec4,#7873f5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to bottom, #ff6ec4, #7873f5); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ff6ec4, #7873f5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: inline-block;
   padding: 15px 30px;
   color: #fff;

@@ -1,0 +1,31 @@
+<div class="details" style="height: 800px">
+  <div class="movie-banner">
+    <img
+      class="movie-banner-img"
+      src='assets\images\{{movie.image_path}}'>
+  </div>
+  <div class="movie-content">
+    <div class="details-wrapper">
+      <div class="movie-header">
+        <h1 class="movie-header-title" style="color: #FF0066" title="{{movie.title}}">{{ movie.title }}</h1>
+        <h2 class="movie-header-release-date" style="margin-top: 4rem; color: #e600e6; text-align: left"
+            title="Released">Released: <span class="span" style="color: white;"
+                                             title="{{movie.release_date}}">{{ movie.release_date | date }} </span></h2>
+        <h2 class="movie-header-release-date" style="margin-top: 1rem; color: #e600e6; text-align: left"
+            title="Duration">Duration: <span class="span" style="color: white"
+                                             title="{{movie.duration}}">{{ movie.duration}} minutes</span></h2>
+        <h2 class="movie-header-release-date" style="margin-top: 1rem; color: #e600e6; text-align: left"
+            title="Overview">Overview: <span class="span" style="color: white"
+                                             title="{{movie.overview}}">{{ movie.overview }}</span></h2>
+        <h2 class="movie-header-release-date" style="margin-top: 1rem; color: #e600e6; text-align: left" title="Rating">
+          Rating: <span class="span" style="color: white" title="{{movie.imdb_rating}}/10">{{ movie.imdb_rating }}/10 <i
+          class="material-icons" style="color: yellow;">star</i></span></h2>
+        <h2 class="movie-header-release-date" style="margin-top: 1rem; color: #e600e6; text-align: left"
+            title="Language">Language: <span class="span" style="color: white"
+                                             title="{{movie.language}}">{{ movie.language }}</span></h2>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -4,27 +4,29 @@
   <div class="movie__images">
     <div class="thumbnails">
       <ngx-slick-carousel
-      [config]="sliderConfig"
-      class="carousel">
-        <div class="slick-item" *ngFor="let m of movies" ngxSlickItem >
-          <img src='assets\images\{{m.image_path}}' width="180" height="200" alt="{{m.title}}">
-          <div class="less" *ngIf="title === 'trending' || title === 'upcoming'" >
-            <img src='assets\images\{{m.image_path}}' width="180" height="200" style="margin-right: 10px;" alt="{{m.title}}">
+        [config]="sliderConfig"
+        class="carousel">
+        <div class="slick-item" *ngFor="let m of movies" ngxSlickItem>
+          <img src='assets\images\{{m.image_path}}' width="180" height="200" alt="{{m.title}}" title="{{m.title}}">
+          <div class="less" *ngIf="title === 'trending' || title === 'upcoming'">
+            <img src='assets\images\{{m.image_path}}' width="180" height="200" style="margin-right: 10px;"
+                 alt="{{m.title}}">
           </div>
-          <div class="movie_title">
-            <p >{{m.title}} - {{m?.release_date | date: 'yyyy'}}</p>
+          <div class="movie_title" title="{{m.title}} - {{m?.release_date | date: 'yyyy'}}">
+            <p>{{m.title}} - {{m?.release_date | date: 'yyyy'}}</p>
 
-             <div class="icons" style="margin-top: 1rem; margin-left: 0.8rem;">
+            <div class="icons" style="margin-top: 1rem; margin-left: 0.8rem;">
 
-               <i class="material-icons"  routerLink="/video/{{m.id}}" matTooltip="Play" >play_circle</i>
+              <i class="material-icons" routerLink="/video/{{m.id}}" matTooltip="Play">play_circle</i>
 
-             <i class="material-icons" style="color:blue" matTooltip="More Info">arrow_drop_down_circle</i>
-             <i class="material-icons" style=" color:blueviolet" (click)="addToWatchLaterList(m.id)" matTooltip="Add to Watch Later">add_circle</i>
-             <i class="material-icons" style="color: yellow;"  (click)="addToFavoritesList(m.id)" matTooltip="Add to Favorites">star</i>
+              <i class="material-icons" style="color:blue" matTooltip="More Info" (click)="openMovieDetails(m.id)">arrow_drop_down_circle</i>
+              <i class="material-icons" style=" color:blueviolet" (click)="addToWatchLaterList(m.id)"
+                 matTooltip="Add to Watch Later">add_circle</i>
+              <i class="material-icons" style="color: yellow;" (click)="addToFavoritesList(m.id)"
+                 matTooltip="Add to Favorites">star</i>
 
             </div>
 
-            <p>{{m.duration}} minutes </p>
 
           </div>
         </div>

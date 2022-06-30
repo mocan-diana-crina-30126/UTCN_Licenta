@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 import {MatButtonModule} from "@angular/material/button";
 
-import { SearchResultsComponent } from './search-results.component'; 
-import { SearchResultsRoutingModule } from './search-results-routing.module';
+import {SearchResultsComponent} from './search-results.component';
+import {SearchResultsRoutingModule} from './search-results-routing.module';
 
 @NgModule({
   declarations: [SearchResultsComponent],
@@ -15,4 +15,5 @@ import { SearchResultsRoutingModule } from './search-results-routing.module';
   ]
 })
 
-export class SliderModule { }
+export class SliderModule {
+}

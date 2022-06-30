@@ -1,67 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-<form [formGroup]="form"  (ngSubmit)="onSubmit()" >
-
-  <mat-form-field appearance="outline" >
+  <mat-form-field appearance="outline">
     <mat-label for="title">Title</mat-label>
     <input matInput id="title" placeholder="Title" formControlName="title">
   </mat-form-field>
 
-  <mat-form-field appearance="outline" >
+  <mat-form-field appearance="outline">
     <mat-label for="duration">Duration</mat-label>
     <input matInput id="duration" placeholder="Duration" formControlName="duration">
   </mat-form-field>
 
-  <mat-form-field appearance="outline" >
+  <mat-form-field appearance="outline">
     <mat-label for="releaseDate">Choose a date</mat-label>
     <input matInput id="releaseDate" placeholder="Release Date" formControlName="releaseDate" type="date">
   </mat-form-field>
 
-
-
-  <!--  <div>-->
-<!--    <label for="title">-->
-<!--      Title-->
-<!--    </label>-->
-<!--    <input id="title" type="text" formControlName="title">-->
-<!--  </div>-->
-
-<!--  <div >-->
-<!--    <label for="duration">-->
-<!--      Duration-->
-<!--    </label>-->
-<!--    <input id="duration" type="text" formControlName="duration">-->
-<!--  </div>-->
-
-<!--  <div>-->
-<!--    <label for="releaseDate">-->
-<!--      Release Date-->
-<!--    </label>-->
-<!--    <input id="releaseDate" type="date" formControlName="releaseDate">-->
-<!--  </div>-->
-
-  <mat-form-field appearance="outline" >
+  <mat-form-field appearance="outline">
     <mat-label for="imdbRating">Rating</mat-label>
     <input matInput id="imdbRating" placeholder="Rating" formControlName="imdbRating">
   </mat-form-field>
 
-  <mat-form-field appearance="outline" >
+  <mat-form-field appearance="outline">
     <mat-label for="popularity">Popularity</mat-label>
     <input matInput id="popularity" placeholder="Popularity" formControlName="popularity">
   </mat-form-field>
-
-<!--  <div>-->
-<!--    <label for="imdbRating">-->
-<!--      Rating-->
-<!--    </label>-->
-<!--    <input id="imdbRating" type="text" formControlName="imdbRating">-->
-<!--  </div>-->
-
-<!--  <div>-->
-<!--    <label for="popularity">-->
-<!--      Popularity-->
-<!--    </label>-->
-<!--    <input id="popularity" type="text" formControlName="popularity">-->
-<!--  </div>-->
 
   <div>
     <label for="movie">
@@ -76,7 +38,8 @@
     </label>
     <input id="image" type="file" formControlName="image" (change)="onImageSelected($event)">
   </div>
-  <button mat-button color="accent" class="button" type="submit" style="margin-top: 1rem" class="button-add" >Add</button>
+  <button mat-button color="accent" class="button" type="submit" style="margin-top: 1rem" class="button-add">Add
+  </button>
 
 
 </form>

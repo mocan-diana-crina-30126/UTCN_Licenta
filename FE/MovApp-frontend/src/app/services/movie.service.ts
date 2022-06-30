@@ -1,12 +1,9 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, forkJoin, Observable, Subject, Subscription} from "rxjs";
+import {BehaviorSubject, forkJoin, Observable} from "rxjs";
 import {Movie} from "../models/movie";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "src/environments/environment";
 import {TokenStorageService} from "./token-storage.service";
-import {Form, FormBuilder, FormGroup} from "@angular/forms";
-import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {EditDialogComponent} from "../edit-dialog/edit-dialog.component";
 
 const enum endpoint {
 
@@ -23,16 +20,16 @@ const enum endpoint {
 })
 export class MovieService {
   private apiServerUrl = environment.apiBaseUrl;
-  private movies: Movie[] = [];
   public searchText = '';
   private _searchedMovies: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  private form:any = undefined;
+  private form: any = undefined;
 
-  setForm(form: any){
+  setForm(form: any) {
     this.form = form;
   }
-  getForm(){
+
+  getForm() {
     return this.form;
   }
 
@@ -40,7 +37,7 @@ export class MovieService {
     headers: new HttpHeaders({'Authorization': this.tokenStorageService.getToken()})
   };
 
-  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService, private formBuilder: FormBuilder) {
+  constructor(private http: HttpClient, private tokenStorageService: TokenStorageService) {
   }
 
   getData(): Observable<any> {
@@ -78,8 +75,8 @@ export class MovieService {
   }
 
 
-  public getMovieInfo(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(`${this.apiServerUrl}/movies/{id}`);
+  public getMovieInfo(id: any): Observable<Movie> {
+    return this.http.get<Movie>(`${this.apiServerUrl}/movies/${id}`);
   }
 
 
@@ -112,17 +109,6 @@ export class MovieService {
 
   public addMovie(movie: any, image: any, title: string, duration: string, release_date: string, imdb_rating: string, popularity: string): Observable<Movie> {
 
-    // let form = this.formBuilder.group({
-    //   title: title,
-    //   duration: duration,
-    //   date: release_date,
-    //   rating: imdb_rating,
-    //   popularity: popularity,
-    //   movie: movie,
-    //   image: image
-    //
-    // });
-
     let fd = new FormData();
     fd.append('movie', movie);
     fd.append('image', image);
@@ -147,7 +133,7 @@ export class MovieService {
     );
   }
 
-  public editMovie(id:number,movie: any, image: any, title: string, duration: number, release_date: Date, imdb_rating: number, popularity: number): Observable<Movie> {
+  public editMovie(id: number, movie: any, image: any, title: string, duration: number, release_date: Date, imdb_rating: number, popularity: number): Observable<Movie> {
 
     let fd = new FormData();
     fd.append('movie', movie);
@@ -155,13 +141,12 @@ export class MovieService {
     fd.append('title', title);
     fd.append('duration', duration + '');
     fd.append('releaseDate', release_date + '');
-    fd.append('imdbRating', imdb_rating + '') ;
+    fd.append('imdbRating', imdb_rating + '');
     fd.append('popularity', popularity + '');
 
     return this.http.put<Movie>(`${this.apiServerUrl}/movies/${id}`, fd);
 
   }
-
 
 
 }

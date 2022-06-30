@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {Component, OnInit} from '@angular/core';
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-successfully-dialog',
@@ -8,7 +8,8 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 })
 export class SuccessfullyDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<SuccessfullyDialogComponent>) { }
+  constructor(public dialogRef: MatDialogRef<SuccessfullyDialogComponent>) {
+  }
 
   public confirmMessage: string = '';
 

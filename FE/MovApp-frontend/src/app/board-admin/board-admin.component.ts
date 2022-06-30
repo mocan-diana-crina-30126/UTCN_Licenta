@@ -45,7 +45,7 @@ export class BoardAdminComponent implements OnInit {
   dialogRef!: MatDialogRef<ConfirmationDialogComponent>;
   dialogRefSuccess!: MatDialogRef<SuccessfullyDialogComponent>;
 
-  constructor(public dialog: MatDialog, private movieService: MovieService,  private formBuilder: FormBuilder) {
+  constructor(public dialog: MatDialog, private movieService: MovieService, private formBuilder: FormBuilder) {
   }
 
 
@@ -69,8 +69,6 @@ export class BoardAdminComponent implements OnInit {
   openDialog() {
 
     const dialogConfig = new MatDialogConfig();
-
-    // dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
 
@@ -94,11 +92,10 @@ export class BoardAdminComponent implements OnInit {
           }
         }
       }
-
     );
   }
 
-  openEditDialog(movie: Movie){
+  openEditDialog(movie: Movie) {
 
     this.editForm = this.formBuilder.group({
       title: movie.title,
@@ -118,7 +115,6 @@ export class BoardAdminComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = '30%';
-
 
 
     dialogConfig.data = this.editForm;
@@ -156,23 +152,8 @@ export class BoardAdminComponent implements OnInit {
   }
 
   editRow(movie: Movie) {
-    //console.log(movie);
-    // this.editForm = this.formBuilder.group({
-    //   title: movie.title,
-    //   duration: movie.duration,
-    //   releaseDate: movie.release_date,
-    //   imdbRating: movie.imdb_rating,
-    //   popularity: movie.popularity,
-    //   movie: movie.movie,
-    //   image: movie.image,
-    //   id: movie.id
-    // });
-
-
     this.openEditDialog(movie);
-
     this.displayEditForm = !this.displayEditForm;
-
   }
 
   toggleAddForm() {

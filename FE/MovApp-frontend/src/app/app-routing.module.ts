@@ -16,6 +16,7 @@ import {WatchLaterComponent} from "./watch-later/watch-later.component";
 import {AdminGuardGuard} from "./guards/admin-guard.guard";
 import {AuthenticationGuard} from "./guards/authentication.guard";
 import {ErrorMessageComponent} from "./error-message/error-message.component";
+import {DetailsComponent} from "./details/details.component";
 
 const routes: Routes = [
   {
@@ -78,6 +79,11 @@ const routes: Routes = [
   {
     path: 'error',
     component: ErrorMessageComponent
+  },
+  {
+    path: 'details/:id',
+    component: DetailsComponent,
+    canActivate: [AuthenticationGuard]
   }
 
 ];

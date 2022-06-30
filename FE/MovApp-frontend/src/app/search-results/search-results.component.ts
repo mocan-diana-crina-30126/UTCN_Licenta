@@ -1,8 +1,6 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { Subject, Subscription } from 'rxjs';
-import { Movie } from '../models/movie';
-import { MovieService } from '../services/movie.service';
+import {Component, OnInit} from '@angular/core';
+import {Movie} from '../models/movie';
+import {MovieService} from '../services/movie.service';
 
 @Component({
   selector: 'app-search-results',
@@ -11,43 +9,28 @@ import { MovieService } from '../services/movie.service';
 })
 export class SearchResultsComponent implements OnInit {
 
-  searchText : String = '';
+  searchText: String = '';
   searchedMovies: Movie[] = [];
-  private subscription!: Subscription;
   public movies: Movie[] = [];
   title!: String;
 
   data: any[] = [];
 
 
-   
-
-  constructor(private movieService: MovieService, private router: ActivatedRoute) {
-    //this.displayOnSearchResults();
-   }
-   ngOnInit(){
-  
-    this.movieService.getData().subscribe(
-      (data: any) => {this.data = data;}
-    );
-   }
-   
-    
-   
-
-  //  public getMovieByTitle(): void {
-  //   console.log(this.searchText);
-  //   this.subscription = this.movieService.getMovieByTitle(this.searchText).subscribe(data => {
-  //     console.log(data);
-  //     this.searchedMovies = data;
-  //     //this.sliderConfigSearch.slidesToShow = data.length;
-  //   })
-  // }
-
-
-
-
+  constructor(private movieService: MovieService) {
   }
+
+  ngOnInit() {
+
+    this.movieService.getData().subscribe(
+      (data: any) => {
+        this.data = data;
+      }
+    );
+  }
+
+
+}
 
 
 

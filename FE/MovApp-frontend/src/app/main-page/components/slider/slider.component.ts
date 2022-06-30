@@ -1,13 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Movie} from 'src/app/models/movie';
 import {MovieService} from 'src/app/services/movie.service';
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {TokenStorageService} from 'src/app/services/token-storage.service';
 import {FavoritesService} from 'src/app/services/favorites.service';
 import {WatchLaterService} from "../../../services/watch-later.service";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {SuccessfullyDialogComponent} from "../../../successfully-dialog/successfully-dialog.component";
-import {ConfirmationDialogComponent} from "../../../confirmation-dialog/confirmation-dialog.component";
 
 @Component({
   selector: 'app-slider',
@@ -35,8 +34,6 @@ export class SliderComponent implements OnInit {
   }
 
   addToFavoritesList(id: any) {
-    // console.log("Post request for",id)
-
 
     this.favoritesService.addToFavorites(id).subscribe();
 
@@ -48,16 +45,23 @@ export class SliderComponent implements OnInit {
     this.dialogRef.afterClosed().subscribe();
   }
 
+  private disableClose = false;
+
   addToWatchLaterList(id: any) {
-    // console.log("Post request on Watch Later for",id)
+
     this.watchLaterService.addToWatchLater(id).subscribe();
 
     this.dialogRef = this.dialog.open(SuccessfullyDialogComponent, {
-      disableClose: false
+      disableClose: this.disableClose
     });
     this.dialogRef.componentInstance.confirmMessage = "Successfully added to watch later list!";
 
     this.dialogRef.afterClosed().subscribe();
 
   }
+
+  openMovieDetails(id: any): void {
+    this.routerr.navigate(['details', id]);
+  }
+
 }

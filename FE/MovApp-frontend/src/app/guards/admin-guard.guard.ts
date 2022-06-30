@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import {Observable} from 'rxjs';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {TokenStorageService} from "../services/token-storage.service";
-import {Token} from "@angular/compiler";
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,26 +26,22 @@ export class AdminGuardGuard implements CanActivate {
       this.isLoggedIn = true;
       this.roles = this.tokenStorageService.getUser().roles;
       console.log('Logare: ' + this.isLoggedIn + ' Rol: ' + this.roles);
-      if(this.roles.includes('ROLE_ADMIN')){
+      if (this.roles.includes('ROLE_ADMIN')) {
         this.isOk = true;
       }
 
-    }
-    else{
+    } else {
 
       this.isOk = false;
 
     }
-    if(this.isOk){
+    if (this.isOk) {
 
       return true;
-    }
-    else{
+    } else {
       this.router.navigate(['/error']);
       return false;
     }
-
-
 
 
   }

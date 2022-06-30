@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ChildrenService} from "../services/children.service";
 import {Children} from "../models/children";
 
@@ -11,13 +11,14 @@ export class ChildrenComponent implements OnInit {
 
   cartoons: Children[] = [];
 
-  constructor(private childrenService: ChildrenService) { }
+  constructor(private childrenService: ChildrenService) {
+  }
 
   ngOnInit(): void {
     this.getAllCartoons();
   }
 
-  getAllCartoons(){
+  getAllCartoons() {
     this.childrenService.getCartoons().subscribe(data => {
       this.cartoons = data;
       console.log(this.cartoons);

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from '../services/auth.service';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {SuccessfullyDialogComponent} from "../successfully-dialog/successfully-dialog.component";
 
@@ -26,7 +26,8 @@ export class RegisterComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router, public dialog: MatDialog) { }
+  constructor(private authService: AuthService, private router: Router, public dialog: MatDialog) {
+  }
 
 
   ngOnInit(): void {
@@ -35,31 +36,31 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
 
-   const { username, email, password } = this.form;
-   this.authService.register(username, email, password). subscribe(
-     data => {
-       console.log(data);
-       this.isSuccessful = true;
-       this.isSignUpFailed = false;
-       this.dialogRef = this.dialog.open(SuccessfullyDialogComponent, {
-         disableClose: false
+    const {username, email, password} = this.form;
+    this.authService.register(username, email, password).subscribe(
+      data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.dialogRef = this.dialog.open(SuccessfullyDialogComponent, {
+          disableClose: false
 
-       });
-       this.dialogRef.componentInstance.confirmMessage = "Registered successfully!";
+        });
+        this.dialogRef.componentInstance.confirmMessage = "Registered successfully!";
 
-       this.dialogRef.afterClosed().subscribe(result =>{
-         window.location.reload();
-       });
-      //  this.router.navigate(['/login']);
-     },
-     err => {
-       this.errorMessage = err.error.message;
-       this.isSignUpFailed = true;
+        this.dialogRef.afterClosed().subscribe(result => {
+          window.location.reload();
+        });
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
 
-     }
-   );
+      }
+    );
 
   }
+
   reloadPage(): void {
     window.location.reload();
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Movie} from "../models/movie";
 import {WatchLaterService} from "../services/watch-later.service";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
@@ -26,10 +26,8 @@ export class WatchLaterComponent implements OnInit {
   }
 
   getAllWatchLaterMovies() {
-    //console.log("get all watch later movies");
     this.watchLaterService.getAllWatchLaterMovies().subscribe(data => {
       this.movie = data;
-      //console.log(this.movie);
     })
   }
 
@@ -46,12 +44,11 @@ export class WatchLaterComponent implements OnInit {
             disableClose: false
           });
           this.dialogRefSuccess.componentInstance.confirmMessage = "Deleted successfully!";
-          this.dialogRefSuccess.afterClosed().subscribe(result =>{
+          this.dialogRefSuccess.afterClosed().subscribe(result => {
             window.location.reload();
           });
         });
       }
-      //this.dialogRef = null;
     });
 
   }

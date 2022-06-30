@@ -1,20 +1,20 @@
-mat-form-field{
+mat-form-field {
   width: 100%;
 }
 
 .button-edit {
   margin-left: 13rem;
-  background:   #1b9e1b;
+  background: #1b9e1b;
   color: #ffffff;
   width: 100px;
 
 }
 
 .button-edit:hover {
-  background-color: lime ;
+  background-color: lime;
 }
 
-.cancel-button{
+.cancel-button {
   margin-left: 1rem;
   background: indianred;
   color: #ffffff;

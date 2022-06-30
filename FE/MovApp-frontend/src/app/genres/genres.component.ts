@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Genre } from '../models/genre';
-import { Movie } from '../models/movie';
-import { GenreService } from '../services/genre.service';
-import { MovieService } from '../services/movie.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {Genre} from '../models/genre';
+import {Movie} from '../models/movie';
+import {GenreService} from '../services/genre.service';
+import {MovieService} from '../services/movie.service';
+import {ActivatedRoute, Params} from '@angular/router';
 
 @Component({
   selector: 'app-genres',
@@ -12,9 +12,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class GenresComponent implements OnInit {
 
-  @Input() movies : Movie[] = [];
-  genres : Genre[] = [];
-  movie : Movie[] = [];
+  @Input() movies: Movie[] = [];
+  genres: Genre[] = [];
+  movie: Movie[] = [];
   title!: string;
   public id!: number;
 
@@ -24,11 +24,10 @@ export class GenresComponent implements OnInit {
     arrows: true,
     autoplay: false
   };
-  
 
-  constructor(private movieService: MovieService, private genreService: GenreService, private router: ActivatedRoute) { }
 
-   
+  constructor(private movieService: MovieService, private genreService: GenreService, private router: ActivatedRoute) {
+  }
 
 
   ngOnInit(): void {
@@ -39,8 +38,11 @@ export class GenresComponent implements OnInit {
     });
   }
 
-  getMovieGenre(id: any){
-    this.movieService.getMovieGenre(id).subscribe((data => {this.movie = data; console.log(this.movie)}));
+  getMovieGenre(id: any) {
+    this.movieService.getMovieGenre(id).subscribe((data => {
+      this.movie = data;
+      console.log(this.movie)
+    }));
   }
 
 }

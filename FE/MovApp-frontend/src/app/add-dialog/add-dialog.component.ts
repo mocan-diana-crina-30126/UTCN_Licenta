@@ -11,11 +11,10 @@ import {SuccessfullyDialogComponent} from "../successfully-dialog/successfully-d
 })
 export class AddDialogComponent implements OnInit {
 
-  // form!: FormGroup;
-
   constructor(private fb: FormBuilder,
               public dialogRef: MatDialogRef<AddDialogComponent>,
-              @Inject(MAT_DIALOG_DATA) data:any, private movieService: MovieService, public dialog: MatDialog) { }
+              @Inject(MAT_DIALOG_DATA) data: any, private movieService: MovieService, public dialog: MatDialog) {
+  }
 
   @Input() form!: FormGroup;
   movie: any;
@@ -51,7 +50,7 @@ export class AddDialogComponent implements OnInit {
     console.log(imdbRating)
     console.log(popularity)
 
-    this.movieService.addMovie(this.movie,this.image,title,duration,releaseDate,imdbRating,popularity).subscribe(data =>{
+    this.movieService.addMovie(this.movie, this.image, title, duration, releaseDate, imdbRating, popularity).subscribe(data => {
       this.form.reset();
     });
 
@@ -62,7 +61,6 @@ export class AddDialogComponent implements OnInit {
     this.dialogRefSuccess.afterClosed().subscribe(result => {
       window.location.reload();
     });
-
 
 
   }

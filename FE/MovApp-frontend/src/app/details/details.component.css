@@ -1,0 +1,55 @@
+.details-wrapper {
+  max-width: 900px;
+  margin: 20px auto;
+  position: relative;
+}
+
+.details ::ng-deep mwl-gauge {
+  width: 150px;
+  height: 150px;
+  display: block;
+  padding: 10px;
+}
+.details ::ng-deep mwl-gauge .dial {
+  stroke-width: 10;
+}
+.details ::ng-deep mwl-gauge .value {
+  stroke-dasharray: none;
+  stroke-width: 13;
+}
+.details ::ng-deep mwl-gauge .value-text {
+  fill: #fff;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.movie-banner {
+  height: 800px;
+  overflow: hidden;
+}
+.movie-banner-img {
+  width: 100%;
+  filter: blur(15px);
+}
+.movie-content {
+  text-align: center;
+  position: relative;
+  top: -750px;
+}
+.movie-header-title {
+  font-size: 70px;
+  color: #fff;
+  font-weight: 700;
+  line-height: 70px;
+  white-space: nowrap;
+}
+.movie-header-release-date {
+  color: black;
+  font-weight: 700;
+}
+.movie-header-genres {
+  color: #fff;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=details.component.css.map */

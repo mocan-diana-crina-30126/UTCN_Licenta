@@ -2,11 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MovieService} from "../services/movie.service";
-import {Observable} from "rxjs";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {SuccessfullyDialogComponent} from "../successfully-dialog/successfully-dialog.component";
-import {AddDialogComponent} from "../add-dialog/add-dialog.component";
-
 
 @Component({
   selector: 'app-add-form',
@@ -16,7 +13,8 @@ import {AddDialogComponent} from "../add-dialog/add-dialog.component";
 export class AddFormComponent implements OnInit {
 
 
-  constructor( private formBuilder: FormBuilder, private movieService: MovieService, public dialog: MatDialog) { }
+  constructor(private formBuilder: FormBuilder, private movieService: MovieService, public dialog: MatDialog) {
+  }
 
   @Input() form!: FormGroup;
   movie: any;
@@ -42,7 +40,7 @@ export class AddFormComponent implements OnInit {
     console.log(imdbRating)
     console.log(popularity)
 
-    this.movieService.addMovie(this.movie,this.image,title,duration,releaseDate,imdbRating,popularity).subscribe(data =>{
+    this.movieService.addMovie(this.movie, this.image, title, duration, releaseDate, imdbRating, popularity).subscribe(data => {
       this.form.reset();
     });
 
@@ -53,7 +51,6 @@ export class AddFormComponent implements OnInit {
     this.dialogRefSuccess.afterClosed().subscribe(result => {
       window.location.reload();
     });
-
 
 
   }
@@ -69,9 +66,6 @@ export class AddFormComponent implements OnInit {
       this.image = event.target.files[0];
     }
   }
-
-
-
 
 
 }

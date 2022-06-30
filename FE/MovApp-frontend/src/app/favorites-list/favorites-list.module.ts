@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 import {MatButtonModule} from "@angular/material/button";
 
-import { FavoritesListRoutingModule } from './favorites-list-routing.module'
-import { FavoritesListComponent } from './favorites-list.component';
+import {FavoritesListRoutingModule} from './favorites-list-routing.module'
+import {FavoritesListComponent} from './favorites-list.component';
 
 @NgModule({
   declarations: [FavoritesListComponent],
@@ -14,4 +14,5 @@ import { FavoritesListComponent } from './favorites-list.component';
     MatButtonModule
   ]
 })
-export class FavoritesListModule { }
+export class FavoritesListModule {
+}
