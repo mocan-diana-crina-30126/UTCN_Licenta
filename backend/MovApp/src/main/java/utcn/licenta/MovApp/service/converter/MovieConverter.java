@@ -22,6 +22,7 @@ public class MovieConverter {
         movieDTO.setContent(movie.getContent());
         movieDTO.setTitle(movie.getTitle());
         movieDTO.setPopularity(movie.getPopularity());
+        movieDTO.setLanguage(movie.getLanguage());
 
         return movieDTO;
     }

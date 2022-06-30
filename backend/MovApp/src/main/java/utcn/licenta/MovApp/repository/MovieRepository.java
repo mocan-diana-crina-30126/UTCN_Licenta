@@ -8,6 +8,7 @@ import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.model.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
@@ -29,6 +30,11 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     List<Movie> getAllMoviesByGenre(@Param("genre") String genre);
 
     @Query("select movie from Movie movie " +
+            "inner join movie.genres genres " +
+            "where movie.id = :id ")
+    Movie getMovieById(@Param("id") Integer id);
+
+    @Query("select movie from Movie movie " +
             "join movie.genres genres " +
             "where genres.id = :id " +
             "order by movie.title asc")
@@ -41,12 +47,12 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     List<Movie> getTopRated();
 
     @Query("select movie from Movie movie " +
-            "where movie.release_date >= '2022-01-01' AND movie.release_date <='2022-04-01' " +
+            "where movie.release_date >= '2021-10-01' AND movie.release_date <='2022-04-01' " +
             "order by movie.release_date desc")
     List<Movie> getTrending();
 
     @Query("select movie from Movie movie " +
-            "where movie.id IN (1,2,3,5,6,8,9,10,20,23)")
+            "where movie.id IN (1,4,5,6,8,9,10,14,20,23)")
     List<Movie> getOriginals();
 
     @Query("select movie from Movie movie " +

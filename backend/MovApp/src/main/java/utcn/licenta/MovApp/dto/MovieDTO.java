@@ -16,6 +16,15 @@ public class MovieDTO {
     private Integer imdb_rating;
     private String content;
     private Integer popularity;
+    private String language;
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
     public Integer getPopularity() {
         return popularity;

@@ -2,7 +2,6 @@ package utcn.licenta.MovApp.service;
 
 import org.apache.tika.mime.MimeTypeException;
 import org.apache.tika.mime.MimeTypes;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -13,9 +12,8 @@ import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.model.User;
 import utcn.licenta.MovApp.repository.MovieRepository;
 import utcn.licenta.MovApp.repository.UserRepository;
-import utcn.licenta.MovApp.security.services.UserDetailsImpl;
 import utcn.licenta.MovApp.service.converter.MovieConverter;
-import utcn.licenta.MovApp.service.vlidator.LocalDateValidator;
+import utcn.licenta.MovApp.service.validator.LocalDateValidator;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -115,7 +113,15 @@ public class MovieServiceImpl implements MovieServiceInterface {
 
     @Override
     public Optional<Movie> getMovieById(Integer movieId) {
+
         return movieRepository.findById(movieId);
+    }
+
+    @Override
+    public MovieDTO getMovieInfo(Integer movieId) {
+
+        Movie movie = movieRepository.getMovieById(movieId);
+        return movieConverter.convertEntityToDTO(movie);
     }
 
     @Override

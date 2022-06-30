@@ -41,6 +41,8 @@ public interface MovieServiceInterface {
 
     Optional<Movie> getMovieById(Integer movieId);
 
+    MovieDTO getMovieInfo(Integer movieId);
+
     Collection<Movie> getAllFavoritesMovies(Long userId);
 
     Collection<Movie> getAllWatchLaterMovies(Long id);

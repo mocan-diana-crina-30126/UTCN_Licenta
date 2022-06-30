@@ -11,11 +11,13 @@ import org.springframework.web.multipart.MultipartFile;
 import utcn.licenta.MovApp.dto.MovieDTO;
 import utcn.licenta.MovApp.exception.InvalidFieldException;
 import utcn.licenta.MovApp.exception.MovieNotFoundException;
+import utcn.licenta.MovApp.model.Movie;
 import utcn.licenta.MovApp.security.authorization.HasAdminRole;
 import utcn.licenta.MovApp.service.MovieServiceImpl;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -31,11 +33,11 @@ public class MovieController {
         return movieService.getAllMovies();
     }
 
-//    @GetMapping("/{id}")
-//    public List<Movie> getMovie(@PathVariable("id") Integer id) {
-//
-//        return movieService.getMovie(id);
-//    }
+    @GetMapping("/{id}")
+    public MovieDTO getMovie(@PathVariable("id") Integer id) {
+
+        return movieService.getMovieInfo(id);
+    }
 
     @GetMapping("/trending")
     public Collection<MovieDTO> getTrendingMovies() {
@@ -89,7 +91,7 @@ public class MovieController {
                                   @RequestParam(required = false) String overview) throws MimeTypeException, InvalidFieldException {
         MovieDTO createdMovie = movieService.save(movie, image, title, duration, releaseDate, content, language,
                 directorId, imdbRating, overview, popularity);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdMovie);// TODO: 12.05.2022 create uri
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdMovie);
     }
 
     @HasAdminRole
