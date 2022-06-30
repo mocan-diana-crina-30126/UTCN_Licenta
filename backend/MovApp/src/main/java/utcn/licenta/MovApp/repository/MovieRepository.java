@@ -47,7 +47,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     List<Movie> getTopRated();
 
     @Query("select movie from Movie movie " +
-            "where movie.release_date >= '2021-10-01' AND movie.release_date <='2022-04-01' " +
+            "where movie.release_date >= '2020-10-23' AND movie.release_date <='2022-04-01' " +
             "order by movie.release_date desc")
     List<Movie> getTrending();
 
